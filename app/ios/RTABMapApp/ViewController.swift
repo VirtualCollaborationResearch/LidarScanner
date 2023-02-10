@@ -45,7 +45,8 @@ extension Array {
 }
 
 class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIPickerViewDataSource, UIPickerViewDelegate, CLLocationManagerDelegate {
-    private var session: ARSession { scanView.session }
+    //private var session: ARSession = .init()
+    private var session: ARSession { scanView.session } // Comment out
     private let scanView = ScanARView()
     private var locationManager: CLLocationManager?
     private var mLastKnownLocation: CLLocation?
@@ -545,7 +546,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
         switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized: // The user has previously granted access to the camera.
                 print("Start Camera")
-                addScanView()
+                addScanView() //Comment out
                 rtabmap!.startCamera()
                 let configuration = ARWorldTrackingConfiguration()
                 var message = ""
@@ -1018,6 +1019,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
     }
     
     var isRunning = false
+    // Comment out
     {
         didSet {
             if isRunning {
@@ -1029,7 +1031,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
             }
         }
     }
-    
+    //
     func setupListeners() {
         arFrameReciever
          //   .receive(on: DispatchQueue.global())
@@ -1946,6 +1948,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
                 autoreleasepool {
                     self.rtabmap?.postOdometryEvent(frame: data, pose: anchor.transform, orientation: data.orientation, viewport: self.view.frame.size)
                 }
+                usleep(200000)
                 print("** data sending",name)
             }
         }
