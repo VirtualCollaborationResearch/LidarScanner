@@ -7,6 +7,7 @@
 
 import UIKit
 import ARKit
+import VideoToolbox
 
 func setDefaultsFromSettingsBundle() {
     
@@ -74,3 +75,95 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+extension FileManager {
+    func createFolder(with name:String) -> URL {
+        let fileManager = FileManager.default
+        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let directoryPath = documentDirectory.appendingPathComponent(name)
+        
+        if !FileManager.default.fileExists(atPath: directoryPath.relativePath) {
+            do {
+                try FileManager.default.createDirectory(atPath: directoryPath.relativePath,
+                                                withIntermediateDirectories: true,
+                                                attributes: nil)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        return directoryPath
+    }
+}
+
+extension UIImage {
+    public convenience init?(pixelBuffer: CVPixelBuffer?) {
+        guard let pixelBuffer = pixelBuffer else { return nil }
+        var cgImage: CGImage?
+        VTCreateCGImageFromCVPixelBuffer(pixelBuffer, options: nil, imageOut: &cgImage)
+        
+        guard let cgImage = cgImage else {
+            return nil
+        }
+        
+        self.init(cgImage: cgImage)
+    }
+    
+    func save(name:String) -> URL? {
+        let folderURL = FileManager.default.createFolder(with: "RT-Images")
+        let imageUrl = folderURL.appendingPathComponent(name+".jpeg")
+        let imageData = self.jpegData(compressionQuality: 0.8)
+        try? imageData?.write(to: imageUrl)
+        return imageUrl
+    }
+}
+
+extension CGImage {
+    public func convert() throws -> CVPixelBuffer {
+                
+        let options : [ String : Bool ] = [
+            kCVPixelBufferCGImageCompatibilityKey         as String : false,
+            kCVPixelBufferCGBitmapContextCompatibilityKey as String : false
+        ]
+        
+        var bufferRef : CVPixelBuffer? = nil
+        
+        let status : CVReturn = CVPixelBufferCreate(
+            kCFAllocatorDefault,
+            width,
+            height,
+            kCVPixelFormatType_32BGRA, //kCVPixelFormatType_32RGBA cases error
+            options as CFDictionary,
+            &bufferRef
+        )
+        
+        guard status == kCVReturnSuccess else { fatalError( status.description ) }
+        guard let buffer : CVPixelBuffer = bufferRef else { fatalError( "No buffer returned" ) }
+        
+        let lockFlags = CVPixelBufferLockFlags(rawValue: CVOptionFlags(0))
+        
+        CVPixelBufferLockBaseAddress( buffer, lockFlags )
+        
+        guard let pixelData : UnsafeMutableRawPointer = CVPixelBufferGetBaseAddress( buffer ) else { fatalError("Can't get buffer base address") }
+        
+        let rgbColorSpace : CGColorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        guard let context : CGContext = CGContext(
+            data             : pixelData,
+            width            : width,
+            height           : height,
+            bitsPerComponent : bitsPerComponent,
+            bytesPerRow      : bytesPerRow,
+            space            : rgbColorSpace,
+            bitmapInfo       : CGImageAlphaInfo.noneSkipLast.rawValue
+        )
+        else { fatalError( "Can't create CGContext" ) }
+        
+        let rect : CGRect = CGRect(x: 0, y: 0, width: CGFloat( width ), height: CGFloat( height ) )
+        
+        context.draw( self, in: rect)
+        
+        CVPixelBufferUnlockBaseAddress( buffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)) )
+        
+        return buffer
+    }
+}

@@ -187,7 +187,7 @@ class RTABMapApp : public UEventsHandler {
 		const rtabmap::Transform & depthFrame,
 		double stamp,
 		double depthStamp,
-        const void * yPlane, const void * uPlane, const void * vPlane, int yPlaneLen, int rgbWidth, int rgbHeight, int rgbFormat,
+        const void * baseAdress, int bytesPerRow, int rgbWidth, int rgbHeight, int rgbFormat,
         const void * depth, int depthLen, int depthWidth, int depthHeight, int depthFormat,
         const void * conf, int confLen, int confWidth, int confHeight, int confFormat,
         const float * points, int pointsLen, int pointsChannels,

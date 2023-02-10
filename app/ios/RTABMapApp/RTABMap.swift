@@ -229,9 +229,10 @@ class RTABMap {
         // a null transform will make rtabmap creating a new session
         postCameraPoseEventNative(native_rtabmap, 0,0,0,0,0,0,0)
     }
-    
-    func postOdometryEvent(frame: ARFrame, orientation: UIInterfaceOrientation, viewport: CGSize) {
-        let pose = frame.camera.transform   // ViewMatrix
+  
+    func postOdometryEvent(frame: RTabData, pose:simd_float4x4,orientation: UIInterfaceOrientation, viewport: CGSize) {
+      //  let pose = frame.camera.transform  // ViewMatrix
+        let capturedImage = frame.capturedImage!
         let rotation = GLKMatrix3(
             m: (pose[0,0], pose[0,1], pose[0,2],
             pose[1,0], pose[1,1], pose[1,2],
@@ -241,15 +242,16 @@ class RTABMap {
                 
         postCameraPoseEventNative(native_rtabmap, pose[3,0], pose[3,1], pose[3,2], quat.x, quat.y, quat.z, quat.w)
                 
-        let confMap = frame.sceneDepth?.confidenceMap
-        let depthMap = frame.sceneDepth?.depthMap
-        let points = frame.rawFeaturePoints?.points
+        let confMap = frame.confidence
+        let depthMap = frame.depth
+        let points = frame.points
                 
         if points != nil && (depthMap != nil || points!.count>0)
         {
             let v = frame.camera.viewMatrix(for: orientation)
             let p = frame.camera.projectionMatrix(for: orientation, viewportSize: viewport, zNear: 0.5, zFar: 50.0)
-            
+            print("** viewMatrix",v)
+            print("** projectionMatrix",p)
             let rotation = GLKMatrix3(
                 m: (v[0,0], v[0,1], v[0,2],
                     v[1,0], v[1,1], v[1,2],
@@ -279,9 +281,9 @@ class RTABMap {
                 texCoord = [texX2, texY2, texX2, 1-texY2, 1-texX2, texY2, 1-texX2, 1-texY2]
             }
             
-            frame.rawFeaturePoints?.points.withUnsafeBufferPointer { bufferPoints in
-                
-                CVPixelBufferLockBaseAddress(frame.capturedImage, CVPixelBufferLockFlags.readOnly)
+            frame.points?.withUnsafeBufferPointer { bufferPoints in
+                print("bufferPoints",bufferPoints.count)
+                CVPixelBufferLockBaseAddress(capturedImage, CVPixelBufferLockFlags.readOnly)
                 var depthDataPtr: UnsafeMutableRawPointer?
                 var depthSize: Int32 = 0
                 var depthWidth: Int32 = 0
@@ -313,7 +315,10 @@ class RTABMap {
                 if(frame.lightEstimate != nil) {
                     addEnvSensor(type: 4, value: Float(frame.lightEstimate!.ambientIntensity))
                 }
-                                
+                    let baseAdress = CVPixelBufferGetBaseAddress(capturedImage)
+                let bytesPerRow = CVPixelBufferGetBytesPerRow(capturedImage)
+                
+                
                 postOdometryEventNative(native_rtabmap,
                                         pose[3,0], pose[3,1], pose[3,2], quat.x, quat.y, quat.z, quat.w,
                                         frame.camera.intrinsics[0,0], // fx
@@ -321,13 +326,11 @@ class RTABMap {
                                         frame.camera.intrinsics[2,0], // cx
                                         frame.camera.intrinsics[2,1], // cy
                                         frame.timestamp,
-                                        CVPixelBufferGetBaseAddressOfPlane(frame.capturedImage, 0),  // y plane pointer
-                                        nil,                                                         // u plane pointer
-                                        CVPixelBufferGetBaseAddressOfPlane(frame.capturedImage, 1),  // v plane pointer
-                                        Int32(CVPixelBufferGetBytesPerRowOfPlane(frame.capturedImage, 0)) * Int32(CVPixelBufferGetHeightOfPlane(frame.capturedImage, 0)),  // yPlaneLen
-                                        Int32(CVPixelBufferGetWidth(frame.capturedImage)),           // rgb width
-                                        Int32(CVPixelBufferGetHeight(frame.capturedImage)),          // rgb height
-                                        Int32(CVPixelBufferGetPixelFormatType(frame.capturedImage)), // rgb format
+                                        baseAdress,  // baseAdress
+                                        Int32(bytesPerRow),  // bytesPerRow
+                                        Int32(CVPixelBufferGetWidth(capturedImage)),           // rgb width
+                                        Int32(CVPixelBufferGetHeight(capturedImage)),          // rgb height
+                                        Int32(CVPixelBufferGetPixelFormatType(capturedImage)), // rgb format
                                         depthDataPtr, // depth pointer
                                         depthSize,    // depth size
                                         depthWidth,   // depth width
@@ -338,7 +341,7 @@ class RTABMap {
                                         confWidth,   // conf width
                                         confHeight,  // conf height
                                         confFormat,  // conf format
-                                        bufferPoints.baseAddress, Int32(frame.rawFeaturePoints!.points.count), 4,
+                                        bufferPoints.baseAddress, Int32(frame.points!.count), 4,
                                         v[3,0], v[3,1], v[3,2], quatv.x, quatv.y, quatv.z, quatv.w,
                                         p[0,0], p[1,1], p[2,0], p[2,1], p[2,2], p[2,3], p[3,2],
                                         texCoord[0],texCoord[1],texCoord[2],texCoord[3],texCoord[4],texCoord[5],texCoord[6],texCoord[7])
@@ -348,9 +351,11 @@ class RTABMap {
                 if confMap != nil {
                     CVPixelBufferUnlockBaseAddress(confMap!, CVPixelBufferLockFlags.readOnly)
                 }
-                CVPixelBufferUnlockBaseAddress(frame.capturedImage, CVPixelBufferLockFlags.readOnly)
+                CVPixelBufferUnlockBaseAddress(capturedImage, CVPixelBufferLockFlags.readOnly)
             }
         }
+        
+        frame.removeCapturedImage()
     }
         
     // Parameters
