@@ -45,7 +45,7 @@ extension Array {
 }
 
 class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIPickerViewDataSource, UIPickerViewDelegate, CLLocationManagerDelegate {
-    private var session = ARSession()
+    private var session: ARSession { scanView.session }
     private let scanView = ScanARView()
     private var locationManager: CLLocationManager?
     private var mLastKnownLocation: CLLocation?
@@ -545,7 +545,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
         switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized: // The user has previously granted access to the camera.
                 print("Start Camera")
-          //      addScanView()
+                addScanView()
                 rtabmap!.startCamera()
                 let configuration = ARWorldTrackingConfiguration()
                 var message = ""
@@ -1016,18 +1016,19 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
     override var prefersStatusBarHidden: Bool {
         return !mHudVisible
     }
+    
     var isRunning = false
-//    {
-//        didSet {
-//            if isRunning {
-//                scanView.startScanning()
-//            } else {
-//                view.subviews.forEach {
-//                    if $0 is ScanARView { $0.removeFromSuperview() }
-//                }
-//            }
-//        }
-//    }
+    {
+        didSet {
+            if isRunning {
+                scanView.startScanning()
+            } else {
+                view.subviews.forEach {
+                    if $0 is ScanARView { $0.removeFromSuperview() }
+                }
+            }
+        }
+    }
     
     func setupListeners() {
         arFrameReciever
