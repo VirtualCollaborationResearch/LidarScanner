@@ -126,18 +126,18 @@ rtabmap::ParametersMap RTABMapApp::getRtabmapParameters()
 
     parameters.insert(mappingParameters_.begin(), mappingParameters_.end());
 
-    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kKpMaxFeatures(), std::string("200")));
-    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kGFTTQualityLevel(), std::string("0.0001")));
-    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kMemImagePreDecimation(), std::string(cameraColor_&&fullResolution_?"2":"1")));
+    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kKpMaxFeatures(), std::string("1000")));
+    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kGFTTQualityLevel(), std::string("0.0001")));//*0.0001
+    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kMemImagePreDecimation(), std::string(cameraColor_&&fullResolution_?"1":"1")));
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kBRIEFBytes(), std::string("64")));
-    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRtabmapTimeThr(), std::string("800")));
+    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRtabmapTimeThr(), std::string("0")));//*
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRtabmapPublishLikelihood(), std::string("false")));
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRtabmapPublishPdf(), std::string("false")));
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRtabmapStartNewMapOnLoopClosure(), uBool2Str(!localizationMode_ && appendMode_)));
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kMemBinDataKept(), uBool2Str(!trajectoryMode_)));
-    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kOptimizerIterations(), "10"));
+    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kOptimizerIterations(), "10"));//*10
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kMemIncrementalMemory(), uBool2Str(!localizationMode_)));
-    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRtabmapMaxRetrieved(), "1"));
+    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRtabmapMaxRetrieved(), "10"));//*10
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRGBDMaxLocalRetrieved(), "0"));
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kMemCompressionParallelized(), std::string("false")));
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kKpParallelized(), std::string("false")));
@@ -145,8 +145,8 @@ rtabmap::ParametersMap RTABMapApp::getRtabmapParameters()
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kVisMinInliers(), std::string("25")));
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRGBDProximityPathMaxNeighbors(), std::string("0"))); // disable scan matching to merged nodes
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRGBDProximityBySpace(), std::string("false"))); // just keep loop closure detection
-    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRGBDLinearUpdate(), std::string("0.05")));
-    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRGBDAngularUpdate(), std::string("0.05")));
+    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRGBDLinearUpdate(), std::string("0.01")));//*0.05
+    parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kRGBDAngularUpdate(), std::string("0.01")));//*0.05
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kMarkerLength(), std::string("0.0")));
 
     parameters.insert(rtabmap::ParametersPair(rtabmap::Parameters::kMemUseOdomGravity(), "true"));
@@ -665,7 +665,7 @@ int RTABMapApp::openDatabase(const std::string & databasePath, bool databaseInMe
                     UWARN("Pose %d is null !?", id);
                 }
                 ++i;
-                if(addTime.elapsed() >= 4.0f)
+                if(addTime.elapsed() >= 0.0f)//* 4.0f
                 {
                     UEventsManager::post(new rtabmap::RtabmapEventInit(rtabmap::RtabmapEventInit::kInfo, uFormat("Created clouds %d/%d", i, (int)poses.size())));
                     addTime.restart();
@@ -3745,7 +3745,7 @@ void RTABMapApp::postOdometryEvent(
     boost::mutex::scoped_lock  lock(cameraMutex_);
     if(cameraDriver_ == 3 && camera_)
     {
-        if(rgb_fx > 0.0f && rgb_fy > 0.0f && rgb_cx > 0.0f && rgb_cy > 0.0f && stamp > 0.0f)
+        if(rgb_fx > 0.0f && rgb_fy > 0.0f && rgb_cx > 0.0f && rgb_cy > 0.0f && stamp > 0.00f)
         {
 #ifndef DISABLE_LOG
             //LOGD("rgb format = %d depth format =%d ", rgbFormat, depthFormat);
@@ -3820,63 +3820,63 @@ void RTABMapApp::postOdometryEvent(
                     {
                         UTimer time;
                         rtabmap::Transform motion = rtabmap::Transform::getIdentity();
-                        if(depthStamp != stamp && !poseBuffer_.empty())
-                        {
-                            // Interpolate pose
-                            if(!poseBuffer_.empty())
-                            {
-                                if(poseBuffer_.rbegin()->first < depthStamp)
-                                {
-                                    UWARN("Could not find poses to interpolate at time %f (last is %f)...", depthStamp, poseBuffer_.rbegin()->first);
-                                }
-                                else
-                                {
-                                    std::map<double, rtabmap::Transform >::const_iterator iterB = poseBuffer_.lower_bound(depthStamp);
-                                    std::map<double, rtabmap::Transform >::const_iterator iterA = iterB;
-                                    rtabmap::Transform poseDepth;
-                                    if(iterA != poseBuffer_.begin())
-                                    {
-                                        iterA = --iterA;
-                                    }
-                                    if(iterB == poseBuffer_.end())
-                                    {
-                                        iterB = --iterB;
-                                    }
-                                    if(iterA == iterB && depthStamp == iterA->first)
-                                    {
-                                        poseDepth = iterA->second;
-                                    }
-                                    else if(depthStamp >= iterA->first && depthStamp <= iterB->first)
-                                    {
-                                        poseDepth = iterA->second.interpolate((depthStamp-iterA->first) / (iterB->first-iterA->first), iterB->second);
-                                    }
-                                    else if(depthStamp < iterA->first)
-                                    {
-                                        UERROR("Could not find poses to interpolate at image time %f (earliest is %f). Are sensors synchronized?", depthStamp, iterA->first);
-                                    }
-                                    else
-                                    {
-                                        UERROR("Could not find poses to interpolate at image time %f (between %f and %f), Are sensors synchronized?", depthStamp, iterA->first, iterB->first);
-                                    }
-                                    if(!poseDepth.isNull())
-                                    {
-#ifndef DISABLE_LOG
-                                        UDEBUG("poseRGB  =%s (stamp=%f)", pose.prettyPrint().c_str(), depthStamp);
-                                        UDEBUG("poseDepth=%s (stamp=%f)", poseDepth.prettyPrint().c_str(), depthStamp);
-#endif
-                                        motion = pose.inverse()*poseDepth;
-                                        // transform in camera frame
-#ifndef DISABLE_LOG
-                                        UDEBUG("motion=%s", motion.prettyPrint().c_str());
-#endif
-                                        motion = rtabmap::CameraModel::opticalRotation().inverse() * motion * rtabmap::CameraModel::opticalRotation();
-#ifndef DISABLE_LOG
-                                        UDEBUG("motion=%s", motion.prettyPrint().c_str());
-#endif
-                                    }
-                                }
-                            }
-                        }
+//                        if(depthStamp != stamp && !poseBuffer_.empty())
+//                        {
+//                            // Interpolate pose
+//                            if(!poseBuffer_.empty())
+//                            {
+//                                if(poseBuffer_.rbegin()->first < depthStamp)
+//                                {
+//                                    UWARN("Could not find poses to interpolate at time %f (last is %f)...", depthStamp, poseBuffer_.rbegin()->first);
+//                                }
+//                                else
+//                                {
+//                                    std::map<double, rtabmap::Transform >::const_iterator iterB = poseBuffer_.lower_bound(depthStamp);
+//                                    std::map<double, rtabmap::Transform >::const_iterator iterA = iterB;
+//                                    rtabmap::Transform poseDepth;
+//                                    if(iterA != poseBuffer_.begin())
+//                                    {
+//                                        iterA = --iterA;
+//                                    }
+//                                    if(iterB == poseBuffer_.end())
+//                                    {
+//                                        iterB = --iterB;
+//                                    }
+//                                    if(iterA == iterB && depthStamp == iterA->first)
+//                                    {
+//                                        poseDepth = iterA->second;
+//                                    }
+//                                    else if(depthStamp >= iterA->first && depthStamp <= iterB->first)
+//                                    {
+//                                        poseDepth = iterA->second.interpolate((depthStamp-iterA->first) / (iterB->first-iterA->first), iterB->second);
+//                                    }
+//                                    else if(depthStamp < iterA->first)
+//                                    {
+//                                        UERROR("Could not find poses to interpolate at image time %f (earliest is %f). Are sensors synchronized?", depthStamp, iterA->first);
+//                                    }
+//                                    else
+//                                    {
+//                                        UERROR("Could not find poses to interpolate at image time %f (between %f and %f), Are sensors synchronized?", depthStamp, iterA->first, iterB->first);
+//                                    }
+//                                    if(!poseDepth.isNull())
+//                                    {
+//#ifndef DISABLE_LOG
+//                                        UDEBUG("poseRGB  =%s (stamp=%f)", pose.prettyPrint().c_str(), depthStamp);
+//                                        UDEBUG("poseDepth=%s (stamp=%f)", poseDepth.prettyPrint().c_str(), depthStamp);
+//#endif
+//                                        motion = pose.inverse()*poseDepth;
+//                                        // transform in camera frame
+//#ifndef DISABLE_LOG
+//                                        UDEBUG("motion=%s", motion.prettyPrint().c_str());
+//#endif
+//                                        motion = rtabmap::CameraModel::opticalRotation().inverse() * motion * rtabmap::CameraModel::opticalRotation();
+//#ifndef DISABLE_LOG
+//                                        UDEBUG("motion=%s", motion.prettyPrint().c_str());
+//#endif
+//                                    }
+//                                }
+//                            }
+//                        }
                         rtabmap::Transform rgbToDepth = motion*rgbFrame.inverse()*depthFrame;
                         float scale = (float)outputDepth.cols/(float)outputRGB.cols;
                         cv::Mat colorK = (cv::Mat_<double>(3,3) <<
@@ -3955,6 +3955,7 @@ void RTABMapApp::postOdometryEvent(
                     texCoords[7] = t7;
                     camera_->setData(data, pose, viewMatrixMat, projectionMatrix, main_scene_.GetCameraType() == tango_gl::GestureCamera::kFirstPerson?texCoords:0);
                     camera_->spinOnce();
+                    LOGD("TEST PRINT");
                 }
             }
         }

@@ -354,7 +354,7 @@ class RTABMap {
                 CVPixelBufferUnlockBaseAddress(capturedImage, CVPixelBufferLockFlags.readOnly)
             }
         }
-        
+        print("Image timestamp: " + String(frame.timestamp))
         frame.removeCapturedImage()
     }
         

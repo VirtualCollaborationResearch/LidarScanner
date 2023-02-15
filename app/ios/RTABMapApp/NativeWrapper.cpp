@@ -313,9 +313,9 @@ void postOdometryEventNative(const void *object,
     {
         native(object)->postOdometryEvent(
                 rtabmap::Transform(x,y,z,qx,qy,qz,qw),
-                fx,fy,cx,cy, 0,0,0,0,
+                fx,fy,cx,cy,fx,fy,cx,cy, //*fx,fy,cx,cy, 0,0,0,0,
                 rtabmap::Transform(), rtabmap::Transform(),
-                stamp, 0,
+                stamp, stamp,//* stamp, 0
                 baseAdress, bytesPerRow, rgbWidth, rgbHeight, rgbFormat,
                 depth, depthLen, depthWidth, depthHeight, depthFormat,
                 conf, confLen, confWidth, confHeight, confFormat,

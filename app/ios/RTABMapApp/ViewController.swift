@@ -1035,7 +1035,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
     func setupListeners() {
         arFrameReciever
          //   .receive(on: DispatchQueue.global())
-            .throttle(for: .seconds(0.25), scheduler: DispatchQueue.global(), latest: true)
+            .throttle(for: .seconds(0.5), scheduler: DispatchQueue.global(), latest: true)
             .sink { [weak self] frame in
                 let imageName = UUID().uuidString
                 let image = UIImage(pixelBuffer: frame.capturedImage)
@@ -1047,7 +1047,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
                 autoreleasepool {
                     if let imageData = image?.jpegData(compressionQuality: 0.8),
                     let _ = try? imageData.write(to: imageUrl) {
-                       print("** image saved")
+                        print("** image saved")
                         let data = RTabData(confidence: frame.sceneDepth?.confidenceMap, depth: frame.sceneDepth?.depthMap, points: frame.rawFeaturePoints?.points, timestamp: frame.timestamp , camera: frame.camera, orientation: .portrait, lightEstimate: frame.lightEstimate, imageURl: imageUrl)
                             self?.rTabDataDict[imageName] = data
                         self?.session.add(anchor: .init(name: imageName, transform: frame.camera.transform))
@@ -1948,7 +1948,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
                 autoreleasepool {
                     self.rtabmap?.postOdometryEvent(frame: data, pose: anchor.transform, orientation: data.orientation, viewport: self.view.frame.size)
                 }
-                usleep(200000)
+                usleep(200000) // Wait a while to send the next image to RtabMap. Should be equal to image capturing period. Should be >= 200000
                 print("** data sending",name)
             }
         }

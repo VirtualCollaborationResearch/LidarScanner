@@ -206,37 +206,37 @@ void CameraMobile::spinOnce()
 	{
 		bool ignoreFrame = false;
 		//float rate = 10.0f; // maximum 10 FPS for image data
-		double now = UTimer::now();
-		/*if(rate>0.0f)
-		{
-			if((spinOncePreviousStamp_>=0.0 && now>spinOncePreviousStamp_ && now - spinOncePreviousStamp_ < 1.0f/rate) ||
-				((spinOncePreviousStamp_<=0.0 || now<=spinOncePreviousStamp_) && spinOnceFrameRateTimer_.getElapsedTime() < 1.0f/rate))
-			{
-				ignoreFrame = true;
-			}
-		}*/
+        double now = 0;//*UTimer::now();
+//		if(rate>0.0f)
+//		{
+//			if((spinOncePreviousStamp_>=0.0 && now>spinOncePreviousStamp_ && now - spinOncePreviousStamp_ < 1.0f/rate) ||
+//				((spinOncePreviousStamp_<=0.0 || now<=spinOncePreviousStamp_) && spinOnceFrameRateTimer_.getElapsedTime() < 1.0f/rate))
+//			{
+//				ignoreFrame = true;
+//			}
+//		}
 
 		if(!ignoreFrame)
 		{
-			spinOnceFrameRateTimer_.start();
+			//spinOnceFrameRateTimer_.start();
 			spinOncePreviousStamp_ = now;
 			mainLoop();
 		}
-		else
-		{
-			// just send pose
-			capturePoseOnly();
-		}
+//		else
+//		{
+//			// just send pose
+//			capturePoseOnly();
+//		}
 	}
 }
 
 void CameraMobile::mainLoopBegin()
 {
-	double t = cameraStartedTime_.elapsed();
-	if(t < 5.0)
-	{
-		uSleep((5.0-t)*1000); // just to make sure that the camera is started
-	}
+//	double t = 0.01 //* cameraStartedTime_.elapsed();
+//	if(t < 5.0)
+//	{
+//		uSleep((5.0-t)*1000); // just to make sure that the camera is started
+//	}
 }
 
 void CameraMobile::mainLoop()
@@ -246,14 +246,14 @@ void CameraMobile::mainLoop()
 
 	if(data.isValid() && !info.odomPose.isNull())
 	{
-		if(lastKnownGPS_.stamp() > 0.0 && data.stamp()-lastKnownGPS_.stamp()<1.0)
-		{
-			data.setGPS(lastKnownGPS_);
-		}
-		else if(lastKnownGPS_.stamp()>0.0)
-		{
-			LOGD("GPS too old (current time=%f, gps time = %f)", data.stamp(), lastKnownGPS_.stamp());
-		}
+//		if(lastKnownGPS_.stamp() > 0.0 && data.stamp()-lastKnownGPS_.stamp()<1.0)
+//		{
+//			data.setGPS(lastKnownGPS_);
+//		}
+//		else if(lastKnownGPS_.stamp()>0.0)
+//		{
+//			LOGD("GPS too old (current time=%f, gps time = %f)", data.stamp(), lastKnownGPS_.stamp());
+//		}
 
 		if(lastEnvSensors_.size())
 		{
@@ -363,7 +363,7 @@ void CameraMobile::mainLoop()
 		bool firstFrame = previousPose_.isNull();
 		if(firstFrame)
 		{
-			stampEpochOffset_ = UTimer::now()-data.stamp();
+            stampEpochOffset_ = 0.01; //*stampEpochOffset_ = UTimer::now()-data.stamp();
 		}
 		data.setStamp(stampEpochOffset_ + data.stamp());
 		OdometryInfo info;
