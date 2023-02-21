@@ -102,6 +102,19 @@ final class ScanViewViewModel:ObservableObject {
                 })
     }
     
+    private func optimization() {
+        var loopDetected : Int = -1
+        DispatchQueue.background(background: {
+            loopDetected = self.rtabmap.postProcessing(approach: -1)
+        }, completion:{
+            if(loopDetected >= 0) {
+                self.export(isOBJ: true, meshing: true, regenerateCloud: false, optimized: true, optimizedMaxPolygons: 200000)
+            } else if(loopDetected < 0)  {
+                print("oguz Optimization failed!")
+            }
+        })
+    }
+    
 //    func save()
 //    {
 //        //Step : 1
