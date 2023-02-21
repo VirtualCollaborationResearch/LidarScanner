@@ -1,0 +1,39 @@
+//
+//  ScanView.swift
+//  HomeTwin-iOS
+//
+//  Created by Hatice Nur OKUR on 31.10.2022.
+//
+
+import SwiftUI
+import ARKit
+
+struct ScanView: View {
+    @StateObject var viewModel = ScanViewViewModel()
+    @EnvironmentObject var coordinator: Coordinator
+    
+    var body: some View {
+        
+        ZStack(alignment: .bottom) {
+            
+            if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
+                ScanARViewRepresentable(viewModel: viewModel).edgesIgnoringSafeArea(.all)
+            } else {
+                Text("This device not supported")
+                    .frame(maxHeight: .infinity)
+            }
+            
+            ScanViewBottomButtons(viewModel: viewModel)
+        }.toolbar {
+            ToolbarItem(placement:.navigationBarLeading) {
+                Button {
+                    coordinator.goToHomeAreas()
+                } label: {
+                    ScanViewButtons(imageName: "xmark")
+                }.accessibilityLabel("Return to map list")
+            }
+        }
+    }
+}
+
+

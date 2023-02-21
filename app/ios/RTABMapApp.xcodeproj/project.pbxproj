@@ -15,7 +15,6 @@
 		4E8B155426273A580037FC53 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 4E8B155326273A580037FC53 /* Zip */; };
 		4EB1A66625A0D90B0043C7BF /* RTABMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB1A66525A0D90B0043C7BF /* RTABMap.swift */; };
 		4EE016B3259BE441008CCE65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE016AF259BE441008CCE65 /* ViewController.swift */; };
-		4EE016B4259BE441008CCE65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE016B0259BE441008CCE65 /* SceneDelegate.swift */; };
 		4EE016B9259BE449008CCE65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE016B8259BE449008CCE65 /* AppDelegate.swift */; };
 		4EE016C3259BE464008CCE65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EE016BF259BE464008CCE65 /* Main.storyboard */; };
 		4EE016C4259BE464008CCE65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EE016C1259BE464008CCE65 /* LaunchScreen.storyboard */; };
@@ -151,6 +150,31 @@
 		4EFD0F62259E341C00575D88 /* RTABMapApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD0F61259E341C00575D88 /* RTABMapApp.cpp */; };
 		4EFD0F67259E38DE00575D88 /* NativeWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD0F66259E38DE00575D88 /* NativeWrapper.cpp */; };
 		4EFD0F70259F847300575D88 /* background_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD0F6E259F847300575D88 /* background_renderer.cc */; };
+		F4D7CE4A29A4C7410063EBDD /* ScanARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4929A4C7410063EBDD /* ScanARView.swift */; };
+		F4D7CE5229A4DA180063EBDD /* ScanARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */; };
+		F4D7CE5429A4DA180063EBDD /* ScanViewBottomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4E29A4DA180063EBDD /* ScanViewBottomButtons.swift */; };
+		F4D7CE5529A4DA180063EBDD /* ScanViewSheetAndAlertTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4F29A4DA180063EBDD /* ScanViewSheetAndAlertTypes.swift */; };
+		F4D7CE5629A4DA180063EBDD /* ScanViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE5029A4DA180063EBDD /* ScanViewViewModel.swift */; };
+		F4D7CE5729A4DA180063EBDD /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE5129A4DA180063EBDD /* ScanView.swift */; };
+		F4D7CE5D29A4DA470063EBDD /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE5929A4DA470063EBDD /* ViewFactory.swift */; };
+		F4D7CE5E29A4DA470063EBDD /* HomeTwin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE5A29A4DA470063EBDD /* HomeTwin.swift */; };
+		F4D7CE5F29A4DA470063EBDD /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE5B29A4DA470063EBDD /* Destination.swift */; };
+		F4D7CE6029A4DA470063EBDD /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE5C29A4DA470063EBDD /* Coordinator.swift */; };
+		F4D7CE7229A4DB0B0063EBDD /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6229A4DB0B0063EBDD /* UIApplication+Ext.swift */; };
+		F4D7CE7329A4DB0B0063EBDD /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6329A4DB0B0063EBDD /* UIImage+Ext.swift */; };
+		F4D7CE7429A4DB0B0063EBDD /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6429A4DB0B0063EBDD /* NotificationNames.swift */; };
+		F4D7CE7529A4DB0B0063EBDD /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6529A4DB0B0063EBDD /* FileManager+Ext.swift */; };
+		F4D7CE7629A4DB0B0063EBDD /* ARFrame+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6629A4DB0B0063EBDD /* ARFrame+Ext.swift */; };
+		F4D7CE7729A4DB0B0063EBDD /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6729A4DB0B0063EBDD /* String+Ext.swift */; };
+		F4D7CE7829A4DB0B0063EBDD /* ARCamera+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6829A4DB0B0063EBDD /* ARCamera+Ext.swift */; };
+		F4D7CE7929A4DB0B0063EBDD /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6929A4DB0B0063EBDD /* Color+Ext.swift */; };
+		F4D7CE7A29A4DB0B0063EBDD /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6A29A4DB0B0063EBDD /* Array+Ext.swift */; };
+		F4D7CE7B29A4DB0B0063EBDD /* Dict+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6B29A4DB0B0063EBDD /* Dict+Ext.swift */; };
+		F4D7CE7C29A4DB0B0063EBDD /* SCNNode+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6C29A4DB0B0063EBDD /* SCNNode+Ext.swift */; };
+		F4D7CE7D29A4DB0B0063EBDD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6D29A4DB0B0063EBDD /* UIView+Ext.swift */; };
+		F4D7CE7E29A4DB0B0063EBDD /* RealityKit+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6E29A4DB0B0063EBDD /* RealityKit+Ext.swift */; };
+		F4D7CE7F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift */; };
+		F4D7CE8029A4DB0B0063EBDD /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE7129A4DB0B0063EBDD /* Defaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,7 +187,6 @@
 		4EB1A66525A0D90B0043C7BF /* RTABMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RTABMap.swift; path = RTABMapApp/RTABMap.swift; sourceTree = "<group>"; };
 		4EE015C2259A2AF0008CCE65 /* RTABMapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RTABMapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EE016AF259BE441008CCE65 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = RTABMapApp/ViewController.swift; sourceTree = "<group>"; };
-		4EE016B0259BE441008CCE65 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = RTABMapApp/SceneDelegate.swift; sourceTree = "<group>"; };
 		4EE016B8259BE449008CCE65 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = RTABMapApp/AppDelegate.swift; sourceTree = "<group>"; };
 		4EE016BC259BE45C008CCE65 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RTABMapApp/Info.plist; sourceTree = "<group>"; };
 		4EE016C0259BE464008CCE65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = RTABMapApp/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -336,6 +359,31 @@
 		4EFD0F66259E38DE00575D88 /* NativeWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NativeWrapper.cpp; path = RTABMapApp/NativeWrapper.cpp; sourceTree = SOURCE_ROOT; };
 		4EFD0F6E259F847300575D88 /* background_renderer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = background_renderer.cc; path = ../android/jni/background_renderer.cc; sourceTree = "<group>"; };
 		4EFD0F6F259F847300575D88 /* background_renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = background_renderer.h; path = ../android/jni/background_renderer.h; sourceTree = "<group>"; };
+		F4D7CE4929A4C7410063EBDD /* ScanARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanARView.swift; sourceTree = "<group>"; };
+		F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanARViewController.swift; sourceTree = "<group>"; };
+		F4D7CE4E29A4DA180063EBDD /* ScanViewBottomButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewBottomButtons.swift; sourceTree = "<group>"; };
+		F4D7CE4F29A4DA180063EBDD /* ScanViewSheetAndAlertTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewSheetAndAlertTypes.swift; sourceTree = "<group>"; };
+		F4D7CE5029A4DA180063EBDD /* ScanViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewViewModel.swift; sourceTree = "<group>"; };
+		F4D7CE5129A4DA180063EBDD /* ScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+		F4D7CE5929A4DA470063EBDD /* ViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		F4D7CE5A29A4DA470063EBDD /* HomeTwin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTwin.swift; sourceTree = "<group>"; };
+		F4D7CE5B29A4DA470063EBDD /* Destination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		F4D7CE5C29A4DA470063EBDD /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F4D7CE6229A4DB0B0063EBDD /* UIApplication+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE6329A4DB0B0063EBDD /* UIImage+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE6429A4DB0B0063EBDD /* NotificationNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
+		F4D7CE6529A4DB0B0063EBDD /* FileManager+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE6629A4DB0B0063EBDD /* ARFrame+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ARFrame+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE6729A4DB0B0063EBDD /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE6829A4DB0B0063EBDD /* ARCamera+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ARCamera+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE6929A4DB0B0063EBDD /* Color+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE6A29A4DB0B0063EBDD /* Array+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE6B29A4DB0B0063EBDD /* Dict+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dict+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE6C29A4DB0B0063EBDD /* SCNNode+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNNode+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE6D29A4DB0B0063EBDD /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE6E29A4DB0B0063EBDD /* RealityKit+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RealityKit+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE6F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ARWorldTrackingConfiguration+Ext.swift"; sourceTree = "<group>"; };
+		F4D7CE7129A4DB0B0063EBDD /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -472,12 +520,15 @@
 		4EE01634259BDCC7008CCE65 /* RTABMapApp */ = {
 			isa = PBXGroup;
 			children = (
+				F4D7CE6129A4DB0B0063EBDD /* Extensions */,
+				F4D7CE7029A4DB0B0063EBDD /* Helpers */,
+				F4D7CE5829A4DA470063EBDD /* Main */,
+				F4D7CE4B29A4D9DA0063EBDD /* Scan */,
 				4E20B24F266AB95600316EE6 /* Images.xcassets */,
 				4EFD0BB0259D503200575D88 /* NativeWrapper */,
 				4EFD0B62259D501E00575D88 /* tango-gl */,
 				4EE016B8259BE449008CCE65 /* AppDelegate.swift */,
 				4EE016E1259BE96A008CCE65 /* RTABMapApp-Bridging-Header.h */,
-				4EE016B0259BE441008CCE65 /* SceneDelegate.swift */,
 				4EE016AF259BE441008CCE65 /* ViewController.swift */,
 				4EE016BF259BE464008CCE65 /* Main.storyboard */,
 				4EE016C1259BE464008CCE65 /* LaunchScreen.storyboard */,
@@ -696,6 +747,59 @@
 			name = NativeWrapper;
 			sourceTree = "<group>";
 		};
+		F4D7CE4B29A4D9DA0063EBDD /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */,
+				F4D7CE5129A4DA180063EBDD /* ScanView.swift */,
+				F4D7CE4E29A4DA180063EBDD /* ScanViewBottomButtons.swift */,
+				F4D7CE4F29A4DA180063EBDD /* ScanViewSheetAndAlertTypes.swift */,
+				F4D7CE5029A4DA180063EBDD /* ScanViewViewModel.swift */,
+				F4D7CE4929A4C7410063EBDD /* ScanARView.swift */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
+		F4D7CE5829A4DA470063EBDD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F4D7CE5929A4DA470063EBDD /* ViewFactory.swift */,
+				F4D7CE5A29A4DA470063EBDD /* HomeTwin.swift */,
+				F4D7CE5B29A4DA470063EBDD /* Destination.swift */,
+				F4D7CE5C29A4DA470063EBDD /* Coordinator.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F4D7CE6129A4DB0B0063EBDD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F4D7CE6229A4DB0B0063EBDD /* UIApplication+Ext.swift */,
+				F4D7CE6329A4DB0B0063EBDD /* UIImage+Ext.swift */,
+				F4D7CE6429A4DB0B0063EBDD /* NotificationNames.swift */,
+				F4D7CE6529A4DB0B0063EBDD /* FileManager+Ext.swift */,
+				F4D7CE6629A4DB0B0063EBDD /* ARFrame+Ext.swift */,
+				F4D7CE6729A4DB0B0063EBDD /* String+Ext.swift */,
+				F4D7CE6829A4DB0B0063EBDD /* ARCamera+Ext.swift */,
+				F4D7CE6929A4DB0B0063EBDD /* Color+Ext.swift */,
+				F4D7CE6A29A4DB0B0063EBDD /* Array+Ext.swift */,
+				F4D7CE6B29A4DB0B0063EBDD /* Dict+Ext.swift */,
+				F4D7CE6C29A4DB0B0063EBDD /* SCNNode+Ext.swift */,
+				F4D7CE6D29A4DB0B0063EBDD /* UIView+Ext.swift */,
+				F4D7CE6E29A4DB0B0063EBDD /* RealityKit+Ext.swift */,
+				F4D7CE6F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F4D7CE7029A4DB0B0063EBDD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F4D7CE7129A4DB0B0063EBDD /* Defaults.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -800,36 +904,60 @@
 				4EFD0BC0259D50A800575D88 /* scene.cpp in Sources */,
 				4E2C516825A63119005CEDBD /* VerticalScrollerView.swift in Sources */,
 				4EE016B3259BE441008CCE65 /* ViewController.swift in Sources */,
+				F4D7CE7E29A4DB0B0063EBDD /* RealityKit+Ext.swift in Sources */,
+				F4D7CE7429A4DB0B0063EBDD /* NotificationNames.swift in Sources */,
+				F4D7CE5429A4DA180063EBDD /* ScanViewBottomButtons.swift in Sources */,
 				4E2C516725A63119005CEDBD /* DatabaseView.swift in Sources */,
 				4EFD0BAA259D501E00575D88 /* triangle.cpp in Sources */,
 				4EFD0B9D259D501E00575D88 /* segment_drawable.cpp in Sources */,
-				4EE016B4259BE441008CCE65 /* SceneDelegate.swift in Sources */,
+				F4D7CE7229A4DB0B0063EBDD /* UIApplication+Ext.swift in Sources */,
+				F4D7CE7329A4DB0B0063EBDD /* UIImage+Ext.swift in Sources */,
+				F4D7CE7929A4DB0B0063EBDD /* Color+Ext.swift in Sources */,
+				F4D7CE5529A4DA180063EBDD /* ScanViewSheetAndAlertTypes.swift in Sources */,
 				4EFD0BA2259D501E00575D88 /* texture.cpp in Sources */,
 				4EFD0B9C259D501E00575D88 /* axis.cpp in Sources */,
 				4EFD0B9F259D501E00575D88 /* camera.cpp in Sources */,
 				4EFD0BAE259D501E00575D88 /* band.cpp in Sources */,
+				F4D7CE7A29A4DB0B0063EBDD /* Array+Ext.swift in Sources */,
 				4EFD0B97259D501E00575D88 /* line.cpp in Sources */,
 				4EB1A66625A0D90B0043C7BF /* RTABMap.swift in Sources */,
+				F4D7CE4A29A4C7410063EBDD /* ScanARView.swift in Sources */,
 				4EFD0B9A259D501E00575D88 /* bounding_box.cpp in Sources */,
 				4EFD0F3A259D5D1500575D88 /* CameraMobile.cpp in Sources */,
 				4EFD0BA6259D501E00575D88 /* shaders.cpp in Sources */,
 				4EFD0B99259D501E00575D88 /* obj_loader.cpp in Sources */,
 				4EFD0BA7259D501E00575D88 /* transform.cpp in Sources */,
 				4EFD0BA0259D501E00575D88 /* gesture_camera.cpp in Sources */,
+				F4D7CE7529A4DB0B0063EBDD /* FileManager+Ext.swift in Sources */,
 				4EE016B9259BE449008CCE65 /* AppDelegate.swift in Sources */,
 				4EFD0BA3259D501E00575D88 /* quad.cpp in Sources */,
 				4EFD0F67259E38DE00575D88 /* NativeWrapper.cpp in Sources */,
 				4EFD0BAD259D501E00575D88 /* goal_marker.cpp in Sources */,
+				F4D7CE7B29A4DB0B0063EBDD /* Dict+Ext.swift in Sources */,
 				4EFD0B9B259D501E00575D88 /* mesh.cpp in Sources */,
+				F4D7CE5E29A4DA470063EBDD /* HomeTwin.swift in Sources */,
+				F4D7CE5D29A4DA470063EBDD /* ViewFactory.swift in Sources */,
 				4EFD0BA9259D501E00575D88 /* grid.cpp in Sources */,
 				4EFD0BB8259D508C00575D88 /* graph_drawable.cpp in Sources */,
+				F4D7CE5F29A4DA470063EBDD /* Destination.swift in Sources */,
 				4EFD0BAC259D501E00575D88 /* cube.cpp in Sources */,
+				F4D7CE7C29A4DB0B0063EBDD /* SCNNode+Ext.swift in Sources */,
 				4EFD0B9E259D501E00575D88 /* conversions.cpp in Sources */,
+				F4D7CE5629A4DA180063EBDD /* ScanViewViewModel.swift in Sources */,
+				F4D7CE7D29A4DB0B0063EBDD /* UIView+Ext.swift in Sources */,
 				4EFD0BAB259D501E00575D88 /* circle.cpp in Sources */,
 				4EFD0F62259E341C00575D88 /* RTABMapApp.cpp in Sources */,
+				F4D7CE7729A4DB0B0063EBDD /* String+Ext.swift in Sources */,
+				F4D7CE5729A4DA180063EBDD /* ScanView.swift in Sources */,
 				4EFD0BA4259D501E00575D88 /* drawable_object.cpp in Sources */,
+				F4D7CE8029A4DB0B0063EBDD /* Defaults.swift in Sources */,
+				F4D7CE6029A4DA470063EBDD /* Coordinator.swift in Sources */,
 				4EFD0BBC259D509300575D88 /* point_cloud_drawable.cpp in Sources */,
+				F4D7CE5229A4DA180063EBDD /* ScanARViewController.swift in Sources */,
 				4EFD0BA5259D501E00575D88 /* frustum.cpp in Sources */,
+				F4D7CE7F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift in Sources */,
+				F4D7CE7629A4DB0B0063EBDD /* ARFrame+Ext.swift in Sources */,
+				F4D7CE7829A4DB0B0063EBDD /* ARCamera+Ext.swift in Sources */,
 				4EFD0B98259D501E00575D88 /* util.cpp in Sources */,
 				4EFD0BA1259D501E00575D88 /* trace.cpp in Sources */,
 			);
@@ -984,7 +1112,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3RRB6NV8U9;
+				DEVELOPMENT_TEAM = VYNNYZBQ5A;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -998,6 +1126,7 @@
 				);
 				GCC_UNROLL_LOOPS = NO;
 				INFOPLIST_FILE = RTABMapApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1009,7 +1138,7 @@
 				);
 				MARKETING_VERSION = 0.20.19;
 				OTHER_CFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.introlab.rtabmap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oguzveozturk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RTABMapApp/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
@@ -1041,7 +1170,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3RRB6NV8U9;
+				DEVELOPMENT_TEAM = VYNNYZBQ5A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RTABMapApp/Libraries/lib",
@@ -1055,6 +1184,7 @@
 				);
 				GCC_UNROLL_LOOPS = NO;
 				INFOPLIST_FILE = RTABMapApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1067,7 +1197,7 @@
 				MARKETING_VERSION = 0.20.19;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.introlab.rtabmap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oguzveozturk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RTABMapApp/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
