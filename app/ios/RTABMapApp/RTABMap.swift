@@ -178,7 +178,7 @@ class RTABMap {
                                     blockRendering)
     }
     
-    func postExportation(visualize: Bool) -> Bool
+    @discardableResult func postExportation(visualize: Bool) -> Bool
     {
         return postExportationNative(native_rtabmap, visualize)
     }
@@ -495,7 +495,7 @@ func getPreviewImage(databasePath: String) -> UIImage?
     return imageOut
 }
 
-protocol RTABMapObserver: class {
+protocol RTABMapObserver: AnyObject {
     func progressUpdated(_ rtabmap: RTABMap, count: Int, max: Int)
     func initEventReceived(_ rtabmap: RTABMap, status: Int, msg: String)
     func statsUpdated(_ rtabmap: RTABMap,
