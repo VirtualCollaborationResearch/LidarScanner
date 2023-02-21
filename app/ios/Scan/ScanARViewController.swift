@@ -69,9 +69,13 @@ class ScanARViewController: UIViewController, RTABMapObserver {
         
         viewModel.$isScanning.sink { [weak self] value in
             if value {
+                let tmpDatabase = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("rtabmap.tmp.db")
+                let inMemory = UserDefaults.standard.bool(forKey: "DatabaseInMemory")
+                self?.rtabmap?.openDatabase(databasePath: tmpDatabase.path, databaseInMemory: inMemory, optimize: false, clearDatabase: true)
                 self?.rtabmap?.setCamera(type: 0)
                 self?.rtabmap?.startCamera()
                 self?.arView.startScanning()
+
             } else {
                 self?.arView.session.pause()
                 self?.rtabmap?.setPausedMapping(paused: true)
