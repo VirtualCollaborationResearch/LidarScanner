@@ -30,6 +30,18 @@ struct ScanView: View {
             }
             .accessibilityLabel("Complete scanning")
             
+            if !viewModel.isScanning {
+                
+                Color.black.edgesIgnoringSafeArea(.all)
+                    .opacity(0.3)
+                
+                VStack {
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
+            }
+            
         }.toolbar {
             ToolbarItem(placement:.navigationBarLeading) {
                 Button {
@@ -39,11 +51,9 @@ struct ScanView: View {
                 }.accessibilityLabel("Return to map list")
             }
         }
-        .sheet(isPresented: $viewModel.showSheet, content: {
-            if let url = viewModel.url {
-                ObjViewer(url: url)
-            }
-        })
+        .onReceive(viewModel.closeScanning) { _ in
+            coordinator.goToHomeAreas()
+        }
     }
 }
 

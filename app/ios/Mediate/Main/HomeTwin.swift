@@ -14,23 +14,23 @@ struct HomeTwin: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path: $coordinator.path) {
-                switch coordinator.appLastUseState {
-                default:
+            if coordinator.isScanning {
+                NavigationStack(path: $coordinator.path) {
                     ScanView()
                         .navigationDestination(for: Destination.self) { destination in
                             ViewFactory.viewForDestination(destination)
                         }
                 }
+                .environmentObject(coordinator)
+            } else {
+                NavigationStack(path: $coordinator.path) {
+                    ScanListView()
+                        .navigationDestination(for: Destination.self) { destination in
+                            ViewFactory.viewForDestination(destination)
+                        }
+                }
+                .environmentObject(coordinator)
             }
-            .environmentObject(coordinator)
         }
     }
-}
-
-enum AppLastUseState:Codable {
-    case firstOpen
-    case homeAreas
-    case scanMode
-    case navigateMode
 }

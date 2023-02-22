@@ -13,9 +13,9 @@ import ARKit
 final class ScanViewViewModel:ObservableObject {
     
     private var cancellable = Set<AnyCancellable>()
+    var scanId = UUID()
     var rtabmap = RTABMap()
-    var url:URL?
-    @Published var showSheet = false
+    var closeScanning = PassthroughSubject<Bool,Never>()
     @Published var isScanning = true
     var snapShot = PassthroughSubject<UUID,Never>()
 
@@ -24,23 +24,19 @@ final class ScanViewViewModel:ObservableObject {
         setupNotificationListener()
     }
     
-    private func setupNotificationListener() {
-        NotificationCenter.default.publisher(for: .toggleSheet).sink {  [weak self] _ in
-            
-        }.store(in: &cancellable)
-        
+    private func setupNotificationListener() {        
         NotificationCenter.default.publisher(for: .exportResult).sink {  [weak self] notif in
             if let notif = notif.userInfo?["data"] as? NotifWrapper<Any?>,
                let scan = notif.wrappedValue as? Scan,
-               let url = scan.objUrl {
-                self?.url = url
-                self?.showSheet.toggle()
+               let _ = scan.objUrl {
+                UserDefaults.scans.append(scan)
+                self?.closeScanning.send(true)
             }
         }.store(in: &cancellable)
     }
     
     func doneTapped() {
-        snapShot.send(UUID())
+        snapShot.send(scanId)
         isScanning = false
     }
 }

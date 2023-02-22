@@ -35,6 +35,6 @@ public struct Defaults<Value:Codable> {
 }
 
 extension UserDefaults {
-    @Defaults(key: "appLastUseState", defaultValue: .firstOpen)
-    static var appLastUseState: AppLastUseState
+    @Defaults(key: "scans", defaultValue: [])
+    static var scans: [Scan]
 }

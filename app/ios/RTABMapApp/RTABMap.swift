@@ -11,7 +11,7 @@ import ModelIO
 
 class RTABMap {
     var native_rtabmap: UnsafeMutableRawPointer
-    
+    var modelId:UUID?
     struct Observation {
         weak var observer: RTABMapObserver?
     }
@@ -549,7 +549,8 @@ extension String {
 }
 
 extension RTABMap {
-    func start() {
+    func start(id:UUID) {
+        self.modelId = id
         let tmpDatabase = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("rtabmap.tmp.db")
         let inMemory = UserDefaults.standard.bool(forKey: "DatabaseInMemory")
         openDatabase(databasePath: tmpDatabase.path, databaseInMemory: inMemory, optimize: false, clearDatabase: true)
@@ -621,9 +622,8 @@ extension RTABMap {
     }
     
     func writeExportedFiles(fileName: String) {
-        let scan = Scan(id: UUID(), dateStr: fileName)
-        guard let exportDir = FileManager.default.createFolder(name: scan.id.uuidString) else { return }
-        
+        guard let id = modelId, let exportDir = FileManager.default.createFolder(name: id.uuidString) else { return }
+        let scan = Scan(id: id, dateStr: fileName)
         print("Exporting to directory \(exportDir.path) with name \(fileName)")
         if(self.writeExportedMesh(directory: exportDir.path, name: fileName)) == true {
             do {

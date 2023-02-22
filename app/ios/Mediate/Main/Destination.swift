@@ -8,11 +8,9 @@
 import Foundation
 
 enum Destination:Hashable {
-    case areaListView
-    case labelEditView
+    case scanListView
     case menuView
     case scanView
-    case labelView
-    case modelViewer
+    case modelViewer(Scan)
 
 }

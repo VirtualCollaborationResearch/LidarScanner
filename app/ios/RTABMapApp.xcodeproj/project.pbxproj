@@ -176,6 +176,12 @@
 		F4D7CE8029A4DB0B0063EBDD /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE7129A4DB0B0063EBDD /* Defaults.swift */; };
 		F4D7CE8429A6466E0063EBDD /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE8329A6466E0063EBDD /* Scan.swift */; };
 		F4D7CE8929A651DE0063EBDD /* ObjViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE8829A651DE0063EBDD /* ObjViewer.swift */; };
+		F4D7CE8D29A65CF00063EBDD /* ScanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE8C29A65CF00063EBDD /* ScanListView.swift */; };
+		F4D7CE8F29A65D070063EBDD /* ScanListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE8E29A65D070063EBDD /* ScanListViewModel.swift */; };
+		F4D7CE9529A664BA0063EBDD /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE9129A664BA0063EBDD /* AboutView.swift */; };
+		F4D7CE9629A664BA0063EBDD /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE9229A664BA0063EBDD /* ContactUsView.swift */; };
+		F4D7CE9729A664BA0063EBDD /* CopyrightAndLicensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE9329A664BA0063EBDD /* CopyrightAndLicensesView.swift */; };
+		F4D7CE9829A664BA0063EBDD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE9429A664BA0063EBDD /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -387,6 +393,12 @@
 		F4D7CE7129A4DB0B0063EBDD /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		F4D7CE8329A6466E0063EBDD /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		F4D7CE8829A651DE0063EBDD /* ObjViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjViewer.swift; sourceTree = "<group>"; };
+		F4D7CE8C29A65CF00063EBDD /* ScanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanListView.swift; sourceTree = "<group>"; };
+		F4D7CE8E29A65D070063EBDD /* ScanListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanListViewModel.swift; sourceTree = "<group>"; };
+		F4D7CE9129A664BA0063EBDD /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		F4D7CE9229A664BA0063EBDD /* ContactUsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
+		F4D7CE9329A664BA0063EBDD /* CopyrightAndLicensesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyrightAndLicensesView.swift; sourceTree = "<group>"; };
+		F4D7CE9429A664BA0063EBDD /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -522,11 +534,7 @@
 		4EE01634259BDCC7008CCE65 /* RTABMapApp */ = {
 			isa = PBXGroup;
 			children = (
-				F4D7CE8729A651BD0063EBDD /* ModelViewer */,
-				F4D7CE6129A4DB0B0063EBDD /* Extensions */,
-				F4D7CE7029A4DB0B0063EBDD /* Helpers */,
-				F4D7CE5829A4DA470063EBDD /* Main */,
-				F4D7CE4B29A4D9DA0063EBDD /* Scan */,
+				F4D7CE8A29A65C640063EBDD /* Mediate */,
 				4E20B24F266AB95600316EE6 /* Images.xcassets */,
 				4EFD0BB0259D503200575D88 /* NativeWrapper */,
 				4EFD0B62259D501E00575D88 /* tango-gl */,
@@ -755,7 +763,6 @@
 			children = (
 				F4D7CE8229A6465A0063EBDD /* Model */,
 				F4D7CE8129A646460063EBDD /* View */,
-				F4D7CE5029A4DA180063EBDD /* ScanViewViewModel.swift */,
 			);
 			path = Scan;
 			sourceTree = "<group>";
@@ -816,6 +823,7 @@
 			children = (
 				F4D7CE4F29A4DA180063EBDD /* ScanViewSheetAndAlertTypes.swift */,
 				F4D7CE8329A6466E0063EBDD /* Scan.swift */,
+				F4D7CE5029A4DA180063EBDD /* ScanViewViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -826,6 +834,40 @@
 				F4D7CE8829A651DE0063EBDD /* ObjViewer.swift */,
 			);
 			path = ModelViewer;
+			sourceTree = "<group>";
+		};
+		F4D7CE8A29A65C640063EBDD /* Mediate */ = {
+			isa = PBXGroup;
+			children = (
+				F4D7CE9029A664BA0063EBDD /* Menu */,
+				F4D7CE8B29A65CA40063EBDD /* Home */,
+				F4D7CE8729A651BD0063EBDD /* ModelViewer */,
+				F4D7CE6129A4DB0B0063EBDD /* Extensions */,
+				F4D7CE7029A4DB0B0063EBDD /* Helpers */,
+				F4D7CE5829A4DA470063EBDD /* Main */,
+				F4D7CE4B29A4D9DA0063EBDD /* Scan */,
+			);
+			path = Mediate;
+			sourceTree = "<group>";
+		};
+		F4D7CE8B29A65CA40063EBDD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F4D7CE8C29A65CF00063EBDD /* ScanListView.swift */,
+				F4D7CE8E29A65D070063EBDD /* ScanListViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F4D7CE9029A664BA0063EBDD /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F4D7CE9129A664BA0063EBDD /* AboutView.swift */,
+				F4D7CE9229A664BA0063EBDD /* ContactUsView.swift */,
+				F4D7CE9329A664BA0063EBDD /* CopyrightAndLicensesView.swift */,
+				F4D7CE9429A664BA0063EBDD /* MenuView.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -930,6 +972,7 @@
 				4EFD0BC0259D50A800575D88 /* scene.cpp in Sources */,
 				4E2C516825A63119005CEDBD /* VerticalScrollerView.swift in Sources */,
 				4EE016B3259BE441008CCE65 /* ViewController.swift in Sources */,
+				F4D7CE9529A664BA0063EBDD /* AboutView.swift in Sources */,
 				F4D7CE7E29A4DB0B0063EBDD /* RealityKit+Ext.swift in Sources */,
 				F4D7CE7429A4DB0B0063EBDD /* NotificationNames.swift in Sources */,
 				F4D7CE5429A4DA180063EBDD /* ScanViewBottomButtons.swift in Sources */,
@@ -957,6 +1000,7 @@
 				F4D7CE7529A4DB0B0063EBDD /* FileManager+Ext.swift in Sources */,
 				4EE016B9259BE449008CCE65 /* AppDelegate.swift in Sources */,
 				4EFD0BA3259D501E00575D88 /* quad.cpp in Sources */,
+				F4D7CE8F29A65D070063EBDD /* ScanListViewModel.swift in Sources */,
 				4EFD0F67259E38DE00575D88 /* NativeWrapper.cpp in Sources */,
 				4EFD0BAD259D501E00575D88 /* goal_marker.cpp in Sources */,
 				F4D7CE7B29A4DB0B0063EBDD /* Dict+Ext.swift in Sources */,
@@ -965,15 +1009,19 @@
 				F4D7CE5D29A4DA470063EBDD /* ViewFactory.swift in Sources */,
 				4EFD0BA9259D501E00575D88 /* grid.cpp in Sources */,
 				4EFD0BB8259D508C00575D88 /* graph_drawable.cpp in Sources */,
+				F4D7CE9829A664BA0063EBDD /* MenuView.swift in Sources */,
 				F4D7CE5F29A4DA470063EBDD /* Destination.swift in Sources */,
 				4EFD0BAC259D501E00575D88 /* cube.cpp in Sources */,
+				F4D7CE8D29A65CF00063EBDD /* ScanListView.swift in Sources */,
 				F4D7CE8929A651DE0063EBDD /* ObjViewer.swift in Sources */,
 				F4D7CE7C29A4DB0B0063EBDD /* SCNNode+Ext.swift in Sources */,
 				4EFD0B9E259D501E00575D88 /* conversions.cpp in Sources */,
+				F4D7CE9629A664BA0063EBDD /* ContactUsView.swift in Sources */,
 				F4D7CE5629A4DA180063EBDD /* ScanViewViewModel.swift in Sources */,
 				F4D7CE8429A6466E0063EBDD /* Scan.swift in Sources */,
 				F4D7CE7D29A4DB0B0063EBDD /* UIView+Ext.swift in Sources */,
 				4EFD0BAB259D501E00575D88 /* circle.cpp in Sources */,
+				F4D7CE9729A664BA0063EBDD /* CopyrightAndLicensesView.swift in Sources */,
 				4EFD0F62259E341C00575D88 /* RTABMapApp.cpp in Sources */,
 				F4D7CE7729A4DB0B0063EBDD /* String+Ext.swift in Sources */,
 				F4D7CE5729A4DA180063EBDD /* ScanView.swift in Sources */,

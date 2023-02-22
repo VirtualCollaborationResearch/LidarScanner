@@ -45,19 +45,19 @@ class ScanARViewController: UIViewController {
     
     private func setupNotificationListener() {
         
-        viewModel.$isScanning.sink { [weak self] value in
+        viewModel.$isScanning.sink { [unowned self] value in
             if value {
-                self?.viewModel.rtabmap.start()
-                self?.arView.startScanning()
+                viewModel.rtabmap.start(id: viewModel.scanId)
+                arView.startScanning()
             } else {
-                self?.arView.session.pause()
-                self?.viewModel.rtabmap.stop()
+                arView.session.pause()
+                viewModel.rtabmap.stop()
             }
         }.store(in: &cancellable)
         
-        viewModel.snapShot.sink { [weak self] areaId in
-            self?.arView.snapshot(saveToHDR: true, completion: { image in
-                image?.saveImage(imageName: areaId.uuidString, folder: "Map Images")
+        viewModel.snapShot.sink { [unowned self] scanId in
+            arView.snapshot(saveToHDR: true, completion: { image in
+                image?.saveImage(imageName: scanId.uuidString, folder: "Map Images")
             })
         }.store(in: &cancellable)
         
