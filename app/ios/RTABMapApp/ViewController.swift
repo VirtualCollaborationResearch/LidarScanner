@@ -7,7 +7,6 @@
 
 import GLKit
 import ARKit
-import Zip
 import StoreKit
 
 extension Array {
@@ -2143,14 +2142,14 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
                         let fileURLs = try FileManager.default.contentsOfDirectory(at: exportDir, includingPropertiesForKeys: nil)
                         if(!fileURLs.isEmpty)
                         {
-                            do {
-                                zipFileUrl = try Zip.quickZipFiles(fileURLs, fileName: fileName) // Zip
-                                print("Zip file \(zipFileUrl.path) created (size=\(zipFileUrl.fileSizeString)")
-                                success = true
-                            }
-                            catch {
-                              print("Something went wrong while zipping")
-                            }
+//                            do {
+//                                zipFileUrl = try Zip.quickZipFiles(fileURLs, fileName: fileName) // Zip
+//                                print("Zip file \(zipFileUrl.path) created (size=\(zipFileUrl.fileSizeString)")
+//                                success = true
+//                            }
+//                            catch {
+//                              print("Something went wrong while zipping")
+//                            }
                         }
                     } catch {
                         print("No files exported to \(exportDir)")

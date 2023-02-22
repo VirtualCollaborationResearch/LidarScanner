@@ -22,6 +22,10 @@ public extension UIApplication {
         // Finally, keep only the key window
             .first(where: \.isKeyWindow)
     }
+    
+    var orientation:UIInterfaceOrientation? {
+        currentWindow?.windowScene?.interfaceOrientation
+    }
 }
 
 extension UIApplication {

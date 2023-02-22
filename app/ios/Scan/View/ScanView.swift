@@ -11,7 +11,7 @@ import ARKit
 struct ScanView: View {
     @StateObject var viewModel = ScanViewViewModel()
     @EnvironmentObject var coordinator: Coordinator
-    
+
     var body: some View {
         
         ZStack(alignment: .bottom) {
@@ -23,7 +23,13 @@ struct ScanView: View {
                     .frame(maxHeight: .infinity)
             }
             
-            ScanViewBottomButtons(viewModel: viewModel)
+            Button {
+                viewModel.doneTapped()
+            } label: {
+                ScanViewButtons(imageName:"checkmark")
+            }
+            .accessibilityLabel("Complete scanning")
+            
         }.toolbar {
             ToolbarItem(placement:.navigationBarLeading) {
                 Button {
@@ -33,6 +39,11 @@ struct ScanView: View {
                 }.accessibilityLabel("Return to map list")
             }
         }
+        .sheet(isPresented: $viewModel.showSheet, content: {
+            if let url = viewModel.url {
+                ObjViewer(url: url)
+            }
+        })
     }
 }
 

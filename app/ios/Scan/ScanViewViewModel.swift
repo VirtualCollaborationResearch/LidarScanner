@@ -9,21 +9,18 @@ import Foundation
 import Combine
 import SwiftUI
 import ARKit
-import Zip
 
 final class ScanViewViewModel:ObservableObject {
     
     private var cancellable = Set<AnyCancellable>()
-    
-    var reset = PassthroughSubject<Bool,Never>()
-    var snapShot = PassthroughSubject<UUID,Never>()
-    var isLightingSufficient = CurrentValueSubject<Bool,Never>(false)
-    @Published var isScanning = true
-    var openedDatabasePath:URL?
-    
     var rtabmap = RTABMap()
+    var url:URL?
+    @Published var showSheet = false
+    @Published var isScanning = true
+    var snapShot = PassthroughSubject<UUID,Never>()
 
     init() {
+        rtabmap.setupCallbacksWithCPP()
         setupNotificationListener()
     }
     
@@ -31,19 +28,21 @@ final class ScanViewViewModel:ObservableObject {
         NotificationCenter.default.publisher(for: .toggleSheet).sink {  [weak self] _ in
             
         }.store(in: &cancellable)
-    }
-    
-    func resetTapped() {
-        reset.send(true)
+        
+        NotificationCenter.default.publisher(for: .exportResult).sink {  [weak self] notif in
+            if let notif = notif.userInfo?["data"] as? NotifWrapper<Any?>,
+               let scan = notif.wrappedValue as? Scan,
+               let url = scan.objUrl {
+                self?.url = url
+                self?.showSheet.toggle()
+            }
+        }.store(in: &cancellable)
     }
     
     func doneTapped() {
-        // snapShot.send(UUID())
+        snapShot.send(UUID())
         isScanning = false
-
     }
-    
- 
 }
 
 

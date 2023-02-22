@@ -7,6 +7,7 @@
 
 import Foundation
 import ARKit
+import ModelIO
 
 class RTABMap {
     var native_rtabmap: UnsafeMutableRawPointer
@@ -113,7 +114,7 @@ class RTABMap {
         setupGraphicNative(native_rtabmap, Int32(size.width), Int32(size.height));
     }
     
-    func openDatabase(databasePath:String, databaseInMemory:Bool, optimize:Bool, clearDatabase: Bool) -> Int {
+    @discardableResult func openDatabase(databasePath:String, databaseInMemory:Bool, optimize:Bool, clearDatabase: Bool) -> Int {
         databasePath.utf8CString.withUnsafeBufferPointer { buffer -> Int in
             return Int(openDatabaseNative(native_rtabmap, buffer.baseAddress, databaseInMemory, optimize, clearDatabase))
         }
@@ -204,7 +205,7 @@ class RTABMap {
         return Int(renderNative(native_rtabmap))
     }
     
-    func startCamera() -> Bool {
+    @discardableResult func startCamera() -> Bool {
         return startCameraNative(native_rtabmap)
     }
     
@@ -547,3 +548,96 @@ extension String {
   }
 }
 
+extension RTABMap {
+    func start() {
+        let tmpDatabase = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("rtabmap.tmp.db")
+        let inMemory = UserDefaults.standard.bool(forKey: "DatabaseInMemory")
+        openDatabase(databasePath: tmpDatabase.path, databaseInMemory: inMemory, optimize: false, clearDatabase: true)
+        setCamera(type: 0)
+        startCamera()
+        setPausedMapping(paused: false)
+    }
+    
+    func stop() {
+        setPausedMapping(paused: true)
+        stopCamera()
+        setLocalizationMode(enabled: false)
+        optimization()
+    }
+    
+    private func optimization() {
+        var loopDetected : Int = -1
+        DispatchQueue.background(background: {
+            loopDetected = self.postProcessing(approach: -1)
+        }, completion:{
+            if(loopDetected >= 0) {
+                self.export(optimizedMaxPolygons: 200000)
+            } else if(loopDetected < 0)  {
+                print("Optimization failed!")
+            }
+        })
+    }
+    
+    private func export(optimizedMaxPolygons: Int) {
+        let defaults = UserDefaults.standard
+        let cloudVoxelSize = defaults.float(forKey: "VoxelSize")
+        let textureSize = defaults.integer(forKey: "TextureSize")
+        let textureCount = defaults.integer(forKey: "MaximumOutputTextures")
+        let normalK = defaults.integer(forKey: "NormalK")
+        let maxTextureDistance = defaults.float(forKey: "MaxTextureDistance")
+        let minTextureClusterSize = defaults.integer(forKey: "MinTextureClusterSize")
+        let optimizedVoxelSize = cloudVoxelSize
+        let optimizedDepth = defaults.integer(forKey: "ReconstructionDepth")
+        let optimizedColorRadius = defaults.float(forKey: "ColorRadius")
+        let optimizedCleanWhitePolygons = defaults.bool(forKey: "CleanMesh")
+        let optimizedMinClusterSize = defaults.integer(forKey: "PolygonFiltering")
+        let blockRendering = false
+        
+        DispatchQueue.background(background: {
+            let _ = self.exportMesh(
+                cloudVoxelSize: cloudVoxelSize,
+                regenerateCloud: false,
+                meshing: true,
+                textureSize: textureSize,
+                textureCount: textureCount,
+                normalK: normalK,
+                optimized: true,
+                optimizedVoxelSize: optimizedVoxelSize,
+                optimizedDepth: optimizedDepth,
+                optimizedMaxPolygons: optimizedMaxPolygons,
+                optimizedColorRadius: optimizedColorRadius,
+                optimizedCleanWhitePolygons: optimizedCleanWhitePolygons,
+                optimizedMinClusterSize: optimizedMinClusterSize,
+                optimizedMaxTextureDistance: maxTextureDistance,
+                optimizedMinTextureClusterSize: minTextureClusterSize,
+                blockRendering: blockRendering)
+            
+        }, completion:{
+            self.setMeshRendering(enabled: true, withTexture: true)
+            self.postExportation(visualize: true)
+            self.setCamera(type: 2)
+            self.writeExportedFiles(fileName: Date().getFormattedDate(format: "yyMMdd-HHmmss"))
+        })
+    }
+    
+    func writeExportedFiles(fileName: String) {
+        let scan = Scan(id: UUID(), dateStr: fileName)
+        guard let exportDir = FileManager.default.createFolder(name: scan.id.uuidString) else { return }
+        
+        print("Exporting to directory \(exportDir.path) with name \(fileName)")
+        if(self.writeExportedMesh(directory: exportDir.path, name: fileName)) == true {
+            do {
+                let fileURLs = try FileManager.default.contentsOfDirectory(at: exportDir, includingPropertiesForKeys: nil)
+                if let _ = fileURLs.first(where: { $0.pathExtension == "obj" }) {
+                    NotificationCenter.default.send(.exportResult,scan)
+                }
+
+            } catch {
+                print("No files exported to \(exportDir)")
+                return
+            }
+        } else {
+            print("rtab writeExportedMesh error")
+        }
+    }
+}
