@@ -18,9 +18,7 @@ final class ScanListViewModel:ObservableObject {
     
     init() {
         NotificationCenter.default.publisher(for: .exportResult).sink { [weak self] _ in
-            print("**",self?.scans.count,UserDefaults.scans.count)
             self?.scans = UserDefaults.scans
-            print("**",self?.scans.count,UserDefaults.scans.count)
         }.store(in: &cancellable)
         
         NotificationCenter.default.publisher(for: .deleteScan).sink { [weak self] notif in

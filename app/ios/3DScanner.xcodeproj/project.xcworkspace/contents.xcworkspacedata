@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/oguzozturk/Documents/rtabmap/app/ios/3DScanner.xcodeproj">
    </FileRef>
 </Workspace>
