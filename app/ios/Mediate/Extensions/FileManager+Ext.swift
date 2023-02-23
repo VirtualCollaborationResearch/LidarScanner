@@ -29,11 +29,11 @@ extension FileManager {
         }
     }
     
-    func retrieveObj(folder:String,name:String) -> URL? {
+    func retrieveFile(folder:String,name:String,format:String) -> URL? {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         else { return nil }
         let folderUrl = documentsDirectory.appendingPathComponent(folder)
-        let objurl = folderUrl.appendingPathComponent(name+".obj")
-        return objurl
+        let objurl = folderUrl.appendingPathComponent(name+format)
+        return FileManager.default.fileExists(atPath: objurl.path) ? objurl : nil
     }
 }

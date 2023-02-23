@@ -40,6 +40,14 @@ final class ScanARView:ARView {
         addSubview(coachingOverlay)
     }
     
+    func stopScanning() {
+        session.pause()
+        session.delegate = nil
+        scene.anchors.removeAll()
+        removeFromSuperview()
+        window?.resignKey()
+    }
+    
     func reset() {
         if let configuration = session.configuration {
             session.run(configuration, options: [.resetSceneReconstruction,.resetTracking,.removeExistingAnchors])

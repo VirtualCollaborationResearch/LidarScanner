@@ -12,7 +12,7 @@ struct ScanListView:View {
     @StateObject var viewModel = ScanListViewModel()
     @EnvironmentObject var coordinator: Coordinator
     @State private var renameAlert = false
-    @State private var mapName = ""
+    @State private var scanName = ""
     var body: some View {
         let isEmpty = viewModel.scans.isEmpty
         ZStack(alignment:.bottomTrailing) {
@@ -52,12 +52,6 @@ struct ScanListView:View {
                             }
                             
                             Menu {
-//                                Button {
-//                                    coordinator.modelViewer(scan: scan)
-//                                } label: {
-//                                    Label("Share", systemImage: "square.and.arrow.up")
-//                                }
-                                
                                 Button {
                                     viewModel.scanToBeSelected = scan
                                     renameAlert.toggle()
@@ -101,8 +95,8 @@ struct ScanListView:View {
             }
         }
         .alert("Change Scan Name", isPresented: $renameAlert, actions: {
-            TextField(viewModel.scanToBeSelected?.name ?? "", text: $mapName)
-            Button("OK", action: { viewModel.updateScan(name: mapName) })
+            TextField(viewModel.scanToBeSelected?.name ?? "", text: $scanName)
+            Button("OK", action: { viewModel.updateScan(name: scanName) })
             Button("Cancel", role: .cancel, action: {})
         })
         .toolbar {

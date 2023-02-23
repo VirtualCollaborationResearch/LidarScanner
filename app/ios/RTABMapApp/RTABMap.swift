@@ -617,18 +617,19 @@ extension RTABMap {
             self.setMeshRendering(enabled: true, withTexture: true)
             self.postExportation(visualize: true)
             self.setCamera(type: 2)
-            self.writeExportedFiles(fileName: Date().getFormattedDate(format: "yyMMdd-HHmmss"))
+            self.writeExportedFiles()
         })
     }
     
-    func writeExportedFiles(fileName: String) {
+    func writeExportedFiles() {
         guard let id = modelId, let exportDir = FileManager.default.createFolder(name: id.uuidString) else { return }
-        let scan = Scan(id: id, dateStr: fileName)
-        print("Exporting to directory \(exportDir.path) with name \(fileName)")
-        if(self.writeExportedMesh(directory: exportDir.path, name: fileName)) == true {
+        let scan = Scan(id: id)
+        print("Exporting to directory \(exportDir.path) with name \(scan.dateStr)")
+        if(self.writeExportedMesh(directory: exportDir.path, name: scan.dateStr)) == true {
             do {
                 let fileURLs = try FileManager.default.contentsOfDirectory(at: exportDir, includingPropertiesForKeys: nil)
                 if let _ = fileURLs.first(where: { $0.pathExtension == "obj" }) {
+                    UserDefaults.scans.append(scan)
                     NotificationCenter.default.send(.exportResult,scan)
                 }
 

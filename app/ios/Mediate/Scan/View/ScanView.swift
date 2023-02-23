@@ -45,13 +45,15 @@ struct ScanView: View {
         }.toolbar {
             ToolbarItem(placement:.navigationBarLeading) {
                 Button {
+                    viewModel.rtabmap.cancelProcessing()
+                    NotificationCenter.default.send(.pauseSession)
                     coordinator.goToHomeAreas()
                 } label: {
                     ScanViewButtons(imageName: "xmark")
                 }.accessibilityLabel("Return to map list")
             }
         }
-        .onReceive(viewModel.closeScanning) { _ in
+        .onReceive(viewModel.doneScanning) { _ in
             coordinator.goToHomeAreas()
         }
     }

@@ -36,7 +36,7 @@ extension String {
 extension Date {
     func convertToString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YY"
+        dateFormatter.dateFormat = "dd.MM.YY-HH.mm"
         return dateFormatter.string(from: self)
     }
 }
@@ -45,7 +45,7 @@ extension Date {
 extension String {
     func convertToDate() -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YY"
+        dateFormatter.dateFormat = "dd.MM.YY-HH.mm"
         dateFormatter.timeZone = .current
         return dateFormatter.date(from: self)
     }

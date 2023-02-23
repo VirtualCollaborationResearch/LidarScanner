@@ -50,7 +50,7 @@ class ScanARViewController: UIViewController {
                 viewModel.rtabmap.start(id: viewModel.scanId)
                 arView.startScanning()
             } else {
-                arView.session.pause()
+                arView.stopScanning()
                 viewModel.rtabmap.stop()
             }
         }.store(in: &cancellable)
@@ -62,7 +62,7 @@ class ScanARViewController: UIViewController {
         }.store(in: &cancellable)
         
         NotificationCenter.default.publisher(for: .pauseSession, object: nil).sink {  [weak self] _ in
-            self?.arView.session.pause()
+            self?.arView.stopScanning()
         }.store(in: &cancellable)
     }
 }
