@@ -50,15 +50,12 @@ class ScanARViewController: UIViewController {
                 viewModel.rtabmap.start(id: viewModel.scanId)
                 arView.startScanning()
             } else {
-                arView.stopScanning()
-                viewModel.rtabmap.stop()
+                arView.snapshot(saveToHDR: true, completion: { [unowned self] image in
+                    image?.saveImage(imageName: viewModel.scanId.uuidString, folder: "Map Images")
+                    arView.stopScanning()
+                    viewModel.rtabmap.stop()
+                })
             }
-        }.store(in: &cancellable)
-        
-        viewModel.snapShot.sink { [unowned self] scanId in
-            arView.snapshot(saveToHDR: true, completion: { image in
-                image?.saveImage(imageName: scanId.uuidString, folder: "Map Images")
-            })
         }.store(in: &cancellable)
         
         NotificationCenter.default.publisher(for: .pauseSession, object: nil).sink {  [weak self] _ in

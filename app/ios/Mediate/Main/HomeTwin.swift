@@ -14,7 +14,7 @@ struct HomeTwin: App {
     
     var body: some Scene {
         WindowGroup {
-            if coordinator.isScanning {
+            if coordinator.isScanScreenOpen {
                 NavigationStack(path: $coordinator.path) {
                     ScanView()
                         .navigationDestination(for: Destination.self) { destination in

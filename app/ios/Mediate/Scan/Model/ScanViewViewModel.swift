@@ -34,8 +34,7 @@ final class ScanViewViewModel:ObservableObject {
     }
     
     func doneTapped() {
-        snapShot.send(scanId)
-        isScanning = false
+        self.isScanning = false
     }
 }
 

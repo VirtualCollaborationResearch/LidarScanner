@@ -12,7 +12,7 @@ import SwiftUI
 class Coordinator: ObservableObject {
     @Published var path = NavigationPath()
     
-    @Published var isScanning = false
+    @Published var isScanScreenOpen = false
     
     func returnToHomePage() {
         path.removeLast(path.count)
@@ -31,11 +31,11 @@ class Coordinator: ObservableObject {
     }
     
     func goToScanView() {
-        isScanning = true
+        isScanScreenOpen = true
     }
     
     func goToHomeAreas() {
-        isScanning = false
+        isScanScreenOpen = false
     }
     
     func tapOnSecondPage() {
