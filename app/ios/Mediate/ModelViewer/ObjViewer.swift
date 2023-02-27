@@ -8,12 +8,10 @@
 import UIKit
 import SwiftUI
 import SceneKit
-import SceneKit.ModelIO
 
 class ObjViewModel: NSObject, ObservableObject {
     var scan:Scan
     var scene:SCNScene?
-    @Published var canBeExportedAsUsdz = false
     
     init(scan:Scan) {
         self.scan = scan
@@ -28,21 +26,6 @@ class ObjViewModel: NSObject, ObservableObject {
             spotLight.light = SCNLight()
             spotLight.light?.type = .area
             scene?.rootNode.addChildNode(spotLight)
-            createUsdz(objUrl: url)
-        }
-    }
-    
-    func createUsdz(objUrl:URL) {
-        var url = objUrl
-        url.deletePathExtension()
-        url.appendPathExtension("usdz")
-        self.canBeExportedAsUsdz = FileManager.default.fileExists(atPath: url.path)
-        if !canBeExportedAsUsdz {
-            scene?.write(to: url, delegate: nil,progressHandler: { [weak self] progres, err, _ in
-                if err == nil, progres == 1 {
-                    self?.canBeExportedAsUsdz = true
-                }
-            })
         }
     }
 }
@@ -64,8 +47,7 @@ struct ObjViewer:View {
                             ShareLink( "Obj File", items: [obj,mtl,texture])
                         }
                         
-                        if viewModel.canBeExportedAsUsdz,
-                           let usdz = viewModel.scan.usdzUrl {
+                        if let usdz = viewModel.scan.usdzUrl {
                             ShareLink( "USDZ File", item: usdz)
                         }
                         

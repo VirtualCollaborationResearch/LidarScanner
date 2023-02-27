@@ -18,9 +18,11 @@ final class ScanViewViewModel:ObservableObject {
     var doneScanning = PassthroughSubject<Bool,Never>()
     @Published var isScanning = true
     var snapShot = PassthroughSubject<UUID,Never>()
+    var modelCreationPercentage = PassthroughSubject<Float,Never>()
 
     init() {
         rtabmap.setupCallbacksWithCPP()
+        rtabmap.addObserver(self)
         setupNotificationListener()
     }
     
@@ -38,5 +40,14 @@ final class ScanViewViewModel:ObservableObject {
     }
 }
 
+extension ScanViewViewModel: RTABMapObserver {
+    func progressUpdated(_ rtabmap: RTABMap, count: Int, max: Int) {
+        let percentage = min(100,100 * Float(count)/Float(max))
+        print("**** ",count,max)
+        DispatchQueue.main.async { [weak self] in
+            self?.modelCreationPercentage.send(percentage)
+        }
+    }
+}
 
 

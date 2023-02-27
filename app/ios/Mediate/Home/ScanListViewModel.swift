@@ -7,6 +7,8 @@
 
 import Foundation
 import Combine
+import FirebaseStorage
+import SceneKit.ModelIO
 
 @MainActor
 final class ScanListViewModel:ObservableObject {
@@ -15,10 +17,16 @@ final class ScanListViewModel:ObservableObject {
 
     @Published var scans = UserDefaults.scans
     var scanToBeSelected: Scan?
-    
+
     init() {
-        NotificationCenter.default.publisher(for: .exportResult).sink { [weak self] _ in
-            self?.scans = UserDefaults.scans
+        NotificationCenter.default.publisher(for: .exportResult).sink { [weak self] notif in
+            if let self = self,
+               let notif = notif.userInfo?["data"] as? NotifWrapper<Any?>,
+               let scan = notif.wrappedValue as? Scan {
+                self.scans.append(scan)
+                UserDefaults.scans = self.scans
+                self.createUsdz(scan: scan)
+            }
         }.store(in: &cancellable)
         
         NotificationCenter.default.publisher(for: .deleteScan).sink { [weak self] notif in
@@ -46,5 +54,20 @@ final class ScanListViewModel:ObservableObject {
             UserDefaults.scans[scanIndex].name = name
         }
     }
+    
+    func createUsdz(scan:Scan) {
+        if let url = scan.objUrl {
+            print("** creating usdz")
+            MDLAsset(url: url).convertToUsdz(objUrl: url) { usdzUrl in
+                if let usdzUrl = usdzUrl {
+                    FirebaseUploader.shared.upload(usdzUrl: usdzUrl,scanId: scan.id)
+                }
+            }
+        }
+    }
+
+
+        
 }
+
 

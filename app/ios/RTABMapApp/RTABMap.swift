@@ -642,3 +642,37 @@ extension RTABMap {
         }
     }
 }
+
+
+extension RTABMapObserver {
+    func progressUpdated(_ rtabmap: RTABMap, count: Int, max: Int) { }
+    func initEventReceived(_ rtabmap: RTABMap, status: Int, msg: String) { }
+    func statsUpdated(_ rtabmap: RTABMap,
+                      nodes: Int,
+                      words: Int,
+                      points: Int,
+                      polygons: Int,
+                      updateTime: Float,
+                      loopClosureId: Int,
+                      highestHypId: Int,
+                      databaseMemoryUsed: Int,
+                      inliers: Int,
+                      matches: Int,
+                      featuresExtracted: Int,
+                      hypothesis: Float,
+                      nodesDrawn: Int,
+                      fps: Float,
+                      rejected: Int,
+                      rehearsalValue: Float,
+                      optimizationMaxError: Float,
+                      optimizationMaxErrorRatio: Float,
+                      distanceTravelled: Float,
+                      fastMovement: Int,
+                      landmarkDetected: Int,
+                      x: Float,
+                      y: Float,
+                      z: Float,
+                      roll: Float,
+                      pitch: Float,
+                      yaw: Float) { }
+}

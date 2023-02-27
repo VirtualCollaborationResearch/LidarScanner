@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScanListView:View {
     
-    @StateObject var viewModel = ScanListViewModel()
+    @ObservedObject var viewModel = ScanListViewModel()
     @EnvironmentObject var coordinator: Coordinator
     @State private var renameAlert = false
     @State private var scanName = ""
@@ -21,35 +21,11 @@ struct ScanListView:View {
                     EmptyScansView().environmentObject(coordinator)
                 } else {
                     ForEach(viewModel.scans, id:\.id) { scan in
-                        ZStack(alignment:.topTrailing) {
-                            HStack(spacing:15) {
-                                AsyncImage(url: scan.id.uuidString.imageFromDisk("Map Images")) { image in
-                                    image.resizable()
-                                } placeholder: {
-                                    Color(.systemGray4)
+                        ZStack(alignment: .topTrailing) {
+                            ScanCell(scan: scan)
+                                .onTapGesture {
+                                    coordinator.modelViewer(scan: scan)
                                 }
-                                .frame(width: 60, height: 60)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                
-                                VStack(alignment:.leading,spacing:5) {
-                                    Text(scan.name ?? scan.id.uuidString)
-                                        .font(.system(size: 16,weight: .semibold))
-                                        .lineLimit(1)
-
-                                    VStack(alignment:.leading) {
-                                        Text("Created at \(scan.dateStr)")
-                                    }
-                                    .foregroundColor(Color(.systemGray2))
-
-                                }
-                                .font(.system(size: 15))
-
-                                Spacer()
-                            }
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                coordinator.modelViewer(scan: scan)
-                            }
                             
                             Menu {
                                 Button {
@@ -100,16 +76,16 @@ struct ScanListView:View {
             Button("Cancel", role: .cancel, action: {})
         })
         .toolbar {
-             ToolbarItem(placement:.navigationBarTrailing) {
-                     Button {
-                         coordinator.menuView()
-                     } label: {
-                         Image(systemName: "line.3.horizontal")
-                             .font(.system(size: 15,weight: .semibold))
-                     }.accessibilityLabel("Menu")
-
-             }
-         }
+            ToolbarItem(placement:.navigationBarTrailing) {
+                Button {
+                    coordinator.menuView()
+                } label: {
+                    Image(systemName: "line.3.horizontal")
+                        .font(.system(size: 15,weight: .semibold))
+                }.accessibilityLabel("Menu")
+                
+            }
+        }
         .navigationTitle("Scans")
     }
 }
@@ -155,3 +131,4 @@ struct EmptyScansView:View {
         }
     }
 }
+

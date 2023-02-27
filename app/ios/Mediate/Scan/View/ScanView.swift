@@ -31,15 +31,7 @@ struct ScanView: View {
             .accessibilityLabel("Complete scanning")
             
             if !viewModel.isScanning {
-                
-                Color.black.edgesIgnoringSafeArea(.all)
-                    .opacity(0.3)
-                
-                VStack {
-                    Spacer()
-                    ProgressView()
-                    Spacer()
-                }
+                ScanCreationLoading(viewModel: viewModel)
             }
             
         }.toolbar {
@@ -59,4 +51,33 @@ struct ScanView: View {
     }
 }
 
-
+struct ScanCreationLoading:View {
+    
+    @State private var percentage:Float = 0
+    @StateObject var viewModel:ScanViewViewModel
+    
+    var body: some View {
+        ZStack {
+            Color.black
+            
+            VStack(alignment:.center) {
+                Spacer()
+                ProgressView(value: percentage, total: 100) {
+                    HStack {
+                        Text("Model creating...")
+                        Spacer()
+                        Text("%\(Int(percentage))")
+                    }
+                }
+                .tint(.accentColor)
+                .padding()
+                Spacer()
+            }
+            .frame(maxWidth: 500)
+        }
+        .edgesIgnoringSafeArea(.all)
+        .onReceive(viewModel.modelCreationPercentage) { result in
+            self.percentage = result
+        }
+    }
+}

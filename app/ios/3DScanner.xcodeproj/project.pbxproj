@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -149,6 +149,9 @@
 		4EFD0F62259E341C00575D88 /* RTABMapApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD0F61259E341C00575D88 /* RTABMapApp.cpp */; };
 		4EFD0F67259E38DE00575D88 /* NativeWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD0F66259E38DE00575D88 /* NativeWrapper.cpp */; };
 		4EFD0F70259F847300575D88 /* background_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD0F6E259F847300575D88 /* background_renderer.cc */; };
+		F415A6FD29ACEB700036B6F7 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415A6FC29ACEB700036B6F7 /* ScanCell.swift */; };
+		F415A70029ACF0610036B6F7 /* FirabaseUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415A6FF29ACF0610036B6F7 /* FirabaseUploader.swift */; };
+		F424392D29A8E8DD00D451E5 /* MDLAsset+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F424392C29A8E8DD00D451E5 /* MDLAsset+Ext.swift */; };
 		F4D7CE4A29A4C7410063EBDD /* ScanARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4929A4C7410063EBDD /* ScanARView.swift */; };
 		F4D7CE5229A4DA180063EBDD /* ScanARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */; };
 		F4D7CE5429A4DA180063EBDD /* ScanViewBottomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4E29A4DA180063EBDD /* ScanViewBottomButtons.swift */; };
@@ -182,6 +185,8 @@
 		F4D7CE9629A664BA0063EBDD /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE9229A664BA0063EBDD /* ContactUsView.swift */; };
 		F4D7CE9729A664BA0063EBDD /* CopyrightAndLicensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE9329A664BA0063EBDD /* CopyrightAndLicensesView.swift */; };
 		F4D7CE9829A664BA0063EBDD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE9429A664BA0063EBDD /* MenuView.swift */; };
+		F4D7CE9E29A8D7FB0063EBDD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4D7CE9D29A8D7FB0063EBDD /* GoogleService-Info.plist */; };
+		F4D7CEA129A8D99F0063EBDD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F4D7CEA029A8D99F0063EBDD /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -366,6 +371,9 @@
 		4EFD0F66259E38DE00575D88 /* NativeWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NativeWrapper.cpp; path = RTABMapApp/NativeWrapper.cpp; sourceTree = SOURCE_ROOT; };
 		4EFD0F6E259F847300575D88 /* background_renderer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = background_renderer.cc; path = ../android/jni/background_renderer.cc; sourceTree = "<group>"; };
 		4EFD0F6F259F847300575D88 /* background_renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = background_renderer.h; path = ../android/jni/background_renderer.h; sourceTree = "<group>"; };
+		F415A6FC29ACEB700036B6F7 /* ScanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCell.swift; sourceTree = "<group>"; };
+		F415A6FF29ACF0610036B6F7 /* FirabaseUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirabaseUploader.swift; sourceTree = "<group>"; };
+		F424392C29A8E8DD00D451E5 /* MDLAsset+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MDLAsset+Ext.swift"; sourceTree = "<group>"; };
 		F4D7CE4929A4C7410063EBDD /* ScanARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanARView.swift; sourceTree = "<group>"; };
 		F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanARViewController.swift; sourceTree = "<group>"; };
 		F4D7CE4E29A4DA180063EBDD /* ScanViewBottomButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewBottomButtons.swift; sourceTree = "<group>"; };
@@ -399,6 +407,7 @@
 		F4D7CE9229A664BA0063EBDD /* ContactUsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
 		F4D7CE9329A664BA0063EBDD /* CopyrightAndLicensesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyrightAndLicensesView.swift; sourceTree = "<group>"; };
 		F4D7CE9429A664BA0063EBDD /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		F4D7CE9D29A8D7FB0063EBDD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -435,6 +444,7 @@
 				4EFD0F2F259D5C2200575D88 /* libmetis.a in Frameworks */,
 				4EFD0F30259D5C2200575D88 /* libg2o_types_sclam2d.a in Frameworks */,
 				4EFD0F31259D5C2200575D88 /* libg2o_types_sim3.a in Frameworks */,
+				F4D7CEA129A8D99F0063EBDD /* FirebaseStorage in Frameworks */,
 				4EFD0F32259D5C2200575D88 /* libgtsam.a in Frameworks */,
 				4EFD0EDD259D5BFC00575D88 /* libopencv_video.a in Frameworks */,
 				4EFD0EDE259D5BFC00575D88 /* libopencv_aruco.a in Frameworks */,
@@ -544,6 +554,7 @@
 				4EE016BF259BE464008CCE65 /* Main.storyboard */,
 				4EE016C1259BE464008CCE65 /* LaunchScreen.storyboard */,
 				4EE016BC259BE45C008CCE65 /* Info.plist */,
+				F4D7CE9D29A8D7FB0063EBDD /* GoogleService-Info.plist */,
 				4EE016C6259BE46F008CCE65 /* Assets.xcassets */,
 				4EB1A66525A0D90B0043C7BF /* RTABMap.swift */,
 				4E2C516525A63119005CEDBD /* DatabaseView.swift */,
@@ -758,6 +769,14 @@
 			name = NativeWrapper;
 			sourceTree = "<group>";
 		};
+		F415A6FE29ACF0480036B6F7 /* Firabase */ = {
+			isa = PBXGroup;
+			children = (
+				F415A6FF29ACF0610036B6F7 /* FirabaseUploader.swift */,
+			);
+			path = Firabase;
+			sourceTree = "<group>";
+		};
 		F4D7CE4B29A4D9DA0063EBDD /* Scan */ = {
 			isa = PBXGroup;
 			children = (
@@ -795,6 +814,7 @@
 				F4D7CE6D29A4DB0B0063EBDD /* UIView+Ext.swift */,
 				F4D7CE6E29A4DB0B0063EBDD /* RealityKit+Ext.swift */,
 				F4D7CE6F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift */,
+				F424392C29A8E8DD00D451E5 /* MDLAsset+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -839,6 +859,7 @@
 		F4D7CE8A29A65C640063EBDD /* Mediate */ = {
 			isa = PBXGroup;
 			children = (
+				F415A6FE29ACF0480036B6F7 /* Firabase */,
 				F4D7CE9029A664BA0063EBDD /* Menu */,
 				F4D7CE8B29A65CA40063EBDD /* Home */,
 				F4D7CE8729A651BD0063EBDD /* ModelViewer */,
@@ -855,6 +876,7 @@
 			children = (
 				F4D7CE8C29A65CF00063EBDD /* ScanListView.swift */,
 				F4D7CE8E29A65D070063EBDD /* ScanListViewModel.swift */,
+				F415A6FC29ACEB700036B6F7 /* ScanCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -888,6 +910,7 @@
 			);
 			name = 3DScanner;
 			packageProductDependencies = (
+				F4D7CEA029A8D99F0063EBDD /* FirebaseStorage */,
 			);
 			productName = RTABMapApp;
 			productReference = 4EE015C2259A2AF0008CCE65 /* 3DScanner.app */;
@@ -917,6 +940,7 @@
 			);
 			mainGroup = 4EE015B9259A2AF0008CCE65;
 			packageReferences = (
+				F4D7CE9F29A8D99F0063EBDD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 4EE015C3259A2AF0008CCE65 /* Products */;
 			projectDirPath = "";
@@ -938,6 +962,7 @@
 				4E20B250266AB95600316EE6 /* Images.xcassets in Resources */,
 				4EE016C4259BE464008CCE65 /* LaunchScreen.storyboard in Resources */,
 				4EE016C7259BE46F008CCE65 /* Assets.xcassets in Resources */,
+				F4D7CE9E29A8D7FB0063EBDD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,6 +1021,7 @@
 				4EFD0BA6259D501E00575D88 /* shaders.cpp in Sources */,
 				4EFD0B99259D501E00575D88 /* obj_loader.cpp in Sources */,
 				4EFD0BA7259D501E00575D88 /* transform.cpp in Sources */,
+				F415A6FD29ACEB700036B6F7 /* ScanCell.swift in Sources */,
 				4EFD0BA0259D501E00575D88 /* gesture_camera.cpp in Sources */,
 				F4D7CE7529A4DB0B0063EBDD /* FileManager+Ext.swift in Sources */,
 				4EE016B9259BE449008CCE65 /* AppDelegate.swift in Sources */,
@@ -1022,8 +1048,10 @@
 				F4D7CE7D29A4DB0B0063EBDD /* UIView+Ext.swift in Sources */,
 				4EFD0BAB259D501E00575D88 /* circle.cpp in Sources */,
 				F4D7CE9729A664BA0063EBDD /* CopyrightAndLicensesView.swift in Sources */,
+				F415A70029ACF0610036B6F7 /* FirabaseUploader.swift in Sources */,
 				4EFD0F62259E341C00575D88 /* RTABMapApp.cpp in Sources */,
 				F4D7CE7729A4DB0B0063EBDD /* String+Ext.swift in Sources */,
+				F424392D29A8E8DD00D451E5 /* MDLAsset+Ext.swift in Sources */,
 				F4D7CE5729A4DA180063EBDD /* ScanView.swift in Sources */,
 				4EFD0BA4259D501E00575D88 /* drawable_object.cpp in Sources */,
 				F4D7CE8029A4DB0B0063EBDD /* Defaults.swift in Sources */,
@@ -1188,7 +1216,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VYNNYZBQ5A;
+				DEVELOPMENT_TEAM = 2R3JCJ2A44;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1215,7 +1243,7 @@
 				);
 				MARKETING_VERSION = 0.20.19;
 				OTHER_CFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.oguzveozturk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mediate.3dscanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RTABMapApp/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
@@ -1247,7 +1275,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VYNNYZBQ5A;
+				DEVELOPMENT_TEAM = 2R3JCJ2A44;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RTABMapApp/Libraries/lib",
@@ -1275,7 +1303,7 @@
 				MARKETING_VERSION = 0.20.19;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.oguzveozturk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mediate.3dscanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RTABMapApp/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
@@ -1318,6 +1346,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F4D7CE9F29A8D99F0063EBDD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4D7CEA029A8D99F0063EBDD /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4D7CE9F29A8D99F0063EBDD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4EE015BA259A2AF0008CCE65 /* Project object */;
 }

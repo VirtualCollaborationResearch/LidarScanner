@@ -7,12 +7,13 @@
 
 import UIKit
 import SwiftUI
+import Firebase
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "Version")
-        
+        FirebaseApp.configure()
         setDefaultsFromSettingsBundle()
         return true
     }
