@@ -37,4 +37,7 @@ public struct Defaults<Value:Codable> {
 extension UserDefaults {
     @Defaults(key: "scans", defaultValue: [])
     static var scans: [Scan]
+    
+    @Defaults(key: "userId", defaultValue: nil)
+    static var userId: String?
 }

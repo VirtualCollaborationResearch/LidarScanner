@@ -8,14 +8,32 @@
 import UIKit
 import SwiftUI
 import Firebase
+import FirebaseAuth
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "Version")
         FirebaseApp.configure()
+        detectForOldUser()
         setDefaultsFromSettingsBundle()
         return true
+    }
+    
+    func detectForOldUser() {
+        let auth = Auth.auth()
+        if auth.currentUser?.uid != nil {
+            print("firebaseuid: ", auth.currentUser!.uid)
+        } else {
+            auth.signInAnonymously { authResult, error in
+                guard let user = authResult?.user else {
+                    print("auth error",error.debugDescription)
+                    return
+                }
+                UserDefaults.userId = user.uid
+                print("userid: \(user.uid)")
+            }
+        }
     }
 }
 

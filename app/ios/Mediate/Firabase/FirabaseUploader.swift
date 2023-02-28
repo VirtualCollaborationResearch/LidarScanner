@@ -16,8 +16,9 @@ class FirebaseUploader:NSObject {
     let percentage = PassthroughSubject<(Double,UUID),Never>()
     
     func upload(zipUrl:URL,scanId:UUID) {
-        
-        let scansRef = storage.reference().child("scans/zippedObj/\(zipUrl.lastPathComponent)")
+        guard let userId = UserDefaults.userId else { return }
+        let folderName = zipUrl.deletingLastPathComponent().lastPathComponent
+        let scansRef = storage.reference().child("scans/\(userId)/\(folderName)/\(zipUrl.lastPathComponent)")
         
         print(zipUrl)
 
