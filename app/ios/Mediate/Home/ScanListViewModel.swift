@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import FirebaseStorage
 import SceneKit.ModelIO
+import Zip
 
 @MainActor
 final class ScanListViewModel:ObservableObject {
@@ -64,8 +65,17 @@ final class ScanListViewModel:ObservableObject {
     }
 
     func uploadZip(scan:Scan) {
-        if let url = scan.fileUrl(for: .zip) {
-            FirebaseUploader.shared.upload(zipUrl: url,scanId: scan.id)
+        if let obj = scan.fileUrl(for: .obj),
+           let mtl = scan.fileUrl(for: .mtl),
+           let jpg = scan.fileUrl(for: .jpg) {
+            let exportDir = obj.deletingLastPathComponent()
+            let zipUrl = exportDir.appendingPathComponent("\(scan.dateStr).zip")
+            do {
+                try Zip.zipFiles(paths: [obj,mtl,jpg], zipFilePath: zipUrl, password: nil, progress: nil)
+                FirebaseUploader.shared.upload(zipUrl: zipUrl,scanId: scan.id)
+            } catch {
+                print(error)
+            }
         }
     }
 }

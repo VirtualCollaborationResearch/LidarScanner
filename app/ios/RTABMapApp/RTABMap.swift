@@ -8,7 +8,6 @@
 import Foundation
 import ARKit
 import ModelIO
-import Zip
 
 class RTABMap {
     var native_rtabmap: UnsafeMutableRawPointer
@@ -631,7 +630,6 @@ extension RTABMap {
                 let fileURLs = try FileManager.default.contentsOfDirectory(at: exportDir, includingPropertiesForKeys: nil)
                 if(!fileURLs.isEmpty) {
                     UserDefaults.scans.append(scan)
-                    try Zip.zipFiles(paths: fileURLs, zipFilePath: exportDir.appendingPathComponent("\(scan.dateStr).zip"), password: nil, progress: nil)
                     NotificationCenter.default.send(.exportResult,scan)
                 }
             } catch {
