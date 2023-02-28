@@ -15,13 +15,14 @@ class FirebaseUploader:NSObject {
     let storage = Storage.storage()
     let percentage = PassthroughSubject<(Double,UUID),Never>()
     
-    func upload(usdzUrl:URL,scanId:UUID) {
+    func upload(zipUrl:URL,scanId:UUID) {
         
-        let scansRef = storage.reference().child("scans/usdz/\(usdzUrl.lastPathComponent)")
-        print(usdzUrl)
+        let scansRef = storage.reference().child("scans/zippedObj/\(zipUrl.lastPathComponent)")
+        
+        print(zipUrl)
 
         // Upload file and metadata to the object 'images/mountains.jpg'
-        let uploadTask = scansRef.putFile(from: usdzUrl)
+        let uploadTask = scansRef.putFile(from: zipUrl)
         // Listen for state changes, errors, and completion of the upload.
         uploadTask.observe(.resume) { snapshot in
             print("Upload resumed, also fires when the upload starts")

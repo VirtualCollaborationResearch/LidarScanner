@@ -12,19 +12,11 @@ struct Scan:Codable,Identifiable,Equatable,Hashable {
     var dateStr = Date().convertToString()
     var name:String?
     
-    var objUrl:URL? {
-        FileManager.default.retrieveFile(folder: id.uuidString, name: dateStr, format:".obj")
+    func fileUrl(for typeOf:ScanDataTypes) -> URL? {
+        FileManager.default.retrieveFile(folder: id.uuidString, name: dateStr, format:".\(typeOf.rawValue)")
     }
-    
-    var mtlUrl:URL? {
-        FileManager.default.retrieveFile(folder: id.uuidString, name: dateStr, format:".mtl")
-    }
-    
-    var textureUrl:URL? {
-        FileManager.default.retrieveFile(folder: id.uuidString, name: dateStr, format:".jpg")
-    }
-    
-    var usdzUrl:URL? {
-        FileManager.default.retrieveFile(folder: id.uuidString, name: dateStr, format:".usdz")
-    }
+}
+
+enum ScanDataTypes:String {
+    case obj,mtl,jpg,usdz,zip
 }

@@ -151,6 +151,7 @@
 		4EFD0F70259F847300575D88 /* background_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD0F6E259F847300575D88 /* background_renderer.cc */; };
 		F415A6FD29ACEB700036B6F7 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415A6FC29ACEB700036B6F7 /* ScanCell.swift */; };
 		F415A70029ACF0610036B6F7 /* FirabaseUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415A6FF29ACF0610036B6F7 /* FirabaseUploader.swift */; };
+		F415A70329AE22CF0036B6F7 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = F415A70229AE22CF0036B6F7 /* Zip */; };
 		F424392D29A8E8DD00D451E5 /* MDLAsset+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F424392C29A8E8DD00D451E5 /* MDLAsset+Ext.swift */; };
 		F4D7CE4A29A4C7410063EBDD /* ScanARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4929A4C7410063EBDD /* ScanARView.swift */; };
 		F4D7CE5229A4DA180063EBDD /* ScanARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */; };
@@ -493,6 +494,7 @@
 				4EFD0B36259D4DE900575D88 /* libboost_filesystem.a in Frameworks */,
 				4EFD0B37259D4DE900575D88 /* libboost_program_options.a in Frameworks */,
 				4EFD0B38259D4DE900575D88 /* libboost_regex.a in Frameworks */,
+				F415A70329AE22CF0036B6F7 /* Zip in Frameworks */,
 				4EFD0B39259D4DE900575D88 /* libboost_iostreams.a in Frameworks */,
 				4EFD0B3A259D4DE900575D88 /* libboost_date_time.a in Frameworks */,
 				4EFD0B3B259D4DE900575D88 /* libboost_serialization.a in Frameworks */,
@@ -911,6 +913,7 @@
 			name = 3DScanner;
 			packageProductDependencies = (
 				F4D7CEA029A8D99F0063EBDD /* FirebaseStorage */,
+				F415A70229AE22CF0036B6F7 /* Zip */,
 			);
 			productName = RTABMapApp;
 			productReference = 4EE015C2259A2AF0008CCE65 /* 3DScanner.app */;
@@ -941,6 +944,7 @@
 			mainGroup = 4EE015B9259A2AF0008CCE65;
 			packageReferences = (
 				F4D7CE9F29A8D99F0063EBDD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F415A70129AE22CF0036B6F7 /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = 4EE015C3259A2AF0008CCE65 /* Products */;
 			projectDirPath = "";
@@ -1348,6 +1352,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F415A70129AE22CF0036B6F7 /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		F4D7CE9F29A8D99F0063EBDD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1359,6 +1371,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F415A70229AE22CF0036B6F7 /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F415A70129AE22CF0036B6F7 /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
+		};
 		F4D7CEA029A8D99F0063EBDD /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F4D7CE9F29A8D99F0063EBDD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

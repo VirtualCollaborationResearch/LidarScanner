@@ -25,6 +25,7 @@ final class ScanListViewModel:ObservableObject {
                let scan = notif.wrappedValue as? Scan {
                 self.scans.append(scan)
                 UserDefaults.scans = self.scans
+                self.uploadZip(scan: scan)
                 self.createUsdz(scan: scan)
             }
         }.store(in: &cancellable)
@@ -56,18 +57,17 @@ final class ScanListViewModel:ObservableObject {
     }
     
     func createUsdz(scan:Scan) {
-        if let url = scan.objUrl {
+        if let url = scan.fileUrl(for: .obj) {
             print("** creating usdz")
-            MDLAsset(url: url).convertToUsdz(objUrl: url) { usdzUrl in
-                if let usdzUrl = usdzUrl {
-                    FirebaseUploader.shared.upload(usdzUrl: usdzUrl,scanId: scan.id)
-                }
-            }
+            MDLAsset(url: url).convertToUsdz(objUrl: url,completion: nil)
         }
     }
 
-
-        
+    func uploadZip(scan:Scan) {
+        if let url = scan.fileUrl(for: .zip) {
+            FirebaseUploader.shared.upload(zipUrl: url,scanId: scan.id)
+        }
+    }
 }
 
 

@@ -8,6 +8,7 @@
 import Foundation
 import ARKit
 import ModelIO
+import Zip
 
 class RTABMap {
     var native_rtabmap: UnsafeMutableRawPointer
@@ -628,14 +629,13 @@ extension RTABMap {
         if(self.writeExportedMesh(directory: exportDir.path, name: scan.dateStr)) == true {
             do {
                 let fileURLs = try FileManager.default.contentsOfDirectory(at: exportDir, includingPropertiesForKeys: nil)
-                if let _ = fileURLs.first(where: { $0.pathExtension == "obj" }) {
+                if(!fileURLs.isEmpty) {
                     UserDefaults.scans.append(scan)
+                    try Zip.zipFiles(paths: fileURLs, zipFilePath: exportDir.appendingPathComponent("\(scan.dateStr).zip"), password: nil, progress: nil)
                     NotificationCenter.default.send(.exportResult,scan)
                 }
-
             } catch {
                 print("No files exported to \(exportDir)")
-                return
             }
         } else {
             print("rtab writeExportedMesh error")

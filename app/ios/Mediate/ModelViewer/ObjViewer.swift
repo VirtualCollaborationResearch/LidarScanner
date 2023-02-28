@@ -17,7 +17,7 @@ class ObjViewModel: NSObject, ObservableObject {
         self.scan = scan
         super.init()
         
-        if let url = scan.objUrl {
+        if let url = scan.fileUrl(for: .obj) {
             let mdlAsset = MDLAsset(url: url)
             mdlAsset.loadTextures()
             self.scene = SCNScene(mdlAsset: mdlAsset)
@@ -41,14 +41,18 @@ struct ObjViewer:View {
                 ToolbarItem(placement:.navigationBarTrailing) {
                     Menu {
                         
-                        if let obj = viewModel.scan.objUrl,
-                           let mtl = viewModel.scan.mtlUrl,
-                           let texture = viewModel.scan.textureUrl {
+                        if let obj = viewModel.scan.fileUrl(for: .obj),
+                           let mtl = viewModel.scan.fileUrl(for: .mtl),
+                           let texture = viewModel.scan.fileUrl(for: .jpg) {
                             ShareLink( "Obj File", items: [obj,mtl,texture])
                         }
                         
-                        if let usdz = viewModel.scan.usdzUrl {
+                        if let usdz = viewModel.scan.fileUrl(for: .usdz) {
                             ShareLink( "USDZ File", item: usdz)
+                        }
+                        
+                        if let usdz = viewModel.scan.fileUrl(for: .zip) {
+                            ShareLink( "Zipped Obj", item: usdz)
                         }
                         
                     } label: {
