@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4EE015C1259A2AF0008CCE65"
-               BuildableName = "3DScanner.app"
-               BlueprintName = "3DScanner"
-               ReferencedContainer = "container:3DScanner.xcodeproj">
+               BuildableName = "LidarScanner.app"
+               BlueprintName = "LidarScanner"
+               ReferencedContainer = "container:LidarScanner.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4EE015C1259A2AF0008CCE65"
-            BuildableName = "3DScanner.app"
-            BlueprintName = "3DScanner"
-            ReferencedContainer = "container:3DScanner.xcodeproj">
+            BuildableName = "LidarScanner.app"
+            BlueprintName = "LidarScanner"
+            ReferencedContainer = "container:LidarScanner.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4EE015C1259A2AF0008CCE65"
-            BuildableName = "3DScanner.app"
-            BlueprintName = "3DScanner"
-            ReferencedContainer = "container:3DScanner.xcodeproj">
+            BuildableName = "LidarScanner.app"
+            BlueprintName = "LidarScanner"
+            ReferencedContainer = "container:LidarScanner.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

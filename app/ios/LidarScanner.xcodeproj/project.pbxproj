@@ -151,15 +151,13 @@
 		4EFD0F70259F847300575D88 /* background_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD0F6E259F847300575D88 /* background_renderer.cc */; };
 		F415A6FD29ACEB700036B6F7 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415A6FC29ACEB700036B6F7 /* ScanCell.swift */; };
 		F415A70029ACF0610036B6F7 /* FirabaseUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415A6FF29ACF0610036B6F7 /* FirabaseUploader.swift */; };
-		F415A70329AE22CF0036B6F7 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = F415A70229AE22CF0036B6F7 /* Zip */; };
-		F415A70629AE33140036B6F7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F415A70529AE33140036B6F7 /* FirebaseAnalytics */; };
-		F415A70829AE33140036B6F7 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F415A70729AE33140036B6F7 /* FirebaseAnalyticsSwift */; };
-		F415A70A29AE33140036B6F7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F415A70929AE33140036B6F7 /* FirebaseAuth */; };
-		F415A70C29AE33140036B6F7 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F415A70B29AE33140036B6F7 /* FirebaseCrashlytics */; };
-		F415A70E29AE33140036B6F7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F415A70D29AE33140036B6F7 /* FirebaseFirestore */; };
-		F415A71029AE33140036B6F7 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F415A70F29AE33140036B6F7 /* FirebaseFirestoreSwift */; };
-		F415A71229AE33140036B6F7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F415A71129AE33140036B6F7 /* FirebaseStorage */; };
 		F424392D29A8E8DD00D451E5 /* MDLAsset+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F424392C29A8E8DD00D451E5 /* MDLAsset+Ext.swift */; };
+		F493F35929AF7E2900A0DF8F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35829AF7E2900A0DF8F /* FirebaseAnalytics */; };
+		F493F35B29AF7E2900A0DF8F /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35A29AF7E2900A0DF8F /* FirebaseAnalyticsSwift */; };
+		F493F35D29AF7E2900A0DF8F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35C29AF7E2900A0DF8F /* FirebaseAuth */; };
+		F493F35F29AF7E2900A0DF8F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35E29AF7E2900A0DF8F /* FirebaseCrashlytics */; };
+		F493F36129AF7E2900A0DF8F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F493F36029AF7E2900A0DF8F /* FirebaseStorage */; };
+		F493F36429AF7ECB00A0DF8F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = F493F36329AF7ECB00A0DF8F /* Zip */; };
 		F4D7CE4A29A4C7410063EBDD /* ScanARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4929A4C7410063EBDD /* ScanARView.swift */; };
 		F4D7CE5229A4DA180063EBDD /* ScanARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */; };
 		F4D7CE5429A4DA180063EBDD /* ScanViewBottomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4E29A4DA180063EBDD /* ScanViewBottomButtons.swift */; };
@@ -204,14 +202,14 @@
 		4E2C516625A63119005CEDBD /* VerticalScrollerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerticalScrollerView.swift; path = RTABMapApp/VerticalScrollerView.swift; sourceTree = "<group>"; };
 		4E401BE825CC92C100240A56 /* ProgressionStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProgressionStatus.h; path = ../android/jni/ProgressionStatus.h; sourceTree = "<group>"; };
 		4EB1A66525A0D90B0043C7BF /* RTABMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RTABMap.swift; path = RTABMapApp/RTABMap.swift; sourceTree = "<group>"; };
-		4EE015C2259A2AF0008CCE65 /* 3DScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 3DScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EE015C2259A2AF0008CCE65 /* LidarScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LidarScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EE016AF259BE441008CCE65 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = RTABMapApp/ViewController.swift; sourceTree = "<group>"; };
 		4EE016B8259BE449008CCE65 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = RTABMapApp/AppDelegate.swift; sourceTree = "<group>"; };
 		4EE016BC259BE45C008CCE65 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RTABMapApp/Info.plist; sourceTree = "<group>"; };
 		4EE016C0259BE464008CCE65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = RTABMapApp/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4EE016C2259BE464008CCE65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = RTABMapApp/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EE016C6259BE46F008CCE65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = RTABMapApp/Assets.xcassets; sourceTree = "<group>"; };
-		4EE016E1259BE96A008CCE65 /* _DScanner-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "_DScanner-Bridging-Header.h"; path = "RTABMapApp/_DScanner-Bridging-Header.h"; sourceTree = "<group>"; };
+		4EE016E1259BE96A008CCE65 /* LidarScanner-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LidarScanner-Bridging-Header.h"; path = "RTABMapApp/LidarScanner-Bridging-Header.h"; sourceTree = "<group>"; };
 		4EFD0B2B259D4DE900575D88 /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = RTABMapApp/Libraries/lib/libboost_filesystem.a; sourceTree = "<group>"; };
 		4EFD0B2C259D4DE900575D88 /* libboost_program_options.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_program_options.a; path = RTABMapApp/Libraries/lib/libboost_program_options.a; sourceTree = "<group>"; };
 		4EFD0B2D259D4DE900575D88 /* libboost_regex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_regex.a; path = RTABMapApp/Libraries/lib/libboost_regex.a; sourceTree = "<group>"; };
@@ -433,21 +431,19 @@
 				4EFD0F1D259D5C2200575D88 /* libg2o_solver_dense.a in Frameworks */,
 				4EFD0F1E259D5C2200575D88 /* libg2o_ext_csparse.a in Frameworks */,
 				4EFD0F1F259D5C2200575D88 /* libg2o_solver_slam2d_linear.a in Frameworks */,
-				F415A70C29AE33140036B6F7 /* FirebaseCrashlytics in Frameworks */,
 				4EFD0F20259D5C2200575D88 /* libg2o_types_slam2d.a in Frameworks */,
 				4EFD0F21259D5C2200575D88 /* libg2o_solver_pcg.a in Frameworks */,
 				4EFD0F22259D5C2200575D88 /* libg2o_types_data.a in Frameworks */,
 				4EFD0F23259D5C2200575D88 /* libg2o_core.a in Frameworks */,
-				F415A71229AE33140036B6F7 /* FirebaseStorage in Frameworks */,
 				4EFD0F24259D5C2200575D88 /* libgtsam_unstable.a in Frameworks */,
 				4EFD0F25259D5C2200575D88 /* libg2o_types_icp.a in Frameworks */,
 				4EFD0F26259D5C2200575D88 /* libg2o_solver_csparse.a in Frameworks */,
-				F415A70E29AE33140036B6F7 /* FirebaseFirestore in Frameworks */,
 				4EFD0F27259D5C2200575D88 /* libg2o_solver_structure_only.a in Frameworks */,
 				4EFD0F28259D5C2200575D88 /* libg2o_solver_eigen.a in Frameworks */,
 				4EFD0F29259D5C2200575D88 /* libg2o_csparse_extension.a in Frameworks */,
 				4EFD0F2A259D5C2200575D88 /* libg2o_stuff.a in Frameworks */,
 				4EFD0F2B259D5C2200575D88 /* libg2o_types_sba.a in Frameworks */,
+				F493F35D29AF7E2900A0DF8F /* FirebaseAuth in Frameworks */,
 				4EFD0F2C259D5C2200575D88 /* libg2o_types_slam2d_addons.a in Frameworks */,
 				4EFD0F2D259D5C2200575D88 /* libg2o_types_slam3d_addons.a in Frameworks */,
 				4EFD0F2E259D5C2200575D88 /* libg2o_types_slam3d.a in Frameworks */,
@@ -476,8 +472,8 @@
 				4EFD0EEF259D5BFC00575D88 /* libopencv_dpm.a in Frameworks */,
 				4EFD0EF0259D5BFC00575D88 /* libopencv_plot.a in Frameworks */,
 				4EFD0EF1259D5BFC00575D88 /* libopencv_dnn.a in Frameworks */,
+				F493F35B29AF7E2900A0DF8F /* FirebaseAnalyticsSwift in Frameworks */,
 				4EFD0EF2259D5BFC00575D88 /* libopencv_saliency.a in Frameworks */,
-				F415A70629AE33140036B6F7 /* FirebaseAnalytics in Frameworks */,
 				4EFD0EF3259D5BFC00575D88 /* libopencv_videoio.a in Frameworks */,
 				4EFD0EF4259D5BFC00575D88 /* libopencv_hfs.a in Frameworks */,
 				4EFD0EF5259D5BFC00575D88 /* libopencv_tracking.a in Frameworks */,
@@ -486,7 +482,6 @@
 				4EFD0EF8259D5BFC00575D88 /* libopencv_bioinspired.a in Frameworks */,
 				4EFD0EF9259D5BFC00575D88 /* libopencv_highgui.a in Frameworks */,
 				4EFD0EFA259D5BFC00575D88 /* libopencv_core.a in Frameworks */,
-				F415A70A29AE33140036B6F7 /* FirebaseAuth in Frameworks */,
 				4EFD0EFB259D5BFC00575D88 /* libopencv_shape.a in Frameworks */,
 				4EFD0EFC259D5BFC00575D88 /* libopencv_datasets.a in Frameworks */,
 				4EFD0EFD259D5BFC00575D88 /* libopencv_img_hash.a in Frameworks */,
@@ -494,7 +489,6 @@
 				4EFD0EFF259D5BFC00575D88 /* libopencv_calib3d.a in Frameworks */,
 				4EFD0F00259D5BFC00575D88 /* libopencv_structured_light.a in Frameworks */,
 				4EFD0F01259D5BFC00575D88 /* libopencv_reg.a in Frameworks */,
-				F415A71029AE33140036B6F7 /* FirebaseFirestoreSwift in Frameworks */,
 				4EFD0F02259D5BFC00575D88 /* libopencv_xfeatures2d.a in Frameworks */,
 				4EFD0F03259D5BFC00575D88 /* libopencv_videostab.a in Frameworks */,
 				4EFD0F04259D5BFC00575D88 /* libopencv_ccalib.a in Frameworks */,
@@ -502,17 +496,20 @@
 				4EFD0EB1259D5BE500575D88 /* librtabmap_utilite.a in Frameworks */,
 				4EFD0EB2259D5BE500575D88 /* librtabmap_core.a in Frameworks */,
 				4EFD0EAB259D581800575D88 /* OpenGLES.framework in Frameworks */,
+				F493F35929AF7E2900A0DF8F /* FirebaseAnalytics in Frameworks */,
+				F493F36129AF7E2900A0DF8F /* FirebaseStorage in Frameworks */,
 				4EFD0B36259D4DE900575D88 /* libboost_filesystem.a in Frameworks */,
 				4EFD0B37259D4DE900575D88 /* libboost_program_options.a in Frameworks */,
 				4EFD0B38259D4DE900575D88 /* libboost_regex.a in Frameworks */,
-				F415A70329AE22CF0036B6F7 /* Zip in Frameworks */,
 				4EFD0B39259D4DE900575D88 /* libboost_iostreams.a in Frameworks */,
 				4EFD0B3A259D4DE900575D88 /* libboost_date_time.a in Frameworks */,
 				4EFD0B3B259D4DE900575D88 /* libboost_serialization.a in Frameworks */,
 				4EFD0B3C259D4DE900575D88 /* libboost_system.a in Frameworks */,
 				4EFD0B3D259D4DE900575D88 /* libboost_signals.a in Frameworks */,
+				F493F36429AF7ECB00A0DF8F /* Zip in Frameworks */,
 				4EFD0B3E259D4DE900575D88 /* libboost_thread.a in Frameworks */,
 				4EFD0B3F259D4DE900575D88 /* libboost_timer.a in Frameworks */,
+				F493F35F29AF7E2900A0DF8F /* FirebaseCrashlytics in Frameworks */,
 				4EFD0B40259D4DE900575D88 /* libboost_chrono.a in Frameworks */,
 				4EFD0B51259D4DF100575D88 /* libpcl_stereo.a in Frameworks */,
 				4EFD0B52259D4DF100575D88 /* libpcl_registration.a in Frameworks */,
@@ -527,7 +524,6 @@
 				4EFD0B5B259D4DF100575D88 /* libpcl_octree.a in Frameworks */,
 				4EFD0B5C259D4DF100575D88 /* libpcl_io.a in Frameworks */,
 				4EFD0B5D259D4DF100575D88 /* libpcl_common.a in Frameworks */,
-				F415A70829AE33140036B6F7 /* FirebaseAnalyticsSwift in Frameworks */,
 				4EFD0B5E259D4DF100575D88 /* libpcl_io_ply.a in Frameworks */,
 				4EFD0B5F259D4DF100575D88 /* libpcl_ml.a in Frameworks */,
 				4EFD0B60259D4DF100575D88 /* libpcl_segmentation.a in Frameworks */,
@@ -550,7 +546,7 @@
 		4EE015C3259A2AF0008CCE65 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4EE015C2259A2AF0008CCE65 /* 3DScanner.app */,
+				4EE015C2259A2AF0008CCE65 /* LidarScanner.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -563,7 +559,7 @@
 				4EFD0BB0259D503200575D88 /* NativeWrapper */,
 				4EFD0B62259D501E00575D88 /* tango-gl */,
 				4EE016B8259BE449008CCE65 /* AppDelegate.swift */,
-				4EE016E1259BE96A008CCE65 /* _DScanner-Bridging-Header.h */,
+				4EE016E1259BE96A008CCE65 /* LidarScanner-Bridging-Header.h */,
 				4EE016AF259BE441008CCE65 /* ViewController.swift */,
 				4EE016BF259BE464008CCE65 /* Main.storyboard */,
 				4EE016C1259BE464008CCE65 /* LaunchScreen.storyboard */,
@@ -909,9 +905,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4EE015C1259A2AF0008CCE65 /* 3DScanner */ = {
+		4EE015C1259A2AF0008CCE65 /* LidarScanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4EE015D6259A2AF0008CCE65 /* Build configuration list for PBXNativeTarget "3DScanner" */;
+			buildConfigurationList = 4EE015D6259A2AF0008CCE65 /* Build configuration list for PBXNativeTarget "LidarScanner" */;
 			buildPhases = (
 				4EE015BE259A2AF0008CCE65 /* Sources */,
 				4EE015BF259A2AF0008CCE65 /* Frameworks */,
@@ -922,19 +918,17 @@
 			);
 			dependencies = (
 			);
-			name = 3DScanner;
+			name = LidarScanner;
 			packageProductDependencies = (
-				F415A70229AE22CF0036B6F7 /* Zip */,
-				F415A70529AE33140036B6F7 /* FirebaseAnalytics */,
-				F415A70729AE33140036B6F7 /* FirebaseAnalyticsSwift */,
-				F415A70929AE33140036B6F7 /* FirebaseAuth */,
-				F415A70B29AE33140036B6F7 /* FirebaseCrashlytics */,
-				F415A70D29AE33140036B6F7 /* FirebaseFirestore */,
-				F415A70F29AE33140036B6F7 /* FirebaseFirestoreSwift */,
-				F415A71129AE33140036B6F7 /* FirebaseStorage */,
+				F493F35829AF7E2900A0DF8F /* FirebaseAnalytics */,
+				F493F35A29AF7E2900A0DF8F /* FirebaseAnalyticsSwift */,
+				F493F35C29AF7E2900A0DF8F /* FirebaseAuth */,
+				F493F35E29AF7E2900A0DF8F /* FirebaseCrashlytics */,
+				F493F36029AF7E2900A0DF8F /* FirebaseStorage */,
+				F493F36329AF7ECB00A0DF8F /* Zip */,
 			);
 			productName = RTABMapApp;
-			productReference = 4EE015C2259A2AF0008CCE65 /* 3DScanner.app */;
+			productReference = 4EE015C2259A2AF0008CCE65 /* LidarScanner.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -951,7 +945,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4EE015BD259A2AF0008CCE65 /* Build configuration list for PBXProject "3DScanner" */;
+			buildConfigurationList = 4EE015BD259A2AF0008CCE65 /* Build configuration list for PBXProject "LidarScanner" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -961,14 +955,14 @@
 			);
 			mainGroup = 4EE015B9259A2AF0008CCE65;
 			packageReferences = (
-				F415A70129AE22CF0036B6F7 /* XCRemoteSwiftPackageReference "Zip" */,
-				F415A70429AE33140036B6F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F493F36229AF7ECB00A0DF8F /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = 4EE015C3259A2AF0008CCE65 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4EE015C1259A2AF0008CCE65 /* 3DScanner */,
+				4EE015C1259A2AF0008CCE65 /* LidarScanner */,
 			);
 		};
 /* End PBXProject section */
@@ -1162,7 +1156,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1217,7 +1211,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1236,7 +1230,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R3JCJ2A44;
 				EXCLUDED_ARCHS = "";
@@ -1252,7 +1246,7 @@
 				);
 				GCC_UNROLL_LOOPS = NO;
 				INFOPLIST_FILE = RTABMapApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = 3DScanner;
+				INFOPLIST_KEY_CFBundleDisplayName = LidarScanner;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1263,9 +1257,9 @@
 					"$(PROJECT_DIR)/RTABMapApp/Libraries/lib",
 					"$(PROJECT_DIR)/RTABMapApp/Libraries/share/OpenCV/3rdparty/lib",
 				);
-				MARKETING_VERSION = 0.20.19;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_CFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mediate.3dscanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mediate.lidarscanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RTABMapApp/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
@@ -1295,7 +1289,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R3JCJ2A44;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1311,7 +1305,7 @@
 				);
 				GCC_UNROLL_LOOPS = NO;
 				INFOPLIST_FILE = RTABMapApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = 3DScanner;
+				INFOPLIST_KEY_CFBundleDisplayName = LidarScanner;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1322,10 +1316,10 @@
 					"$(PROJECT_DIR)/RTABMapApp/Libraries/lib",
 					"$(PROJECT_DIR)/RTABMapApp/Libraries/share/OpenCV/3rdparty/lib",
 				);
-				MARKETING_VERSION = 0.20.19;
+				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mediate.3dscanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mediate.lidarscanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RTABMapApp/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
@@ -1349,7 +1343,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4EE015BD259A2AF0008CCE65 /* Build configuration list for PBXProject "3DScanner" */ = {
+		4EE015BD259A2AF0008CCE65 /* Build configuration list for PBXProject "LidarScanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4EE015D4259A2AF0008CCE65 /* Debug */,
@@ -1358,7 +1352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4EE015D6259A2AF0008CCE65 /* Build configuration list for PBXNativeTarget "3DScanner" */ = {
+		4EE015D6259A2AF0008CCE65 /* Build configuration list for PBXNativeTarget "LidarScanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4EE015D7259A2AF0008CCE65 /* Debug */,
@@ -1370,15 +1364,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F415A70129AE22CF0036B6F7 /* XCRemoteSwiftPackageReference "Zip" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marmelroy/Zip.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		F415A70429AE33140036B6F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -1386,48 +1372,46 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		F493F36229AF7ECB00A0DF8F /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F415A70229AE22CF0036B6F7 /* Zip */ = {
+		F493F35829AF7E2900A0DF8F /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F415A70129AE22CF0036B6F7 /* XCRemoteSwiftPackageReference "Zip" */;
-			productName = Zip;
-		};
-		F415A70529AE33140036B6F7 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F415A70429AE33140036B6F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
-		F415A70729AE33140036B6F7 /* FirebaseAnalyticsSwift */ = {
+		F493F35A29AF7E2900A0DF8F /* FirebaseAnalyticsSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F415A70429AE33140036B6F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
 		};
-		F415A70929AE33140036B6F7 /* FirebaseAuth */ = {
+		F493F35C29AF7E2900A0DF8F /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F415A70429AE33140036B6F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		F415A70B29AE33140036B6F7 /* FirebaseCrashlytics */ = {
+		F493F35E29AF7E2900A0DF8F /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F415A70429AE33140036B6F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
-		F415A70D29AE33140036B6F7 /* FirebaseFirestore */ = {
+		F493F36029AF7E2900A0DF8F /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F415A70429AE33140036B6F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		F415A70F29AE33140036B6F7 /* FirebaseFirestoreSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F415A70429AE33140036B6F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
-		};
-		F415A71129AE33140036B6F7 /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F415A70429AE33140036B6F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		F493F36329AF7ECB00A0DF8F /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F493F36229AF7ECB00A0DF8F /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
