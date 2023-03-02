@@ -64,7 +64,7 @@ struct ScanCreationLoading:View {
                 Spacer()
                 ProgressView(value: percentage, total: 100) {
                     HStack {
-                        Text("Model creating...")
+                        Text("Creating model...")
                         Spacer()
                         Text("%\(Int(percentage))")
                     }

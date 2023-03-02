@@ -71,8 +71,11 @@ final class ScanListViewModel:ObservableObject {
             let exportDir = obj.deletingLastPathComponent()
             let zipUrl = exportDir.appendingPathComponent("\(scan.dateStr).zip")
             do {
-                try Zip.zipFiles(paths: [obj,mtl,jpg], zipFilePath: zipUrl, password: nil, progress: nil)
-                FirebaseUploader.shared.upload(zipUrl: zipUrl,scanId: scan.id)
+                try Zip.zipFiles(paths: [obj,mtl,jpg], zipFilePath: zipUrl, password: nil, progress: { progress in
+                    if progress == 1 {
+                        FirebaseUploader.shared.upload(zipUrl: zipUrl,scanId: scan.id)
+                    }
+                })
             } catch {
                 print(error)
             }
