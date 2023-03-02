@@ -18,7 +18,7 @@ class FirebaseUploader:NSObject {
     func upload(zipUrl:URL,scanId:UUID) {
         guard let userId = UserDefaults.userId else { return }
         let folderName = zipUrl.deletingLastPathComponent().lastPathComponent
-        let scansRef = storage.reference().child("scans/\(userId)/\(folderName)/\(zipUrl.lastPathComponent)")
+        let scansRef = storage.reference().child("users/\(userId)/\(folderName)/\(zipUrl.lastPathComponent)")
         
         print(zipUrl)
 
