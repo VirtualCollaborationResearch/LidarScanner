@@ -158,6 +158,7 @@
 		F493F35F29AF7E2900A0DF8F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35E29AF7E2900A0DF8F /* FirebaseCrashlytics */; };
 		F493F36129AF7E2900A0DF8F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F493F36029AF7E2900A0DF8F /* FirebaseStorage */; };
 		F493F36429AF7ECB00A0DF8F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = F493F36329AF7ECB00A0DF8F /* Zip */; };
+		F493F36829B0F28600A0DF8F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */; };
 		F4D7CE4A29A4C7410063EBDD /* ScanARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4929A4C7410063EBDD /* ScanARView.swift */; };
 		F4D7CE5229A4DA180063EBDD /* ScanARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */; };
 		F4D7CE5429A4DA180063EBDD /* ScanViewBottomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4E29A4DA180063EBDD /* ScanViewBottomButtons.swift */; };
@@ -191,7 +192,6 @@
 		F4D7CE9629A664BA0063EBDD /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE9229A664BA0063EBDD /* ContactUsView.swift */; };
 		F4D7CE9729A664BA0063EBDD /* CopyrightAndLicensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE9329A664BA0063EBDD /* CopyrightAndLicensesView.swift */; };
 		F4D7CE9829A664BA0063EBDD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE9429A664BA0063EBDD /* MenuView.swift */; };
-		F4D7CE9E29A8D7FB0063EBDD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4D7CE9D29A8D7FB0063EBDD /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -379,6 +379,7 @@
 		F415A6FC29ACEB700036B6F7 /* ScanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCell.swift; sourceTree = "<group>"; };
 		F415A6FF29ACF0610036B6F7 /* FirabaseUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirabaseUploader.swift; sourceTree = "<group>"; };
 		F424392C29A8E8DD00D451E5 /* MDLAsset+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MDLAsset+Ext.swift"; sourceTree = "<group>"; };
+		F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4D7CE4929A4C7410063EBDD /* ScanARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanARView.swift; sourceTree = "<group>"; };
 		F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanARViewController.swift; sourceTree = "<group>"; };
 		F4D7CE4E29A4DA180063EBDD /* ScanViewBottomButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewBottomButtons.swift; sourceTree = "<group>"; };
@@ -412,7 +413,6 @@
 		F4D7CE9229A664BA0063EBDD /* ContactUsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
 		F4D7CE9329A664BA0063EBDD /* CopyrightAndLicensesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyrightAndLicensesView.swift; sourceTree = "<group>"; };
 		F4D7CE9429A664BA0063EBDD /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		F4D7CE9D29A8D7FB0063EBDD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -561,10 +561,10 @@
 				4EE016B8259BE449008CCE65 /* AppDelegate.swift */,
 				4EE016E1259BE96A008CCE65 /* LidarScanner-Bridging-Header.h */,
 				4EE016AF259BE441008CCE65 /* ViewController.swift */,
+				F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */,
 				4EE016BF259BE464008CCE65 /* Main.storyboard */,
 				4EE016C1259BE464008CCE65 /* LaunchScreen.storyboard */,
 				4EE016BC259BE45C008CCE65 /* Info.plist */,
-				F4D7CE9D29A8D7FB0063EBDD /* GoogleService-Info.plist */,
 				4EE016C6259BE46F008CCE65 /* Assets.xcassets */,
 				4EB1A66525A0D90B0043C7BF /* RTABMap.swift */,
 				4E2C516525A63119005CEDBD /* DatabaseView.swift */,
@@ -978,7 +978,7 @@
 				4E20B250266AB95600316EE6 /* Images.xcassets in Resources */,
 				4EE016C4259BE464008CCE65 /* LaunchScreen.storyboard in Resources */,
 				4EE016C7259BE46F008CCE65 /* Assets.xcassets in Resources */,
-				F4D7CE9E29A8D7FB0063EBDD /* GoogleService-Info.plist in Resources */,
+				F493F36829B0F28600A0DF8F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,12 +39,21 @@ final class ScanListViewModel:ObservableObject {
         }.store(in: &cancellable)
     }
     
+    func deleteFromFirebase(_ scan:Scan?) {
+        if let scan = scan,
+           let zipUrl = scan.fileUrl(for: .zip) {
+            FirebaseUploader.shared.remove(zipUrl: zipUrl, scanId: scan.id)
+        }
+    }
+    
     func delete(i: IndexSet) {
-            scans.remove(atOffsets: i)
-            UserDefaults.scans = scans
+        i.forEach { deleteFromFirebase(scans[safe:$0]) }
+        scans.remove(atOffsets: i)
+        UserDefaults.scans = scans
     }
     
     func deleteWith(scan: Scan) {
+            deleteFromFirebase(scan)
             scans.remove(object: scan)
             UserDefaults.scans = scans
     }
