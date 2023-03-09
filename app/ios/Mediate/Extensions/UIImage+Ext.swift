@@ -21,12 +21,12 @@ extension UIImage {
         return UIImage(cgImage: img)
     }
     
-    func saveJpeg(name: String,folder:String) {
+    func saveJpeg(name: String,folder:String,qualilty:CGFloat = 0.8) {
      guard let folderUrl = FileManager.default.createFolder(name: folder) else { return }
         
         let fileName = name + ".jpeg"
         let fileUrl = folderUrl.appendingPathComponent(fileName)
-        guard let data = jpegData(compressionQuality: 1) else { return }
+        guard let data = jpegData(compressionQuality: 0.8) else { return }
 
         do {
             try data.write(to: fileUrl)
@@ -35,8 +35,8 @@ extension UIImage {
         }
     }
     
-    @discardableResult func savePNG(name:String) -> URL? {
-        guard let folderURL = FileManager.default.createFolder(name: "RT-Images") else {
+    @discardableResult func savePNG(name:String,folder:String) -> URL? {
+        guard let folderURL = FileManager.default.createFolder(name: folder) else {
             return nil
         }
         let imageUrl = folderURL.appendingPathComponent(name+".png")

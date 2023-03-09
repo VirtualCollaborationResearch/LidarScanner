@@ -16,7 +16,7 @@ extension FileManager {
         
         if !FileManager.default.fileExists(atPath: folderUrl.path) {
             do {
-                try FileManager.default.createDirectory(at: folderUrl, withIntermediateDirectories: false)
+                try FileManager.default.createDirectory(at: folderUrl, withIntermediateDirectories: true)
                 return folderUrl
                 
             } catch let removeError {

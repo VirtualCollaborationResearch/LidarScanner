@@ -64,14 +64,21 @@ class ScanARViewController: UIViewController {
         }.store(in: &cancellable)
         
         arFrameReciever
-            .throttle(for: .seconds(0.5), scheduler: DispatchQueue.global(), latest: true)
-            .sink { frame in
-                let imageName = UUID().uuidString
-                CameraModel(frame: frame).writeToDisk(name: imageName)
-                UIImage(pixelBuffer: frame.capturedImage)?.saveJpeg(name: imageName+"-texture", folder: "RT-Images")
-                frame.sceneDepth?.depthMap.depth16BitImage?.savePNG(name: imageName+"-depth")
-                frame.sceneDepth?.confidenceMap?.confidenceImage?.savePNG(name: imageName+"-confidence")
+            .throttle(for: .seconds(1), scheduler: DispatchQueue.global(), latest: true)
+            .sink { [weak self] frame in
+                self?.saveRawData(frame: frame)
             }.store(in: &cancellable)
+    }
+    
+    func saveRawData(frame:ARFrame) {
+        let name = UUID().uuidString
+        let folder = "RawData/\(viewModel.scanId)/\(name)"
+        autoreleasepool {
+            CameraModel(camera: frame.camera, timeStamp: frame.timestamp).writeToDisk(name: name,folder: folder)
+            UIImage(pixelBuffer: frame.capturedImage)?.saveJpeg(name: "texture", folder:folder)
+            frame.sceneDepth?.depthMap.depth16BitImage?.savePNG(name: "depth",folder:folder)
+            frame.sceneDepth?.confidenceMap?.confidenceImage?.savePNG(name: "confidence",folder:folder)
+        }
     }
 }
 

@@ -882,10 +882,10 @@
 				F4D7CE9029A664BA0063EBDD /* Menu */,
 				F4D7CE8B29A65CA40063EBDD /* Home */,
 				F4D7CE8729A651BD0063EBDD /* ModelViewer */,
-				F4D7CE6129A4DB0B0063EBDD /* Extensions */,
-				F4D7CE7029A4DB0B0063EBDD /* Helpers */,
 				F4D7CE5829A4DA470063EBDD /* Main */,
 				F4D7CE4B29A4D9DA0063EBDD /* Scan */,
+				F4D7CE7029A4DB0B0063EBDD /* Helpers */,
+				F4D7CE6129A4DB0B0063EBDD /* Extensions */,
 			);
 			path = Mediate;
 			sourceTree = "<group>";

@@ -9,14 +9,14 @@ struct CameraModel: Codable {
     let timestamp: Double
     let width, height: Int
     
-    init(frame:ARFrame) {
-        let intrinsics = frame.camera.intrinsics
+    init(camera:ARCamera,timeStamp:TimeInterval) {
+        let intrinsics = camera.intrinsics
         fx = intrinsics[0,0]
         fy = intrinsics[1,1]
         cx = intrinsics[2,0]
         cy = intrinsics[2,1]
         
-        let transform = frame.camera.transform
+        let transform = camera.transform
         
         t_00 = transform[0,0]
         t_01 = transform[1,0]
@@ -33,13 +33,13 @@ struct CameraModel: Codable {
         t_22 = transform[2,2]
         t_23 = transform[3,2]
         
-        timestamp = Double(frame.timestamp)
-        width = Int(frame.camera.imageResolution.width)
-        height = Int(frame.camera.imageResolution.height)
+        timestamp = Double(timeStamp)
+        width = Int(camera.imageResolution.width)
+        height = Int(camera.imageResolution.height)
     }
     
-    func writeToDisk(name:String) {
-        if let folder = FileManager.default.createFolder(name: "RT-Images"),
+    func writeToDisk(name:String,folder:String) {
+        if let folder = FileManager.default.createFolder(name: folder),
         let data = try? JSONEncoder().encode(self) {
             try? data.write(to: folder.appendingPathComponent(name+".json"))
         }
