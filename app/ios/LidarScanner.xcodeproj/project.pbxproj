@@ -152,6 +152,9 @@
 		F415A6FD29ACEB700036B6F7 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415A6FC29ACEB700036B6F7 /* ScanCell.swift */; };
 		F415A70029ACF0610036B6F7 /* FirabaseUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415A6FF29ACF0610036B6F7 /* FirabaseUploader.swift */; };
 		F424392D29A8E8DD00D451E5 /* MDLAsset+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F424392C29A8E8DD00D451E5 /* MDLAsset+Ext.swift */; };
+		F45BBA6029B8B37F00D45094 /* Depth2IntConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA5F29B8B37F00D45094 /* Depth2IntConverter.swift */; };
+		F45BBA6429B8EC3B00D45094 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA6329B8EC3B00D45094 /* CameraModel.swift */; };
+		F45BBA6629B9F31200D45094 /* CVPixelBuffer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA6529B9F31200D45094 /* CVPixelBuffer+Ext.swift */; };
 		F493F35929AF7E2900A0DF8F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35829AF7E2900A0DF8F /* FirebaseAnalytics */; };
 		F493F35B29AF7E2900A0DF8F /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35A29AF7E2900A0DF8F /* FirebaseAnalyticsSwift */; };
 		F493F35D29AF7E2900A0DF8F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35C29AF7E2900A0DF8F /* FirebaseAuth */; };
@@ -379,6 +382,9 @@
 		F415A6FC29ACEB700036B6F7 /* ScanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCell.swift; sourceTree = "<group>"; };
 		F415A6FF29ACF0610036B6F7 /* FirabaseUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirabaseUploader.swift; sourceTree = "<group>"; };
 		F424392C29A8E8DD00D451E5 /* MDLAsset+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MDLAsset+Ext.swift"; sourceTree = "<group>"; };
+		F45BBA5F29B8B37F00D45094 /* Depth2IntConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth2IntConverter.swift; sourceTree = "<group>"; };
+		F45BBA6329B8EC3B00D45094 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
+		F45BBA6529B9F31200D45094 /* CVPixelBuffer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Ext.swift"; sourceTree = "<group>"; };
 		F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4D7CE4929A4C7410063EBDD /* ScanARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanARView.swift; sourceTree = "<group>"; };
 		F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanARViewController.swift; sourceTree = "<group>"; };
@@ -825,6 +831,7 @@
 				F4D7CE6E29A4DB0B0063EBDD /* RealityKit+Ext.swift */,
 				F4D7CE6F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift */,
 				F424392C29A8E8DD00D451E5 /* MDLAsset+Ext.swift */,
+				F45BBA6529B9F31200D45094 /* CVPixelBuffer+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -833,6 +840,7 @@
 			isa = PBXGroup;
 			children = (
 				F4D7CE7129A4DB0B0063EBDD /* Defaults.swift */,
+				F45BBA5F29B8B37F00D45094 /* Depth2IntConverter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -854,6 +862,7 @@
 				F4D7CE4F29A4DA180063EBDD /* ScanViewSheetAndAlertTypes.swift */,
 				F4D7CE8329A6466E0063EBDD /* Scan.swift */,
 				F4D7CE5029A4DA180063EBDD /* ScanViewViewModel.swift */,
+				F45BBA6329B8EC3B00D45094 /* CameraModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1014,6 +1023,7 @@
 				4E2C516825A63119005CEDBD /* VerticalScrollerView.swift in Sources */,
 				4EE016B3259BE441008CCE65 /* ViewController.swift in Sources */,
 				F4D7CE9529A664BA0063EBDD /* AboutView.swift in Sources */,
+				F45BBA6429B8EC3B00D45094 /* CameraModel.swift in Sources */,
 				F4D7CE7E29A4DB0B0063EBDD /* RealityKit+Ext.swift in Sources */,
 				F4D7CE7429A4DB0B0063EBDD /* NotificationNames.swift in Sources */,
 				F4D7CE5429A4DA180063EBDD /* ScanViewBottomButtons.swift in Sources */,
@@ -1030,6 +1040,7 @@
 				4EFD0BAE259D501E00575D88 /* band.cpp in Sources */,
 				F4D7CE7A29A4DB0B0063EBDD /* Array+Ext.swift in Sources */,
 				4EFD0B97259D501E00575D88 /* line.cpp in Sources */,
+				F45BBA6029B8B37F00D45094 /* Depth2IntConverter.swift in Sources */,
 				4EB1A66625A0D90B0043C7BF /* RTABMap.swift in Sources */,
 				F4D7CE4A29A4C7410063EBDD /* ScanARView.swift in Sources */,
 				4EFD0B9A259D501E00575D88 /* bounding_box.cpp in Sources */,
@@ -1062,6 +1073,7 @@
 				F4D7CE5629A4DA180063EBDD /* ScanViewViewModel.swift in Sources */,
 				F4D7CE8429A6466E0063EBDD /* Scan.swift in Sources */,
 				F4D7CE7D29A4DB0B0063EBDD /* UIView+Ext.swift in Sources */,
+				F45BBA6629B9F31200D45094 /* CVPixelBuffer+Ext.swift in Sources */,
 				4EFD0BAB259D501E00575D88 /* circle.cpp in Sources */,
 				F4D7CE9729A664BA0063EBDD /* CopyrightAndLicensesView.swift in Sources */,
 				F415A70029ACF0610036B6F7 /* FirabaseUploader.swift in Sources */,
