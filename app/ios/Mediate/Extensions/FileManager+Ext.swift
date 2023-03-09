@@ -8,9 +8,13 @@
 import Foundation
 
 extension FileManager {
+    
+    var documentsDir:URL? {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+    }
+    
     func createFolder(name: String) -> URL? {
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        else { return nil }
+        guard let documentsDirectory = FileManager.default.documentsDir else { return nil }
         
         let folderUrl = documentsDirectory.appendingPathComponent(name)
         
@@ -25,7 +29,6 @@ extension FileManager {
             }
         } else {
             return folderUrl
-            
         }
     }
     

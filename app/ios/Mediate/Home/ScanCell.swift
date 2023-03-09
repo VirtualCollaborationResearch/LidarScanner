@@ -14,7 +14,7 @@ struct ScanCell:View {
     var body: some View {
             HStack(spacing:15) {
                 ZStack {
-                    AsyncImage(url: scan.id.uuidString.imageFromDisk("Map Images")) { image in
+                    AsyncImage(url: "cover".imageFromDisk(scan.id.uuidString)) { image in
                         image.resizable()
                     } placeholder: {
                         Color(.systemGray4)

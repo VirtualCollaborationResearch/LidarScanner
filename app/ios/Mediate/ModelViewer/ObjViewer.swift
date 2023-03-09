@@ -55,6 +55,10 @@ struct ObjViewer:View {
                             ShareLink( "Zipped Obj", item: usdz)
                         }
                         
+                        if let rawZip = viewModel.scan.fileUrl(for: .rawZip) {
+                            ShareLink( "Zipped Raw Data", item: rawZip)
+                        }
+                        
                     } label: {
                         Image(systemName: "square.and.arrow.up")
                     }

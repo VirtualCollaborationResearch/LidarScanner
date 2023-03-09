@@ -45,8 +45,11 @@ struct ScanView: View {
                 }.accessibilityLabel("Return to map list")
             }
         }
-        .onReceive(viewModel.doneScanning) { _ in
+        .onReceive(viewModel.scanResult) { scan in
             coordinator.goToHomeAreas()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                NotificationCenter.default.send(.scanToBeSaved,scan)
+            }
         }
     }
 }

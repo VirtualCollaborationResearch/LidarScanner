@@ -13,6 +13,7 @@ extension Notification.Name {
     static let toggleSheet = Notification.Name("toggleSheet")
     static let snapshotImage = Notification.Name("snapshotImage")
     static let exportResult = Notification.Name("exportResult")
+    static let scanToBeSaved = Notification.Name("scanToBeSaved")
     static let deleteScan = Notification.Name("deleteScan")
 
 }

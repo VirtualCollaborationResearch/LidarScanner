@@ -70,12 +70,11 @@ class FirebaseUploader:NSObject {
         }
     }
     
-    func remove(zipUrl:URL,scanId:UUID) {
+    func remove(date:String,scanId:UUID) {
         guard let userId = UserDefaults.userId else { return }
-        let folderName = zipUrl.deletingLastPathComponent().lastPathComponent
-        let scansRef = storage.reference().child("users/\(userId)/\(folderName)/\(zipUrl.lastPathComponent)")
-        
-        print(zipUrl)
+        let scansRef = storage.reference().child("users/\(userId)/\(scanId)/\(date).zip")
+        let rawRef = storage.reference().child("users/\(userId)/\(scanId)/\(date)-raw.zip")
+        rawRef.delete(completion: nil)
         scansRef.delete(completion: nil)
     }
 }

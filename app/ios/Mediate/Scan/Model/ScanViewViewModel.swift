@@ -15,9 +15,8 @@ final class ScanViewViewModel:ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     var scanId = UUID()
     var rtabmap = RTABMap()
-    var doneScanning = PassthroughSubject<Bool,Never>()
+    var scanResult = PassthroughSubject<Scan,Never>()
     @Published var isScanning = true
-    var snapShot = PassthroughSubject<UUID,Never>()
     var modelCreationPercentage = PassthroughSubject<Float,Never>()
 
     init() {
@@ -29,8 +28,8 @@ final class ScanViewViewModel:ObservableObject {
     private func setupNotificationListener() {        
         NotificationCenter.default.publisher(for: .exportResult).sink {  [weak self] notif in
             if let notif = notif.userInfo?["data"] as? NotifWrapper<Any?>,
-               let _ = notif.wrappedValue as? Scan {
-                self?.doneScanning.send(true)
+               let scan = notif.wrappedValue as? Scan {
+                self?.scanResult.send(scan)
             }
         }.store(in: &cancellable)
     }
@@ -38,12 +37,22 @@ final class ScanViewViewModel:ObservableObject {
     func doneTapped() {
         self.isScanning = false
     }
+    
+    func saveRawData(frame:ARFrame) {
+        let name = "\(frame.timestamp)"
+        let folder = "\(scanId)/RawData/\(name)"
+        autoreleasepool {
+            CameraModel(camera: frame.camera, timeStamp: frame.timestamp).writeToDisk(name: name,folder: folder)
+            UIImage(pixelBuffer: frame.capturedImage)?.saveJpeg(name: "texture", folder:folder)
+            frame.sceneDepth?.depthMap.depth16BitImage?.savePNG(name: "depth",folder:folder)
+            frame.sceneDepth?.confidenceMap?.confidenceImage?.savePNG(name: "confidence",folder:folder)
+        }
+    }
 }
 
 extension ScanViewViewModel: RTABMapObserver {
     func progressUpdated(_ rtabmap: RTABMap, count: Int, max: Int) {
         let percentage = min(100,100 * Float(count)/Float(max))
-        print("**** ",count,max)
         DispatchQueue.main.async { [weak self] in
             self?.modelCreationPercentage.send(percentage)
         }

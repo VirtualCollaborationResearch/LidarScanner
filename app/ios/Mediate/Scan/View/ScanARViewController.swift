@@ -10,13 +10,13 @@ import RealityKit
 import SwiftUI
 import Combine
 
-class ScanARViewController: UIViewController {
-        
-    var viewModel:ScanViewViewModel
-
-    var arView: ScanARView { self.view as! ScanARView }
+final class ScanARViewController: UIViewController {
+    
+    private var viewModel:ScanViewViewModel
+    
+    private var arView: ScanARView { self.view as! ScanARView }
     private var arFrameReciever = PassthroughSubject<ARFrame,Never>()
-
+    
     private var cancellable = Set<AnyCancellable>()
     
     init(viewModel: ScanViewViewModel) {
@@ -27,7 +27,7 @@ class ScanARViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func loadView() {
         self.view = ScanARView()
         arView.session.delegate = self
@@ -52,7 +52,7 @@ class ScanARViewController: UIViewController {
                 arView.startScanning()
             } else {
                 arView.snapshot(saveToHDR: true, completion: { [unowned self] image in
-                    image?.saveJpeg(name: viewModel.scanId.uuidString, folder: "Map Images")
+                    image?.saveJpeg(name: "cover", folder: viewModel.scanId.uuidString)
                     arView.stopScanning()
                     viewModel.rtabmap.stop()
                 })
@@ -66,19 +66,8 @@ class ScanARViewController: UIViewController {
         arFrameReciever
             .throttle(for: .seconds(1), scheduler: DispatchQueue.global(), latest: true)
             .sink { [weak self] frame in
-                self?.saveRawData(frame: frame)
+                self?.viewModel.saveRawData(frame: frame)
             }.store(in: &cancellable)
-    }
-    
-    func saveRawData(frame:ARFrame) {
-        let name = UUID().uuidString
-        let folder = "RawData/\(viewModel.scanId)/\(name)"
-        autoreleasepool {
-            CameraModel(camera: frame.camera, timeStamp: frame.timestamp).writeToDisk(name: name,folder: folder)
-            UIImage(pixelBuffer: frame.capturedImage)?.saveJpeg(name: "texture", folder:folder)
-            frame.sceneDepth?.depthMap.depth16BitImage?.savePNG(name: "depth",folder:folder)
-            frame.sceneDepth?.confidenceMap?.confidenceImage?.savePNG(name: "confidence",folder:folder)
-        }
     }
 }
 
@@ -94,7 +83,7 @@ extension ScanARViewController: ARSessionDelegate {
 
 struct ScanARViewRepresentable: UIViewControllerRepresentable {
     @StateObject var viewModel: ScanViewViewModel
-
+    
     typealias UIViewControllerType = ScanARViewController
     
     func makeUIViewController(context: Context) -> ScanARViewController {
