@@ -11,22 +11,11 @@ import SceneKit
 
 class ObjViewModel: NSObject, ObservableObject {
     var scan:Scan
-    var scene:SCNScene?
     
     init(scan:Scan) {
         self.scan = scan
         super.init()
-        
-        if let url = scan.fileUrl(for: .obj) {
-            let mdlAsset = MDLAsset(url: url)
-            mdlAsset.loadTextures()
-            self.scene = SCNScene(mdlAsset: mdlAsset)
-            self.scene?.rootNode.geometry?.firstMaterial?.lightingModel = .physicallyBased
-            let spotLight = SCNNode()
-            spotLight.light = SCNLight()
-            spotLight.light?.type = .area
-            scene?.rootNode.addChildNode(spotLight)
-        }
+
     }
 }
 
@@ -34,7 +23,7 @@ struct ObjViewer:View {
     @StateObject var viewModel:ObjViewModel
     
     var body: some View {
-        SceneView(scene: viewModel.scene, options: [.allowsCameraControl,.autoenablesDefaultLighting])
+        ModelScene(url: viewModel.scan.fileUrl(for: .obj))
             .navigationTitle(viewModel.scan.dateStr)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

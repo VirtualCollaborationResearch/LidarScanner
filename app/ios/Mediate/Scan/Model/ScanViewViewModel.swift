@@ -40,12 +40,12 @@ final class ScanViewViewModel:ObservableObject {
     
     func saveRawData(frame:ARFrame) {
         let name = "\(frame.timestamp)"
-        let folder = "\(scanId)/RawData/\(name)"
+        let folder = "\(scanId)/RawData/"
         autoreleasepool {
-            CameraModel(camera: frame.camera, timeStamp: frame.timestamp).writeToDisk(name: name,folder: folder)
-            UIImage(pixelBuffer: frame.capturedImage)?.saveJpeg(name: "texture", folder:folder)
-            frame.sceneDepth?.depthMap.depth16BitImage?.savePNG(name: "depth",folder:folder)
-            frame.sceneDepth?.confidenceMap?.confidenceImage?.savePNG(name: "confidence",folder:folder)
+            CameraModel(camera: frame.camera, timeStamp: frame.timestamp).writeToDisk(name: name,folder: folder+"camera")
+            UIImage(pixelBuffer: frame.capturedImage)?.saveJpeg(name: name, folder:folder+"rgb")
+            frame.sceneDepth?.depthMap.depth16BitImage?.savePNG(name: name,folder:folder+"depth")
+            frame.sceneDepth?.confidenceMap?.confidenceImage?.savePNG(name: name,folder:folder+"confidence")
         }
     }
 }

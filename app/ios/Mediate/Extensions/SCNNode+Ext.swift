@@ -8,16 +8,14 @@
 import ARKit
 
 extension SCNNode {
-    static func appLabel(id:UUID) -> SCNNode {
-        let plane = SCNPlane(width: 0.18, height: 0.18)
+    static func snapDot(id:UUID) -> SCNNode {
+        let plane = SCNPlane(width: 0.2, height: 0.2)
         let material = SCNMaterial()
         material.isDoubleSided = true
-        material.diffuse.contents = UIImage(named: "label")
+        material.diffuse.contents = UIColor.blue
         plane.materials = [material]
         let node = SCNNode(geometry: plane)
         node.name = id.uuidString
-        let billboardConstraint = SCNBillboardConstraint()
-        node.constraints = [billboardConstraint]
         return node
     }
 }

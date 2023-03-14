@@ -155,6 +155,7 @@
 		F45BBA6029B8B37F00D45094 /* Depth2IntConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA5F29B8B37F00D45094 /* Depth2IntConverter.swift */; };
 		F45BBA6429B8EC3B00D45094 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA6329B8EC3B00D45094 /* CameraModel.swift */; };
 		F45BBA6629B9F31200D45094 /* CVPixelBuffer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA6529B9F31200D45094 /* CVPixelBuffer+Ext.swift */; };
+		F45BBA6829BB5E1500D45094 /* ModelSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA6729BB5E1500D45094 /* ModelSceneView.swift */; };
 		F493F35929AF7E2900A0DF8F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35829AF7E2900A0DF8F /* FirebaseAnalytics */; };
 		F493F35B29AF7E2900A0DF8F /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35A29AF7E2900A0DF8F /* FirebaseAnalyticsSwift */; };
 		F493F35D29AF7E2900A0DF8F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35C29AF7E2900A0DF8F /* FirebaseAuth */; };
@@ -385,6 +386,7 @@
 		F45BBA5F29B8B37F00D45094 /* Depth2IntConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth2IntConverter.swift; sourceTree = "<group>"; };
 		F45BBA6329B8EC3B00D45094 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		F45BBA6529B9F31200D45094 /* CVPixelBuffer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Ext.swift"; sourceTree = "<group>"; };
+		F45BBA6729BB5E1500D45094 /* ModelSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSceneView.swift; sourceTree = "<group>"; };
 		F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4D7CE4929A4C7410063EBDD /* ScanARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanARView.swift; sourceTree = "<group>"; };
 		F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanARViewController.swift; sourceTree = "<group>"; };
@@ -871,6 +873,7 @@
 			isa = PBXGroup;
 			children = (
 				F4D7CE8829A651DE0063EBDD /* ObjViewer.swift */,
+				F45BBA6729BB5E1500D45094 /* ModelSceneView.swift */,
 			);
 			path = ModelViewer;
 			sourceTree = "<group>";
@@ -1018,6 +1021,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F45BBA6829BB5E1500D45094 /* ModelSceneView.swift in Sources */,
 				4EFD0F70259F847300575D88 /* background_renderer.cc in Sources */,
 				4EFD0BC0259D50A800575D88 /* scene.cpp in Sources */,
 				4E2C516825A63119005CEDBD /* VerticalScrollerView.swift in Sources */,
@@ -1242,7 +1246,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R3JCJ2A44;
 				EXCLUDED_ARCHS = "";
@@ -1301,7 +1305,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R3JCJ2A44;
 				FRAMEWORK_SEARCH_PATHS = (

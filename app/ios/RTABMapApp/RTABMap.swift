@@ -629,7 +629,6 @@ extension RTABMap {
             do {
                 let fileURLs = try FileManager.default.contentsOfDirectory(at: exportDir, includingPropertiesForKeys: nil)
                 if(!fileURLs.isEmpty) {
-                    UserDefaults.scans.append(scan)
                     NotificationCenter.default.send(.exportResult,scan)
                 }
             } catch {
