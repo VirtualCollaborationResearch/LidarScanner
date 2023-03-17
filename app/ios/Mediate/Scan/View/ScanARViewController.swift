@@ -53,6 +53,7 @@ final class ScanARViewController: UIViewController {
             } else {
                 arView.snapshot(saveToHDR: true, completion: { [unowned self] image in
                     image?.saveJpeg(name: "cover", folder: viewModel.scanId.uuidString)
+                    saveWorldMap()
                     arView.stopScanning()
                     viewModel.rtabmap.stop()
                 })
@@ -68,6 +69,22 @@ final class ScanARViewController: UIViewController {
             .sink { [weak self] frame in
                 self?.viewModel.saveRawData(frame: frame)
             }.store(in: &cancellable)
+    }
+    
+    private func saveWorldMap() {
+        let scanId = viewModel.scanId
+        arView.session.getCurrentWorldMap { (worldMap, error) in
+            if let map: ARWorldMap = worldMap,
+               error == nil,
+                let data = try? NSKeyedArchiver.archivedData(withRootObject: map, requiringSecureCoding: true) {
+                    let savedMap = UserDefaults.standard
+                    savedMap.set(data, forKey: "Map_" + scanId.uuidString)
+                    savedMap.synchronize()
+                NotificationCenter.default.send(.mapSaved,ScanViewAlertTypes.mapSaved)
+            } else {
+                NotificationCenter.default.send(.mapSaved,ScanViewAlertTypes.errorWhileSavingMap)
+            }
+        }
     }
 }
 

@@ -21,35 +21,42 @@ class ObjViewModel: NSObject, ObservableObject {
 
 struct ObjViewer:View {
     @StateObject var viewModel:ObjViewModel
-    
+    @EnvironmentObject var coordinator: Coordinator
+
     var body: some View {
         ModelScene(url: viewModel.scan.fileUrl(for: .obj))
             .navigationTitle(viewModel.scan.dateStr)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement:.navigationBarTrailing) {
-                    Menu {
-                        
-                        if let obj = viewModel.scan.fileUrl(for: .obj),
-                           let mtl = viewModel.scan.fileUrl(for: .mtl),
-                           let texture = viewModel.scan.fileUrl(for: .jpg) {
-                            ShareLink( "Obj File", items: [obj,mtl,texture])
+                    HStack {
+                        Button("Stream") {
+                            coordinator.goToStreamView(scan: viewModel.scan)
                         }
                         
-                        if let usdz = viewModel.scan.fileUrl(for: .usdz) {
-                            ShareLink( "USDZ File", item: usdz)
+                        Menu {
+                            
+                            if let obj = viewModel.scan.fileUrl(for: .obj),
+                               let mtl = viewModel.scan.fileUrl(for: .mtl),
+                               let texture = viewModel.scan.fileUrl(for: .jpg) {
+                                ShareLink( "Obj File", items: [obj,mtl,texture])
+                            }
+                            
+                            if let usdz = viewModel.scan.fileUrl(for: .usdz) {
+                                ShareLink( "USDZ File", item: usdz)
+                            }
+                            
+                            if let usdz = viewModel.scan.fileUrl(for: .zip) {
+                                ShareLink( "Zipped Obj", item: usdz)
+                            }
+                            
+                            if let rawZip = viewModel.scan.fileUrl(for: .rawZip) {
+                                ShareLink( "Zipped Raw Data", item: rawZip)
+                            }
+                            
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
                         }
-                        
-                        if let usdz = viewModel.scan.fileUrl(for: .zip) {
-                            ShareLink( "Zipped Obj", item: usdz)
-                        }
-                        
-                        if let rawZip = viewModel.scan.fileUrl(for: .rawZip) {
-                            ShareLink( "Zipped Raw Data", item: rawZip)
-                        }
-                        
-                    } label: {
-                        Image(systemName: "square.and.arrow.up")
                     }
                 }
             }

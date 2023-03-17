@@ -12,5 +12,5 @@ enum Destination:Hashable {
     case menuView
     case scanView
     case modelViewer(Scan)
-
+    case streamView(Scan)
 }

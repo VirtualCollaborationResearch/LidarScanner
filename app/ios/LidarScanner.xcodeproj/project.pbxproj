@@ -156,6 +156,12 @@
 		F45BBA6429B8EC3B00D45094 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA6329B8EC3B00D45094 /* CameraModel.swift */; };
 		F45BBA6629B9F31200D45094 /* CVPixelBuffer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA6529B9F31200D45094 /* CVPixelBuffer+Ext.swift */; };
 		F45BBA6829BB5E1500D45094 /* ModelSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA6729BB5E1500D45094 /* ModelSceneView.swift */; };
+		F45BBA7229C1E78000D45094 /* StreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA7129C1E78000D45094 /* StreamViewController.swift */; };
+		F45BBA7429C1EAB800D45094 /* StreamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA7329C1EAB800D45094 /* StreamViewModel.swift */; };
+		F45BBA7629C1ECD200D45094 /* StreamARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA7529C1ECD200D45094 /* StreamARView.swift */; };
+		F45BBA7829C1F4FD00D45094 /* ARSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA7729C1F4FD00D45094 /* ARSceneView.swift */; };
+		F45BBA7B29C4848000D45094 /* WebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = F45BBA7A29C4848000D45094 /* WebRTC */; };
+		F45BBA7E29C4852100D45094 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = F45BBA7D29C4852100D45094 /* Starscream */; };
 		F493F35929AF7E2900A0DF8F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35829AF7E2900A0DF8F /* FirebaseAnalytics */; };
 		F493F35B29AF7E2900A0DF8F /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35A29AF7E2900A0DF8F /* FirebaseAnalyticsSwift */; };
 		F493F35D29AF7E2900A0DF8F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35C29AF7E2900A0DF8F /* FirebaseAuth */; };
@@ -387,6 +393,10 @@
 		F45BBA6329B8EC3B00D45094 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		F45BBA6529B9F31200D45094 /* CVPixelBuffer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Ext.swift"; sourceTree = "<group>"; };
 		F45BBA6729BB5E1500D45094 /* ModelSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSceneView.swift; sourceTree = "<group>"; };
+		F45BBA7129C1E78000D45094 /* StreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamViewController.swift; sourceTree = "<group>"; };
+		F45BBA7329C1EAB800D45094 /* StreamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamViewModel.swift; sourceTree = "<group>"; };
+		F45BBA7529C1ECD200D45094 /* StreamARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamARView.swift; sourceTree = "<group>"; };
+		F45BBA7729C1F4FD00D45094 /* ARSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneView.swift; sourceTree = "<group>"; };
 		F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4D7CE4929A4C7410063EBDD /* ScanARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanARView.swift; sourceTree = "<group>"; };
 		F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanARViewController.swift; sourceTree = "<group>"; };
@@ -478,6 +488,7 @@
 				4EFD0EED259D5BFC00575D88 /* libopencv_imgcodecs.a in Frameworks */,
 				4EFD0EEE259D5BFC00575D88 /* libopencv_fuzzy.a in Frameworks */,
 				4EFD0EEF259D5BFC00575D88 /* libopencv_dpm.a in Frameworks */,
+				F45BBA7E29C4852100D45094 /* Starscream in Frameworks */,
 				4EFD0EF0259D5BFC00575D88 /* libopencv_plot.a in Frameworks */,
 				4EFD0EF1259D5BFC00575D88 /* libopencv_dnn.a in Frameworks */,
 				F493F35B29AF7E2900A0DF8F /* FirebaseAnalyticsSwift in Frameworks */,
@@ -513,6 +524,7 @@
 				4EFD0B3A259D4DE900575D88 /* libboost_date_time.a in Frameworks */,
 				4EFD0B3B259D4DE900575D88 /* libboost_serialization.a in Frameworks */,
 				4EFD0B3C259D4DE900575D88 /* libboost_system.a in Frameworks */,
+				F45BBA7B29C4848000D45094 /* WebRTC in Frameworks */,
 				4EFD0B3D259D4DE900575D88 /* libboost_signals.a in Frameworks */,
 				F493F36429AF7ECB00A0DF8F /* Zip in Frameworks */,
 				4EFD0B3E259D4DE900575D88 /* libboost_thread.a in Frameworks */,
@@ -795,6 +807,17 @@
 			path = Firabase;
 			sourceTree = "<group>";
 		};
+		F45BBA7029C1E77500D45094 /* Stream */ = {
+			isa = PBXGroup;
+			children = (
+				F45BBA7129C1E78000D45094 /* StreamViewController.swift */,
+				F45BBA7329C1EAB800D45094 /* StreamViewModel.swift */,
+				F45BBA7529C1ECD200D45094 /* StreamARView.swift */,
+				F45BBA7729C1F4FD00D45094 /* ARSceneView.swift */,
+			);
+			path = Stream;
+			sourceTree = "<group>";
+		};
 		F4D7CE4B29A4D9DA0063EBDD /* Scan */ = {
 			isa = PBXGroup;
 			children = (
@@ -881,6 +904,7 @@
 		F4D7CE8A29A65C640063EBDD /* Mediate */ = {
 			isa = PBXGroup;
 			children = (
+				F45BBA7029C1E77500D45094 /* Stream */,
 				F415A6FE29ACF0480036B6F7 /* Firabase */,
 				F4D7CE9029A664BA0063EBDD /* Menu */,
 				F4D7CE8B29A65CA40063EBDD /* Home */,
@@ -938,6 +962,8 @@
 				F493F35E29AF7E2900A0DF8F /* FirebaseCrashlytics */,
 				F493F36029AF7E2900A0DF8F /* FirebaseStorage */,
 				F493F36329AF7ECB00A0DF8F /* Zip */,
+				F45BBA7A29C4848000D45094 /* WebRTC */,
+				F45BBA7D29C4852100D45094 /* Starscream */,
 			);
 			productName = RTABMapApp;
 			productReference = 4EE015C2259A2AF0008CCE65 /* LidarScanner.app */;
@@ -969,6 +995,8 @@
 			packageReferences = (
 				F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F493F36229AF7ECB00A0DF8F /* XCRemoteSwiftPackageReference "Zip" */,
+				F45BBA7929C4848000D45094 /* XCRemoteSwiftPackageReference "WebRTC" */,
+				F45BBA7C29C4852100D45094 /* XCRemoteSwiftPackageReference "Starscream" */,
 			);
 			productRefGroup = 4EE015C3259A2AF0008CCE65 /* Products */;
 			projectDirPath = "";
@@ -1050,6 +1078,7 @@
 				4EFD0B9A259D501E00575D88 /* bounding_box.cpp in Sources */,
 				4EFD0F3A259D5D1500575D88 /* CameraMobile.cpp in Sources */,
 				4EFD0BA6259D501E00575D88 /* shaders.cpp in Sources */,
+				F45BBA7629C1ECD200D45094 /* StreamARView.swift in Sources */,
 				4EFD0B99259D501E00575D88 /* obj_loader.cpp in Sources */,
 				4EFD0BA7259D501E00575D88 /* transform.cpp in Sources */,
 				F415A6FD29ACEB700036B6F7 /* ScanCell.swift in Sources */,
@@ -1057,6 +1086,7 @@
 				F4D7CE7529A4DB0B0063EBDD /* FileManager+Ext.swift in Sources */,
 				4EE016B9259BE449008CCE65 /* AppDelegate.swift in Sources */,
 				4EFD0BA3259D501E00575D88 /* quad.cpp in Sources */,
+				F45BBA7229C1E78000D45094 /* StreamViewController.swift in Sources */,
 				F4D7CE8F29A65D070063EBDD /* ScanListViewModel.swift in Sources */,
 				4EFD0F67259E38DE00575D88 /* NativeWrapper.cpp in Sources */,
 				4EFD0BAD259D501E00575D88 /* goal_marker.cpp in Sources */,
@@ -1089,6 +1119,8 @@
 				F4D7CE8029A4DB0B0063EBDD /* Defaults.swift in Sources */,
 				F4D7CE6029A4DA470063EBDD /* Coordinator.swift in Sources */,
 				4EFD0BBC259D509300575D88 /* point_cloud_drawable.cpp in Sources */,
+				F45BBA7429C1EAB800D45094 /* StreamViewModel.swift in Sources */,
+				F45BBA7829C1F4FD00D45094 /* ARSceneView.swift in Sources */,
 				F4D7CE5229A4DA180063EBDD /* ScanARViewController.swift in Sources */,
 				4EFD0BA5259D501E00575D88 /* frustum.cpp in Sources */,
 				F4D7CE7F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift in Sources */,
@@ -1246,7 +1278,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R3JCJ2A44;
 				EXCLUDED_ARCHS = "";
@@ -1305,7 +1337,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R3JCJ2A44;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1380,6 +1412,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F45BBA7929C4848000D45094 /* XCRemoteSwiftPackageReference "WebRTC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stasel/WebRTC.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 111.0.0;
+			};
+		};
+		F45BBA7C29C4852100D45094 /* XCRemoteSwiftPackageReference "Starscream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daltoniam/Starscream.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1399,6 +1447,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F45BBA7A29C4848000D45094 /* WebRTC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F45BBA7929C4848000D45094 /* XCRemoteSwiftPackageReference "WebRTC" */;
+			productName = WebRTC;
+		};
+		F45BBA7D29C4852100D45094 /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F45BBA7C29C4852100D45094 /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
+		};
 		F493F35829AF7E2900A0DF8F /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

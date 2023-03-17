@@ -30,6 +30,10 @@ class Coordinator: ObservableObject {
         path.append(Destination.menuView)
     }
     
+    func goToStreamView(scan:Scan) {
+        path.append(Destination.streamView(scan))
+    }
+    
     func goToScanView() {
         isScanScreenOpen = true
     }

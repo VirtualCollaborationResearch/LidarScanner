@@ -16,6 +16,8 @@ class ViewFactory {
             ObjViewer(viewModel: .init(scan: scan))
         case .menuView:
             MenuView()
+        case .streamView(let scan):
+            StreamARView(viewModel: .init(scan:scan))
         default:
             ScanView()
         }

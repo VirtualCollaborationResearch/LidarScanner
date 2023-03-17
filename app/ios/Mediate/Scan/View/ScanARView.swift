@@ -12,7 +12,6 @@ final class ScanARView:ARView {
     
     init() {
         super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
         automaticallyConfigureSession = false
         debugOptions = [.showSceneUnderstanding]
         renderOptions = [.disablePersonOcclusion, .disableDepthOfField, .disableMotionBlur]

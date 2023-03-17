@@ -15,7 +15,7 @@ extension Notification.Name {
     static let exportResult = Notification.Name("exportResult")
     static let scanToBeSaved = Notification.Name("scanToBeSaved")
     static let deleteScan = Notification.Name("deleteScan")
-
+    static let mapSaved = Notification.Name("mapSaved")
 }
 
 extension NotificationCenter {
