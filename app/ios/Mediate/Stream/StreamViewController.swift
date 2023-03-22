@@ -34,9 +34,10 @@ final class StreamViewController: UIViewController {
         arView.loadModel(scanId: viewModel.scan.id)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setupNotificationListener()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,18 +57,21 @@ final class StreamViewController: UIViewController {
             self?.arView.stopScanning()
         }.store(in: &cancellable)
         
-//        arFrameReciever
-//            .throttle(for: .seconds(1), scheduler: DispatchQueue.global(), latest: true)
-//            .sink { [weak self] frame in
-//
-//            }.store(in: &cancellable)
+        arFrameReciever
+            .throttle(for: .seconds(1), scheduler: DispatchQueue.global(), latest: true)
+            .sink { [weak self] frame in
+                guard self?.viewModel.hasRemoteSdp == true else { return }
+                let transforms = CameraModel(camera: frame.camera, timeStamp: frame.timestamp)
+                let data = try! JSONEncoder().encode(transforms)
+                self?.viewModel.webRTCClient.sendData(data)
+            }.store(in: &cancellable)
     }
 }
 
 extension StreamViewController: ARSessionDelegate {
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         if frame.camera.trackingState == .normal {
-           // self.arFrameReciever.send(frame)
+            self.arFrameReciever.send(frame)
         }
         if viewModel.mapStatus.value != frame.worldMappingStatus {
             viewModel.mapStatus.value = frame.worldMappingStatus

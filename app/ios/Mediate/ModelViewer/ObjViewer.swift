@@ -30,7 +30,7 @@ struct ObjViewer:View {
             .toolbar {
                 ToolbarItem(placement:.navigationBarTrailing) {
                     HStack {
-                        Button("Stream") {
+                        Button("Load") {
                             coordinator.goToStreamView(scan: viewModel.scan)
                         }
                         

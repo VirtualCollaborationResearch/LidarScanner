@@ -21,9 +21,16 @@ struct StreamARView: View {
                 Text("This device not supported")
                     .frame(maxHeight: .infinity)
             }
-            
-            Button("Stop") {
-                viewModel.isScanning.toggle()
+            VStack {
+                Button(viewModel.hasRemoteSdp ? "hasRemoteSdp" : "noRemoteSdp") { }
+                Text(viewModel.connectionStatus)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement:.navigationBarTrailing) {
+                    Button("Stream") {
+                        viewModel.sendOffer()
+                    }
             }
         }
     }
