@@ -24,7 +24,7 @@ extension UIImage {
     func saveJpeg(name: String,folder:String,qualilty:CGFloat = 0.8) {
      guard let folderUrl = FileManager.default.createFolder(name: folder) else { return }
         
-        let fileName = name + ".jpeg"
+        let fileName = name + ".jpg"
         let fileUrl = folderUrl.appendingPathComponent(fileName)
         guard let data = jpegData(compressionQuality: 0.8) else { return }
 

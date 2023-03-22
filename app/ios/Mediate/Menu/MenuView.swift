@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum MenuItems:Hashable {  case about,contact }
+enum MenuItems:Hashable {  case about,contact,settings }
 
 struct MenuView:View {
     
@@ -21,6 +21,7 @@ struct MenuView:View {
             List(selection:$selection) {
                     
                     Section("About Scanner") {
+                        Text("Settings").tag(MenuItems.settings)
                         Text("About Us").tag(MenuItems.about)
                         Text("Contact Us").tag(MenuItems.contact)
                     }
@@ -40,6 +41,8 @@ struct MenuView:View {
             switch selection {
             case .about:
                 AboutView()
+            case .settings:
+                SettigsView()
             default:
                 ContactUsView()
             }

@@ -152,6 +152,7 @@
 		F415A6FD29ACEB700036B6F7 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415A6FC29ACEB700036B6F7 /* ScanCell.swift */; };
 		F415A70029ACF0610036B6F7 /* FirabaseUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415A6FF29ACF0610036B6F7 /* FirabaseUploader.swift */; };
 		F424392D29A8E8DD00D451E5 /* MDLAsset+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F424392C29A8E8DD00D451E5 /* MDLAsset+Ext.swift */; };
+		F44D193529CB8AA70049CAA7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D193429CB8AA70049CAA7 /* SettingsView.swift */; };
 		F45BBA6029B8B37F00D45094 /* Depth2IntConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA5F29B8B37F00D45094 /* Depth2IntConverter.swift */; };
 		F45BBA6429B8EC3B00D45094 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA6329B8EC3B00D45094 /* CameraModel.swift */; };
 		F45BBA6629B9F31200D45094 /* CVPixelBuffer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA6529B9F31200D45094 /* CVPixelBuffer+Ext.swift */; };
@@ -161,7 +162,6 @@
 		F45BBA7629C1ECD200D45094 /* StreamARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA7529C1ECD200D45094 /* StreamARView.swift */; };
 		F45BBA7829C1F4FD00D45094 /* ARSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA7729C1F4FD00D45094 /* ARSceneView.swift */; };
 		F45BBA7B29C4848000D45094 /* WebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = F45BBA7A29C4848000D45094 /* WebRTC */; };
-		F45BBA7E29C4852100D45094 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = F45BBA7D29C4852100D45094 /* Starscream */; };
 		F493F35929AF7E2900A0DF8F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35829AF7E2900A0DF8F /* FirebaseAnalytics */; };
 		F493F35B29AF7E2900A0DF8F /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35A29AF7E2900A0DF8F /* FirebaseAnalyticsSwift */; };
 		F493F35D29AF7E2900A0DF8F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35C29AF7E2900A0DF8F /* FirebaseAuth */; };
@@ -389,6 +389,7 @@
 		F415A6FC29ACEB700036B6F7 /* ScanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCell.swift; sourceTree = "<group>"; };
 		F415A6FF29ACF0610036B6F7 /* FirabaseUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirabaseUploader.swift; sourceTree = "<group>"; };
 		F424392C29A8E8DD00D451E5 /* MDLAsset+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MDLAsset+Ext.swift"; sourceTree = "<group>"; };
+		F44D193429CB8AA70049CAA7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F45BBA5F29B8B37F00D45094 /* Depth2IntConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth2IntConverter.swift; sourceTree = "<group>"; };
 		F45BBA6329B8EC3B00D45094 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		F45BBA6529B9F31200D45094 /* CVPixelBuffer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Ext.swift"; sourceTree = "<group>"; };
@@ -488,7 +489,6 @@
 				4EFD0EED259D5BFC00575D88 /* libopencv_imgcodecs.a in Frameworks */,
 				4EFD0EEE259D5BFC00575D88 /* libopencv_fuzzy.a in Frameworks */,
 				4EFD0EEF259D5BFC00575D88 /* libopencv_dpm.a in Frameworks */,
-				F45BBA7E29C4852100D45094 /* Starscream in Frameworks */,
 				4EFD0EF0259D5BFC00575D88 /* libopencv_plot.a in Frameworks */,
 				4EFD0EF1259D5BFC00575D88 /* libopencv_dnn.a in Frameworks */,
 				F493F35B29AF7E2900A0DF8F /* FirebaseAnalyticsSwift in Frameworks */,
@@ -934,6 +934,7 @@
 				F4D7CE9229A664BA0063EBDD /* ContactUsView.swift */,
 				F4D7CE9329A664BA0063EBDD /* CopyrightAndLicensesView.swift */,
 				F4D7CE9429A664BA0063EBDD /* MenuView.swift */,
+				F44D193429CB8AA70049CAA7 /* SettingsView.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -963,7 +964,6 @@
 				F493F36029AF7E2900A0DF8F /* FirebaseStorage */,
 				F493F36329AF7ECB00A0DF8F /* Zip */,
 				F45BBA7A29C4848000D45094 /* WebRTC */,
-				F45BBA7D29C4852100D45094 /* Starscream */,
 			);
 			productName = RTABMapApp;
 			productReference = 4EE015C2259A2AF0008CCE65 /* LidarScanner.app */;
@@ -996,7 +996,6 @@
 				F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F493F36229AF7ECB00A0DF8F /* XCRemoteSwiftPackageReference "Zip" */,
 				F45BBA7929C4848000D45094 /* XCRemoteSwiftPackageReference "WebRTC" */,
-				F45BBA7C29C4852100D45094 /* XCRemoteSwiftPackageReference "Starscream" */,
 			);
 			productRefGroup = 4EE015C3259A2AF0008CCE65 /* Products */;
 			projectDirPath = "";
@@ -1074,6 +1073,7 @@
 				4EFD0B97259D501E00575D88 /* line.cpp in Sources */,
 				F45BBA6029B8B37F00D45094 /* Depth2IntConverter.swift in Sources */,
 				4EB1A66625A0D90B0043C7BF /* RTABMap.swift in Sources */,
+				F44D193529CB8AA70049CAA7 /* SettingsView.swift in Sources */,
 				F4D7CE4A29A4C7410063EBDD /* ScanARView.swift in Sources */,
 				4EFD0B9A259D501E00575D88 /* bounding_box.cpp in Sources */,
 				4EFD0F3A259D5D1500575D88 /* CameraMobile.cpp in Sources */,
@@ -1278,7 +1278,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R3JCJ2A44;
 				EXCLUDED_ARCHS = "";
@@ -1337,7 +1337,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R3JCJ2A44;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1420,14 +1420,6 @@
 				minimumVersion = 111.0.0;
 			};
 		};
-		F45BBA7C29C4852100D45094 /* XCRemoteSwiftPackageReference "Starscream" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/daltoniam/Starscream.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 		F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1451,11 +1443,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F45BBA7929C4848000D45094 /* XCRemoteSwiftPackageReference "WebRTC" */;
 			productName = WebRTC;
-		};
-		F45BBA7D29C4852100D45094 /* Starscream */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F45BBA7C29C4852100D45094 /* XCRemoteSwiftPackageReference "Starscream" */;
-			productName = Starscream;
 		};
 		F493F35829AF7E2900A0DF8F /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
