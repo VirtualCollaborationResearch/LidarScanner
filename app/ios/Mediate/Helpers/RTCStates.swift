@@ -12,15 +12,29 @@ import WebRTC
 extension RTCIceConnectionState: CustomStringConvertible {
     public var description: String {
         switch self {
-        case .new:          return "new"
-        case .checking:     return "checking"
-        case .connected:    return "connected"
-        case .completed:    return "completed"
-        case .failed:       return "failed"
-        case .disconnected: return "disconnected"
-        case .closed:       return "closed"
-        case .count:        return "count"
+        case .new:          return "New"
+        case .checking:     return "Checking"
+        case .connected:    return "Connected"
+        case .completed:    return "Completed"
+        case .failed:       return "Failed"
+        case .disconnected: return "Disconnected"
+        case .closed:       return "Closed"
+        case .count:        return "Count"
         @unknown default:   return "Unknown \(self.rawValue)"
+        }
+    }
+    
+    public var color: UIColor {
+        switch self {
+        case .new:          return .white
+        case .checking:     return .white
+        case .connected:    return .green
+        case .completed:    return .blue
+        case .failed:       return .red
+        case .disconnected: return .orange
+        case .closed:       return .orange
+        case .count:        return .white
+        @unknown default:   return .blue
         }
     }
 }
@@ -62,3 +76,20 @@ extension RTCDataChannelState: CustomStringConvertible {
     }
 }
 
+enum RTCErrors: String,Error {
+    case invalidURL             = "Can't create url"
+    case unableToComplete       = "Unable the complete request.Please check your connection"
+    case invalidResponse        = "Invalid response from the server.Please try again"
+    case invalidData            = "The recevied data from server was invalid.Please try agin"
+    case cannotEncodeSdp        = "Can not encode sdp."
+    case cannotEncodeCandidate  = "Can not encode Candidate."
+    case cannotSendSdp          = "Can not send SDP."
+    case cannotSendCandidate    = "Can not send Candidate."
+    case cannotGetAnswer        = "Can not get remote SDP."
+    case cannotDecodeAnswer     = "Can not decode remote SDP."
+    case cannotSetAnswer        = "Can not set remote SDP."
+    case cannotGetCandidate     = "Can not get remote Candidate."
+    case cannotDecodeCandidate  = "Can not decode remote Candidate."
+    case cannotSetCandidate     = "Can not set remote Candidate."
+    case unexpectedError        = "Unexpected error has occurred."
+}

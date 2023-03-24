@@ -60,10 +60,9 @@ final class StreamViewController: UIViewController {
         arFrameReciever
             .throttle(for: .seconds(1), scheduler: DispatchQueue.global(), latest: true)
             .sink { [weak self] frame in
-                guard self?.viewModel.hasRemoteSdp == true else { return }
                 let transforms = CameraModel(camera: frame.camera, timeStamp: frame.timestamp)
                 let data = try! JSONEncoder().encode(transforms)
-                self?.viewModel.webRTCClient.sendData(data)
+                self?.viewModel.signalingClient.send(data:data)
             }.store(in: &cancellable)
     }
 }

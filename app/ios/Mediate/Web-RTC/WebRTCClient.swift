@@ -38,11 +38,11 @@ final class WebRTCClient: NSObject {
 
     override init() {
         let config = RTCConfiguration()
-        config.iceServers = [RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302",
-                                                       "stun:stun1.l.google.com:19302",
-                                                       "stun:stun2.l.google.com:19302",
-                                                       "stun:stun3.l.google.com:19302",
-                                                       "stun:stun4.l.google.com:19302"])]
+        config.iceServers = [RTCIceServer(urlStrings: ["stun:stun1.l.google.com:19302",
+                                                       "turn:3.144.82.150:443",
+                                                       "turn:3.144.82.150:80",
+                                                       "turn:3.144.82.150:443?transport=tcp"],
+                                          username: "test", credential: "123")]
         
         // Unified plan is more superior than planB
         config.sdpSemantics = .unifiedPlan
@@ -68,17 +68,19 @@ final class WebRTCClient: NSObject {
         self.peerConnection.delegate = self
     }
     
+    deinit {
+        peerConnection.close()
+    }
+    
     // MARK: Signaling
     func offer(completion: @escaping (_ sdp: RTCSessionDescription) -> Void) {
         let constrains = RTCMediaConstraints(mandatoryConstraints: self.mediaConstrains,
                                              optionalConstraints: nil)
         self.peerConnection.offer(for: constrains) { (sdp, error) in
-            print("local description error1",error?.localizedDescription ?? "")
             guard let sdp = sdp else {
                 return
             }
             self.peerConnection.setLocalDescription(sdp, completionHandler: { (error) in
-                print("local description error",error?.localizedDescription ?? "")
                 completion(sdp)
             })
         }
@@ -210,6 +212,7 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {
         debugPrint("peerConnection new signaling state: \(stateChanged)")
+        self.delegate?.webRTCClient(self, didChangeConnectionState: RTCIceConnectionState.new)
     }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
@@ -231,6 +234,7 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceGatheringState) {
         debugPrint("peerConnection new gathering state: \(newState)")
+        self.delegate?.webRTCClient(self, didChangeConnectionState: RTCIceConnectionState.checking)
     }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
@@ -320,6 +324,7 @@ extension WebRTCClient {
 
 extension WebRTCClient: RTCDataChannelDelegate {
     func dataChannelDidChangeState(_ dataChannel: RTCDataChannel) {
+        self.remoteDataChannel = dataChannel
         debugPrint("dataChannel did change state: \(dataChannel.readyState)")
     }
     

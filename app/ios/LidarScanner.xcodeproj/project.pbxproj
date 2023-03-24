@@ -165,9 +165,6 @@
 		F45BBA8329C485DE00D45094 /* IceCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA8029C485DE00D45094 /* IceCandidate.swift */; };
 		F45BBA8429C485DE00D45094 /* RTCStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA8129C485DE00D45094 /* RTCStates.swift */; };
 		F45BBA8F29C486D200D45094 /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA8829C486D100D45094 /* SignalingClient.swift */; };
-		F45BBA9029C486D200D45094 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA8929C486D100D45094 /* Message.swift */; };
-		F45BBA9129C486D200D45094 /* WebSocketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA8B29C486D100D45094 /* WebSocketProvider.swift */; };
-		F45BBA9229C486D200D45094 /* NativeWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA8C29C486D100D45094 /* NativeWebSocket.swift */; };
 		F45BBA9429C486D200D45094 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA8E29C486D200D45094 /* WebRTCClient.swift */; };
 		F493F36429AF7ECB00A0DF8F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = F493F36329AF7ECB00A0DF8F /* Zip */; };
 		F493F36829B0F28600A0DF8F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */; };
@@ -410,9 +407,6 @@
 		F45BBA8029C485DE00D45094 /* IceCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceCandidate.swift; sourceTree = "<group>"; };
 		F45BBA8129C485DE00D45094 /* RTCStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTCStates.swift; sourceTree = "<group>"; };
 		F45BBA8829C486D100D45094 /* SignalingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
-		F45BBA8929C486D100D45094 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		F45BBA8B29C486D100D45094 /* WebSocketProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocketProvider.swift; sourceTree = "<group>"; };
-		F45BBA8C29C486D100D45094 /* NativeWebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeWebSocket.swift; sourceTree = "<group>"; };
 		F45BBA8E29C486D200D45094 /* WebRTCClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
 		F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4D7CE4929A4C7410063EBDD /* ScanARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanARView.swift; sourceTree = "<group>"; };
@@ -839,21 +833,10 @@
 		F45BBA8729C486C100D45094 /* Web-RTC */ = {
 			isa = PBXGroup;
 			children = (
-				F45BBA8929C486D100D45094 /* Message.swift */,
 				F45BBA8829C486D100D45094 /* SignalingClient.swift */,
 				F45BBA8E29C486D200D45094 /* WebRTCClient.swift */,
-				F45BBA8A29C486D100D45094 /* WebSocketProvider */,
 			);
 			path = "Web-RTC";
-			sourceTree = "<group>";
-		};
-		F45BBA8A29C486D100D45094 /* WebSocketProvider */ = {
-			isa = PBXGroup;
-			children = (
-				F45BBA8B29C486D100D45094 /* WebSocketProvider.swift */,
-				F45BBA8C29C486D100D45094 /* NativeWebSocket.swift */,
-			);
-			path = WebSocketProvider;
 			sourceTree = "<group>";
 		};
 		F4D7CE4B29A4D9DA0063EBDD /* Scan */ = {
@@ -1128,7 +1111,6 @@
 				F415A6FD29ACEB700036B6F7 /* ScanCell.swift in Sources */,
 				4EFD0BA0259D501E00575D88 /* gesture_camera.cpp in Sources */,
 				F4D7CE7529A4DB0B0063EBDD /* FileManager+Ext.swift in Sources */,
-				F45BBA9029C486D200D45094 /* Message.swift in Sources */,
 				4EE016B9259BE449008CCE65 /* AppDelegate.swift in Sources */,
 				4EFD0BA3259D501E00575D88 /* quad.cpp in Sources */,
 				F45BBA7229C1E78000D45094 /* StreamViewController.swift in Sources */,
@@ -1145,7 +1127,6 @@
 				F45BBA8329C485DE00D45094 /* IceCandidate.swift in Sources */,
 				F4D7CE9829A664BA0063EBDD /* MenuView.swift in Sources */,
 				F4D7CE5F29A4DA470063EBDD /* Destination.swift in Sources */,
-				F45BBA9229C486D200D45094 /* NativeWebSocket.swift in Sources */,
 				4EFD0BAC259D501E00575D88 /* cube.cpp in Sources */,
 				F4D7CE8D29A65CF00063EBDD /* ScanListView.swift in Sources */,
 				F4D7CE8929A651DE0063EBDD /* ObjViewer.swift in Sources */,
@@ -1154,7 +1135,6 @@
 				F4D7CE9629A664BA0063EBDD /* ContactUsView.swift in Sources */,
 				F4D7CE5629A4DA180063EBDD /* ScanViewViewModel.swift in Sources */,
 				F4D7CE8429A6466E0063EBDD /* Scan.swift in Sources */,
-				F45BBA9129C486D200D45094 /* WebSocketProvider.swift in Sources */,
 				F4D7CE7D29A4DB0B0063EBDD /* UIView+Ext.swift in Sources */,
 				F45BBA6629B9F31200D45094 /* CVPixelBuffer+Ext.swift in Sources */,
 				4EFD0BAB259D501E00575D88 /* circle.cpp in Sources */,
