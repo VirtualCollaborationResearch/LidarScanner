@@ -162,13 +162,20 @@
 		F45BBA7629C1ECD200D45094 /* StreamARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA7529C1ECD200D45094 /* StreamARView.swift */; };
 		F45BBA7829C1F4FD00D45094 /* ARSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA7729C1F4FD00D45094 /* ARSceneView.swift */; };
 		F45BBA7B29C4848000D45094 /* WebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = F45BBA7A29C4848000D45094 /* WebRTC */; };
-		F493F35929AF7E2900A0DF8F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35829AF7E2900A0DF8F /* FirebaseAnalytics */; };
-		F493F35B29AF7E2900A0DF8F /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35A29AF7E2900A0DF8F /* FirebaseAnalyticsSwift */; };
-		F493F35D29AF7E2900A0DF8F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35C29AF7E2900A0DF8F /* FirebaseAuth */; };
-		F493F35F29AF7E2900A0DF8F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F493F35E29AF7E2900A0DF8F /* FirebaseCrashlytics */; };
-		F493F36129AF7E2900A0DF8F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F493F36029AF7E2900A0DF8F /* FirebaseStorage */; };
+		F45BBA8229C485DE00D45094 /* SessionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA7F29C485DD00D45094 /* SessionDescription.swift */; };
+		F45BBA8329C485DE00D45094 /* IceCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA8029C485DE00D45094 /* IceCandidate.swift */; };
+		F45BBA8429C485DE00D45094 /* RTCStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA8129C485DE00D45094 /* RTCStates.swift */; };
+		F45BBA8F29C486D200D45094 /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA8829C486D100D45094 /* SignalingClient.swift */; };
+		F45BBA9429C486D200D45094 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA8E29C486D200D45094 /* WebRTCClient.swift */; };
 		F493F36429AF7ECB00A0DF8F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = F493F36329AF7ECB00A0DF8F /* Zip */; };
 		F493F36829B0F28600A0DF8F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */; };
+		F4BA577029C88ED600ABF395 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA576F29C88ED600ABF395 /* FirebaseAnalytics */; };
+		F4BA577229C88ED600ABF395 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA577129C88ED600ABF395 /* FirebaseAnalyticsSwift */; };
+		F4BA577429C88ED600ABF395 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA577329C88ED600ABF395 /* FirebaseAuth */; };
+		F4BA577629C88ED600ABF395 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA577529C88ED600ABF395 /* FirebaseCrashlytics */; };
+		F4BA577829C88ED600ABF395 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA577729C88ED600ABF395 /* FirebaseFirestore */; };
+		F4BA577A29C88ED600ABF395 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA577929C88ED600ABF395 /* FirebaseFirestoreSwift */; };
+		F4BA577C29C88ED600ABF395 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA577B29C88ED600ABF395 /* FirebaseStorage */; };
 		F4D7CE4A29A4C7410063EBDD /* ScanARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4929A4C7410063EBDD /* ScanARView.swift */; };
 		F4D7CE5229A4DA180063EBDD /* ScanARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */; };
 		F4D7CE5429A4DA180063EBDD /* ScanViewBottomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE4E29A4DA180063EBDD /* ScanViewBottomButtons.swift */; };
@@ -398,6 +405,11 @@
 		F45BBA7329C1EAB800D45094 /* StreamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamViewModel.swift; sourceTree = "<group>"; };
 		F45BBA7529C1ECD200D45094 /* StreamARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamARView.swift; sourceTree = "<group>"; };
 		F45BBA7729C1F4FD00D45094 /* ARSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneView.swift; sourceTree = "<group>"; };
+		F45BBA7F29C485DD00D45094 /* SessionDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDescription.swift; sourceTree = "<group>"; };
+		F45BBA8029C485DE00D45094 /* IceCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceCandidate.swift; sourceTree = "<group>"; };
+		F45BBA8129C485DE00D45094 /* RTCStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTCStates.swift; sourceTree = "<group>"; };
+		F45BBA8829C486D100D45094 /* SignalingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
+		F45BBA8E29C486D200D45094 /* WebRTCClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
 		F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4D7CE4929A4C7410063EBDD /* ScanARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanARView.swift; sourceTree = "<group>"; };
 		F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanARViewController.swift; sourceTree = "<group>"; };
@@ -462,7 +474,6 @@
 				4EFD0F29259D5C2200575D88 /* libg2o_csparse_extension.a in Frameworks */,
 				4EFD0F2A259D5C2200575D88 /* libg2o_stuff.a in Frameworks */,
 				4EFD0F2B259D5C2200575D88 /* libg2o_types_sba.a in Frameworks */,
-				F493F35D29AF7E2900A0DF8F /* FirebaseAuth in Frameworks */,
 				4EFD0F2C259D5C2200575D88 /* libg2o_types_slam2d_addons.a in Frameworks */,
 				4EFD0F2D259D5C2200575D88 /* libg2o_types_slam3d_addons.a in Frameworks */,
 				4EFD0F2E259D5C2200575D88 /* libg2o_types_slam3d.a in Frameworks */,
@@ -479,11 +490,14 @@
 				4EFD0EE3259D5BFC00575D88 /* libopencv_dnn_objdetect.a in Frameworks */,
 				4EFD0EE4259D5BFC00575D88 /* libopencv_objdetect.a in Frameworks */,
 				4EFD0EE5259D5BFC00575D88 /* libopencv_flann.a in Frameworks */,
+				F4BA577229C88ED600ABF395 /* FirebaseAnalyticsSwift in Frameworks */,
 				4EFD0EE6259D5BFC00575D88 /* libopencv_stitching.a in Frameworks */,
+				F4BA577829C88ED600ABF395 /* FirebaseFirestore in Frameworks */,
 				4EFD0EE7259D5BFC00575D88 /* libopencv_imgproc.a in Frameworks */,
 				4EFD0EE8259D5BFC00575D88 /* libopencv_ml.a in Frameworks */,
 				4EFD0EE9259D5BFC00575D88 /* libopencv_rgbd.a in Frameworks */,
 				4EFD0EEA259D5BFC00575D88 /* libopencv_xphoto.a in Frameworks */,
+				F4BA577429C88ED600ABF395 /* FirebaseAuth in Frameworks */,
 				4EFD0EEB259D5BFC00575D88 /* libopencv_phase_unwrapping.a in Frameworks */,
 				4EFD0EEC259D5BFC00575D88 /* libopencv_optflow.a in Frameworks */,
 				4EFD0EED259D5BFC00575D88 /* libopencv_imgcodecs.a in Frameworks */,
@@ -491,7 +505,6 @@
 				4EFD0EEF259D5BFC00575D88 /* libopencv_dpm.a in Frameworks */,
 				4EFD0EF0259D5BFC00575D88 /* libopencv_plot.a in Frameworks */,
 				4EFD0EF1259D5BFC00575D88 /* libopencv_dnn.a in Frameworks */,
-				F493F35B29AF7E2900A0DF8F /* FirebaseAnalyticsSwift in Frameworks */,
 				4EFD0EF2259D5BFC00575D88 /* libopencv_saliency.a in Frameworks */,
 				4EFD0EF3259D5BFC00575D88 /* libopencv_videoio.a in Frameworks */,
 				4EFD0EF4259D5BFC00575D88 /* libopencv_hfs.a in Frameworks */,
@@ -501,6 +514,7 @@
 				4EFD0EF8259D5BFC00575D88 /* libopencv_bioinspired.a in Frameworks */,
 				4EFD0EF9259D5BFC00575D88 /* libopencv_highgui.a in Frameworks */,
 				4EFD0EFA259D5BFC00575D88 /* libopencv_core.a in Frameworks */,
+				F4BA577C29C88ED600ABF395 /* FirebaseStorage in Frameworks */,
 				4EFD0EFB259D5BFC00575D88 /* libopencv_shape.a in Frameworks */,
 				4EFD0EFC259D5BFC00575D88 /* libopencv_datasets.a in Frameworks */,
 				4EFD0EFD259D5BFC00575D88 /* libopencv_img_hash.a in Frameworks */,
@@ -515,8 +529,6 @@
 				4EFD0EB1259D5BE500575D88 /* librtabmap_utilite.a in Frameworks */,
 				4EFD0EB2259D5BE500575D88 /* librtabmap_core.a in Frameworks */,
 				4EFD0EAB259D581800575D88 /* OpenGLES.framework in Frameworks */,
-				F493F35929AF7E2900A0DF8F /* FirebaseAnalytics in Frameworks */,
-				F493F36129AF7E2900A0DF8F /* FirebaseStorage in Frameworks */,
 				4EFD0B36259D4DE900575D88 /* libboost_filesystem.a in Frameworks */,
 				4EFD0B37259D4DE900575D88 /* libboost_program_options.a in Frameworks */,
 				4EFD0B38259D4DE900575D88 /* libboost_regex.a in Frameworks */,
@@ -525,11 +537,12 @@
 				4EFD0B3B259D4DE900575D88 /* libboost_serialization.a in Frameworks */,
 				4EFD0B3C259D4DE900575D88 /* libboost_system.a in Frameworks */,
 				F45BBA7B29C4848000D45094 /* WebRTC in Frameworks */,
+				F4BA577029C88ED600ABF395 /* FirebaseAnalytics in Frameworks */,
 				4EFD0B3D259D4DE900575D88 /* libboost_signals.a in Frameworks */,
 				F493F36429AF7ECB00A0DF8F /* Zip in Frameworks */,
+				F4BA577629C88ED600ABF395 /* FirebaseCrashlytics in Frameworks */,
 				4EFD0B3E259D4DE900575D88 /* libboost_thread.a in Frameworks */,
 				4EFD0B3F259D4DE900575D88 /* libboost_timer.a in Frameworks */,
-				F493F35F29AF7E2900A0DF8F /* FirebaseCrashlytics in Frameworks */,
 				4EFD0B40259D4DE900575D88 /* libboost_chrono.a in Frameworks */,
 				4EFD0B51259D4DF100575D88 /* libpcl_stereo.a in Frameworks */,
 				4EFD0B52259D4DF100575D88 /* libpcl_registration.a in Frameworks */,
@@ -539,6 +552,7 @@
 				4EFD0B56259D4DF100575D88 /* libpcl_kdtree.a in Frameworks */,
 				4EFD0B57259D4DF100575D88 /* libpcl_search.a in Frameworks */,
 				4EFD0B58259D4DF100575D88 /* libpcl_surface.a in Frameworks */,
+				F4BA577A29C88ED600ABF395 /* FirebaseFirestoreSwift in Frameworks */,
 				4EFD0B59259D4DF100575D88 /* libpcl_keypoints.a in Frameworks */,
 				4EFD0B5A259D4DF100575D88 /* libpcl_recognition.a in Frameworks */,
 				4EFD0B5B259D4DF100575D88 /* libpcl_octree.a in Frameworks */,
@@ -818,6 +832,15 @@
 			path = Stream;
 			sourceTree = "<group>";
 		};
+		F45BBA8729C486C100D45094 /* Web-RTC */ = {
+			isa = PBXGroup;
+			children = (
+				F45BBA8829C486D100D45094 /* SignalingClient.swift */,
+				F45BBA8E29C486D200D45094 /* WebRTCClient.swift */,
+			);
+			path = "Web-RTC";
+			sourceTree = "<group>";
+		};
 		F4D7CE4B29A4D9DA0063EBDD /* Scan */ = {
 			isa = PBXGroup;
 			children = (
@@ -864,6 +887,9 @@
 		F4D7CE7029A4DB0B0063EBDD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F45BBA8029C485DE00D45094 /* IceCandidate.swift */,
+				F45BBA8129C485DE00D45094 /* RTCStates.swift */,
+				F45BBA7F29C485DD00D45094 /* SessionDescription.swift */,
 				F4D7CE7129A4DB0B0063EBDD /* Defaults.swift */,
 				F45BBA5F29B8B37F00D45094 /* Depth2IntConverter.swift */,
 			);
@@ -904,6 +930,7 @@
 		F4D7CE8A29A65C640063EBDD /* Mediate */ = {
 			isa = PBXGroup;
 			children = (
+				F45BBA8729C486C100D45094 /* Web-RTC */,
 				F45BBA7029C1E77500D45094 /* Stream */,
 				F415A6FE29ACF0480036B6F7 /* Firabase */,
 				F4D7CE9029A664BA0063EBDD /* Menu */,
@@ -957,13 +984,15 @@
 			);
 			name = LidarScanner;
 			packageProductDependencies = (
-				F493F35829AF7E2900A0DF8F /* FirebaseAnalytics */,
-				F493F35A29AF7E2900A0DF8F /* FirebaseAnalyticsSwift */,
-				F493F35C29AF7E2900A0DF8F /* FirebaseAuth */,
-				F493F35E29AF7E2900A0DF8F /* FirebaseCrashlytics */,
-				F493F36029AF7E2900A0DF8F /* FirebaseStorage */,
 				F493F36329AF7ECB00A0DF8F /* Zip */,
 				F45BBA7A29C4848000D45094 /* WebRTC */,
+				F4BA576F29C88ED600ABF395 /* FirebaseAnalytics */,
+				F4BA577129C88ED600ABF395 /* FirebaseAnalyticsSwift */,
+				F4BA577329C88ED600ABF395 /* FirebaseAuth */,
+				F4BA577529C88ED600ABF395 /* FirebaseCrashlytics */,
+				F4BA577729C88ED600ABF395 /* FirebaseFirestore */,
+				F4BA577929C88ED600ABF395 /* FirebaseFirestoreSwift */,
+				F4BA577B29C88ED600ABF395 /* FirebaseStorage */,
 			);
 			productName = RTABMapApp;
 			productReference = 4EE015C2259A2AF0008CCE65 /* LidarScanner.app */;
@@ -993,9 +1022,9 @@
 			);
 			mainGroup = 4EE015B9259A2AF0008CCE65;
 			packageReferences = (
-				F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F493F36229AF7ECB00A0DF8F /* XCRemoteSwiftPackageReference "Zip" */,
 				F45BBA7929C4848000D45094 /* XCRemoteSwiftPackageReference "WebRTC" */,
+				F4BA576E29C88ED600ABF395 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 4EE015C3259A2AF0008CCE65 /* Products */;
 			projectDirPath = "";
@@ -1055,6 +1084,7 @@
 				4EE016B3259BE441008CCE65 /* ViewController.swift in Sources */,
 				F4D7CE9529A664BA0063EBDD /* AboutView.swift in Sources */,
 				F45BBA6429B8EC3B00D45094 /* CameraModel.swift in Sources */,
+				F45BBA8F29C486D200D45094 /* SignalingClient.swift in Sources */,
 				F4D7CE7E29A4DB0B0063EBDD /* RealityKit+Ext.swift in Sources */,
 				F4D7CE7429A4DB0B0063EBDD /* NotificationNames.swift in Sources */,
 				F4D7CE5429A4DA180063EBDD /* ScanViewBottomButtons.swift in Sources */,
@@ -1065,6 +1095,7 @@
 				F4D7CE7329A4DB0B0063EBDD /* UIImage+Ext.swift in Sources */,
 				F4D7CE7929A4DB0B0063EBDD /* Color+Ext.swift in Sources */,
 				F4D7CE5529A4DA180063EBDD /* ScanViewSheetAndAlertTypes.swift in Sources */,
+				F45BBA8429C485DE00D45094 /* RTCStates.swift in Sources */,
 				4EFD0BA2259D501E00575D88 /* texture.cpp in Sources */,
 				4EFD0B9C259D501E00575D88 /* axis.cpp in Sources */,
 				4EFD0B9F259D501E00575D88 /* camera.cpp in Sources */,
@@ -1093,9 +1124,11 @@
 				F4D7CE7B29A4DB0B0063EBDD /* Dict+Ext.swift in Sources */,
 				4EFD0B9B259D501E00575D88 /* mesh.cpp in Sources */,
 				F4D7CE5E29A4DA470063EBDD /* HomeTwin.swift in Sources */,
+				F45BBA9429C486D200D45094 /* WebRTCClient.swift in Sources */,
 				F4D7CE5D29A4DA470063EBDD /* ViewFactory.swift in Sources */,
 				4EFD0BA9259D501E00575D88 /* grid.cpp in Sources */,
 				4EFD0BB8259D508C00575D88 /* graph_drawable.cpp in Sources */,
+				F45BBA8329C485DE00D45094 /* IceCandidate.swift in Sources */,
 				F4D7CE9829A664BA0063EBDD /* MenuView.swift in Sources */,
 				F4D7CE5F29A4DA470063EBDD /* Destination.swift in Sources */,
 				4EFD0BAC259D501E00575D88 /* cube.cpp in Sources */,
@@ -1124,6 +1157,7 @@
 				F4D7CE5229A4DA180063EBDD /* ScanARViewController.swift in Sources */,
 				4EFD0BA5259D501E00575D88 /* frustum.cpp in Sources */,
 				F4D7CE7F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift in Sources */,
+				F45BBA8229C485DE00D45094 /* SessionDescription.swift in Sources */,
 				F4D7CE7629A4DB0B0063EBDD /* ARFrame+Ext.swift in Sources */,
 				F4D7CE7829A4DB0B0063EBDD /* ARCamera+Ext.swift in Sources */,
 				4EFD0B98259D501E00575D88 /* util.cpp in Sources */,
@@ -1420,20 +1454,20 @@
 				minimumVersion = 111.0.0;
 			};
 		};
-		F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
 		F493F36229AF7ECB00A0DF8F /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
+			};
+		};
+		F4BA576E29C88ED600ABF395 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1444,35 +1478,45 @@
 			package = F45BBA7929C4848000D45094 /* XCRemoteSwiftPackageReference "WebRTC" */;
 			productName = WebRTC;
 		};
-		F493F35829AF7E2900A0DF8F /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		F493F35A29AF7E2900A0DF8F /* FirebaseAnalyticsSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsSwift;
-		};
-		F493F35C29AF7E2900A0DF8F /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		F493F35E29AF7E2900A0DF8F /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		F493F36029AF7E2900A0DF8F /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F493F35729AF7E2900A0DF8F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
-		};
 		F493F36329AF7ECB00A0DF8F /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F493F36229AF7ECB00A0DF8F /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
+		};
+		F4BA576F29C88ED600ABF395 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4BA576E29C88ED600ABF395 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		F4BA577129C88ED600ABF395 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4BA576E29C88ED600ABF395 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		F4BA577329C88ED600ABF395 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4BA576E29C88ED600ABF395 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		F4BA577529C88ED600ABF395 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4BA576E29C88ED600ABF395 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		F4BA577729C88ED600ABF395 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4BA576E29C88ED600ABF395 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		F4BA577929C88ED600ABF395 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4BA576E29C88ED600ABF395 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		F4BA577B29C88ED600ABF395 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4BA576E29C88ED600ABF395 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,26 +7,24 @@
 import Combine
 import SwiftUI
 import ARKit
+import WebRTC
+import FirebaseFirestore
 
-final class StreamViewModel:ObservableObject {
+final class StreamViewModel:NSObject, ObservableObject {
     var mapStatus = CurrentValueSubject<ARFrame.WorldMappingStatus,Never>(.notAvailable)
     var isLightingSufficient = CurrentValueSubject<Bool,Never>(false)
 
+    var signalingClient = SignalingClient()
+    
     private var cancellable = Set<AnyCancellable>()
     let scan: Scan
     @Published var isScanning = true
-
+    
     init(scan: Scan) {
         self.scan = scan
-        setupNotificationListener()
+        super.init()
     }
-    
-    private func setupNotificationListener() {
-        NotificationCenter.default.publisher(for: .exportResult).sink {  [weak self] notif in
-           
-        }.store(in: &cancellable)
-    }
-    
+   
     func doneTapped() {
         self.isScanning = false
     }

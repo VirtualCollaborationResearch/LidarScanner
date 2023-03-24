@@ -8,6 +8,7 @@
 import FirebaseStorage
 import Combine
 import Foundation
+import FirebaseFirestore
 
 class FirebaseUploader:NSObject {
     
@@ -76,5 +77,11 @@ class FirebaseUploader:NSObject {
         let rawRef = storage.reference().child("users/\(userId)/\(scanId)/\(date)-raw.zip")
         rawRef.delete(completion: nil)
         scansRef.delete(completion: nil)
+    }
+}
+
+extension DocumentSnapshot {
+    var answers:[String] {
+        (self["answers"] as? [String]) ?? []
     }
 }
