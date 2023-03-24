@@ -65,7 +65,7 @@ final class ScanARViewController: UIViewController {
         }.store(in: &cancellable)
         
         arFrameReciever
-            .throttle(for: .seconds(1), scheduler: DispatchQueue.global(), latest: true)
+            .throttle(for: .seconds(1/UserDefaults.fps), scheduler: DispatchQueue.global(), latest: true)
             .sink { [weak self] frame in
                 self?.viewModel.saveRawData(frame: frame)
             }.store(in: &cancellable)

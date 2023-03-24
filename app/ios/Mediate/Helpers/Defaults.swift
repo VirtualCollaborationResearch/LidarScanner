@@ -40,4 +40,7 @@ extension UserDefaults {
     
     @Defaults(key: "userId", defaultValue: nil)
     static var userId: String?
+    
+    @Defaults(key: "fps", defaultValue: 4)
+    static var fps: Double
 }

@@ -17,7 +17,7 @@ extension String {
         let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
 
         if let dirPath = paths.first {
-            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(folder).appendingPathComponent(self+".jpeg")
+            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(folder).appendingPathComponent(self+".jpg")
             return imageUrl
 
         }
