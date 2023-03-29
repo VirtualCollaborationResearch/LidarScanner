@@ -80,9 +80,13 @@ public extension SCNVector3 {
     let zDist = z - secondVector.z
     return distanceTravelled(xDist: xDist, yDist: yDist, zDist: zDist)
   }
+    
+    var screenLocation:CGPoint {
+        CGPoint(x: CGFloat(self.x), y: CGFloat(self.y))
+    }
 }
 extension SCNGeometry {
-  class func cylinderLine(from: SCNVector3, to: SCNVector3, segments: Int) -> SCNNode {
+  class func cylinderLine(from: SCNVector3, to: SCNVector3, segments: Int) -> (SCNNode,Float) {
     let x1 = from.x
     let x2 = to.x
     let y1 = from.y
@@ -93,10 +97,10 @@ extension SCNGeometry {
                (y2 - y1) * (y2 - y1) +
                (z2 - z1) * (z2 - z1))
      
-    let cylinder = SCNCylinder(radius: 0.005,
+    let cylinder = SCNCylinder(radius: 0.01,
                   height: CGFloat(distance))
     cylinder.radialSegmentCount = segments
-    cylinder.firstMaterial?.diffuse.contents = UIColor.yellow
+    cylinder.firstMaterial?.diffuse.contents = UIColor(named: "AccentColor")
     let lineNode = SCNNode(geometry: cylinder)
     lineNode.position = SCNVector3(((from.x + to.x)/2),
                     ((from.y + to.y)/2),
@@ -104,6 +108,6 @@ extension SCNGeometry {
     lineNode.eulerAngles = SCNVector3(Float.pi/2,
                      acos((to.z - from.z)/distance),
                      atan2(to.y - from.y, to.x - from.x))
-    return lineNode
+    return (lineNode,distance)
   }
 }

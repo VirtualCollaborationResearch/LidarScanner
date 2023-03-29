@@ -13,7 +13,7 @@ class ViewFactory {
     static func viewForDestination(_ destination: Destination) -> some View {
         switch destination {
         case .modelViewer(let scan):
-            ObjViewer(viewModel: .init(scan: scan))
+            ModelScene(viewModel: .init(scan: scan))
         case .menuView:
             MenuView()
         case .streamView(let scan):

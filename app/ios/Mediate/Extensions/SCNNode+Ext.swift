@@ -8,14 +8,12 @@
 import ARKit
 
 extension SCNNode {
-    static func snapDot(id:UUID) -> SCNNode {
-        let plane = SCNPlane(width: 0.2, height: 0.2)
+    static func sphere() -> SCNNode {
+        let plane = SCNSphere(radius: 0.02)
         let material = SCNMaterial()
-        material.isDoubleSided = true
-        material.diffuse.contents = UIColor.blue
+        material.diffuse.contents = UIColor(named: "AccentColor")
         plane.materials = [material]
         let node = SCNNode(geometry: plane)
-        node.name = id.uuidString
         return node
     }
 }

@@ -169,6 +169,8 @@
 		F45BBA9429C486D200D45094 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BBA8E29C486D200D45094 /* WebRTCClient.swift */; };
 		F493F36429AF7ECB00A0DF8F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = F493F36329AF7ECB00A0DF8F /* Zip */; };
 		F493F36829B0F28600A0DF8F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */; };
+		F49FF04E29D30354004F50B7 /* Float+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FF04D29D30354004F50B7 /* Float+Ext.swift */; };
+		F49FF05029D30BF4004F50B7 /* ModelSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FF04F29D30BF4004F50B7 /* ModelSceneViewModel.swift */; };
 		F4BA577029C88ED600ABF395 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA576F29C88ED600ABF395 /* FirebaseAnalytics */; };
 		F4BA577229C88ED600ABF395 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA577129C88ED600ABF395 /* FirebaseAnalyticsSwift */; };
 		F4BA577429C88ED600ABF395 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA577329C88ED600ABF395 /* FirebaseAuth */; };
@@ -202,7 +204,7 @@
 		F4D7CE7F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE6F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift */; };
 		F4D7CE8029A4DB0B0063EBDD /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE7129A4DB0B0063EBDD /* Defaults.swift */; };
 		F4D7CE8429A6466E0063EBDD /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE8329A6466E0063EBDD /* Scan.swift */; };
-		F4D7CE8929A651DE0063EBDD /* ObjViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE8829A651DE0063EBDD /* ObjViewer.swift */; };
+		F4D7CE8929A651DE0063EBDD /* ModelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE8829A651DE0063EBDD /* ModelScene.swift */; };
 		F4D7CE8D29A65CF00063EBDD /* ScanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE8C29A65CF00063EBDD /* ScanListView.swift */; };
 		F4D7CE8F29A65D070063EBDD /* ScanListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE8E29A65D070063EBDD /* ScanListViewModel.swift */; };
 		F4D7CE9529A664BA0063EBDD /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7CE9129A664BA0063EBDD /* AboutView.swift */; };
@@ -411,6 +413,8 @@
 		F45BBA8829C486D100D45094 /* SignalingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
 		F45BBA8E29C486D200D45094 /* WebRTCClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
 		F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F49FF04D29D30354004F50B7 /* Float+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Ext.swift"; sourceTree = "<group>"; };
+		F49FF04F29D30BF4004F50B7 /* ModelSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSceneViewModel.swift; sourceTree = "<group>"; };
 		F4D7CE4929A4C7410063EBDD /* ScanARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanARView.swift; sourceTree = "<group>"; };
 		F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanARViewController.swift; sourceTree = "<group>"; };
 		F4D7CE4E29A4DA180063EBDD /* ScanViewBottomButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewBottomButtons.swift; sourceTree = "<group>"; };
@@ -437,7 +441,7 @@
 		F4D7CE6F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ARWorldTrackingConfiguration+Ext.swift"; sourceTree = "<group>"; };
 		F4D7CE7129A4DB0B0063EBDD /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		F4D7CE8329A6466E0063EBDD /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
-		F4D7CE8829A651DE0063EBDD /* ObjViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjViewer.swift; sourceTree = "<group>"; };
+		F4D7CE8829A651DE0063EBDD /* ModelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelScene.swift; sourceTree = "<group>"; };
 		F4D7CE8C29A65CF00063EBDD /* ScanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanListView.swift; sourceTree = "<group>"; };
 		F4D7CE8E29A65D070063EBDD /* ScanListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanListViewModel.swift; sourceTree = "<group>"; };
 		F4D7CE9129A664BA0063EBDD /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -880,6 +884,7 @@
 				F4D7CE6F29A4DB0B0063EBDD /* ARWorldTrackingConfiguration+Ext.swift */,
 				F424392C29A8E8DD00D451E5 /* MDLAsset+Ext.swift */,
 				F45BBA6529B9F31200D45094 /* CVPixelBuffer+Ext.swift */,
+				F49FF04D29D30354004F50B7 /* Float+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -921,8 +926,9 @@
 		F4D7CE8729A651BD0063EBDD /* ModelViewer */ = {
 			isa = PBXGroup;
 			children = (
-				F4D7CE8829A651DE0063EBDD /* ObjViewer.swift */,
+				F4D7CE8829A651DE0063EBDD /* ModelScene.swift */,
 				F45BBA6729BB5E1500D45094 /* ModelSceneView.swift */,
+				F49FF04F29D30BF4004F50B7 /* ModelSceneViewModel.swift */,
 			);
 			path = ModelViewer;
 			sourceTree = "<group>";
@@ -1097,6 +1103,7 @@
 				F4D7CE5529A4DA180063EBDD /* ScanViewSheetAndAlertTypes.swift in Sources */,
 				F45BBA8429C485DE00D45094 /* RTCStates.swift in Sources */,
 				4EFD0BA2259D501E00575D88 /* texture.cpp in Sources */,
+				F49FF05029D30BF4004F50B7 /* ModelSceneViewModel.swift in Sources */,
 				4EFD0B9C259D501E00575D88 /* axis.cpp in Sources */,
 				4EFD0B9F259D501E00575D88 /* camera.cpp in Sources */,
 				4EFD0BAE259D501E00575D88 /* band.cpp in Sources */,
@@ -1127,13 +1134,14 @@
 				F45BBA9429C486D200D45094 /* WebRTCClient.swift in Sources */,
 				F4D7CE5D29A4DA470063EBDD /* ViewFactory.swift in Sources */,
 				4EFD0BA9259D501E00575D88 /* grid.cpp in Sources */,
+				F49FF04E29D30354004F50B7 /* Float+Ext.swift in Sources */,
 				4EFD0BB8259D508C00575D88 /* graph_drawable.cpp in Sources */,
 				F45BBA8329C485DE00D45094 /* IceCandidate.swift in Sources */,
 				F4D7CE9829A664BA0063EBDD /* MenuView.swift in Sources */,
 				F4D7CE5F29A4DA470063EBDD /* Destination.swift in Sources */,
 				4EFD0BAC259D501E00575D88 /* cube.cpp in Sources */,
 				F4D7CE8D29A65CF00063EBDD /* ScanListView.swift in Sources */,
-				F4D7CE8929A651DE0063EBDD /* ObjViewer.swift in Sources */,
+				F4D7CE8929A651DE0063EBDD /* ModelScene.swift in Sources */,
 				F4D7CE7C29A4DB0B0063EBDD /* SCNNode+Ext.swift in Sources */,
 				4EFD0B9E259D501E00575D88 /* conversions.cpp in Sources */,
 				F4D7CE9629A664BA0063EBDD /* ContactUsView.swift in Sources */,
