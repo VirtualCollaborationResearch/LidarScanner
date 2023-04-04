@@ -171,6 +171,7 @@
 		F493F36829B0F28600A0DF8F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */; };
 		F49FF04E29D30354004F50B7 /* Float+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FF04D29D30354004F50B7 /* Float+Ext.swift */; };
 		F49FF05029D30BF4004F50B7 /* ModelSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FF04F29D30BF4004F50B7 /* ModelSceneViewModel.swift */; };
+		F4B4E23829D5BA3D00FF0276 /* ScanNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B4E23729D5BA3D00FF0276 /* ScanNameView.swift */; };
 		F4BA577029C88ED600ABF395 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA576F29C88ED600ABF395 /* FirebaseAnalytics */; };
 		F4BA577229C88ED600ABF395 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA577129C88ED600ABF395 /* FirebaseAnalyticsSwift */; };
 		F4BA577429C88ED600ABF395 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F4BA577329C88ED600ABF395 /* FirebaseAuth */; };
@@ -415,6 +416,7 @@
 		F493F36729B0F28600A0DF8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F49FF04D29D30354004F50B7 /* Float+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Ext.swift"; sourceTree = "<group>"; };
 		F49FF04F29D30BF4004F50B7 /* ModelSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSceneViewModel.swift; sourceTree = "<group>"; };
+		F4B4E23729D5BA3D00FF0276 /* ScanNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanNameView.swift; sourceTree = "<group>"; };
 		F4D7CE4929A4C7410063EBDD /* ScanARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanARView.swift; sourceTree = "<group>"; };
 		F4D7CE4C29A4DA180063EBDD /* ScanARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanARViewController.swift; sourceTree = "<group>"; };
 		F4D7CE4E29A4DA180063EBDD /* ScanViewBottomButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewBottomButtons.swift; sourceTree = "<group>"; };
@@ -956,6 +958,7 @@
 				F4D7CE8C29A65CF00063EBDD /* ScanListView.swift */,
 				F4D7CE8E29A65D070063EBDD /* ScanListViewModel.swift */,
 				F415A6FC29ACEB700036B6F7 /* ScanCell.swift */,
+				F4B4E23729D5BA3D00FF0276 /* ScanNameView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1125,6 +1128,7 @@
 				4EE016B9259BE449008CCE65 /* AppDelegate.swift in Sources */,
 				4EFD0BA3259D501E00575D88 /* quad.cpp in Sources */,
 				F45BBA7229C1E78000D45094 /* StreamViewController.swift in Sources */,
+				F4B4E23829D5BA3D00FF0276 /* ScanNameView.swift in Sources */,
 				F4D7CE8F29A65D070063EBDD /* ScanListViewModel.swift in Sources */,
 				4EFD0F67259E38DE00575D88 /* NativeWrapper.cpp in Sources */,
 				4EFD0BAD259D501E00575D88 /* goal_marker.cpp in Sources */,

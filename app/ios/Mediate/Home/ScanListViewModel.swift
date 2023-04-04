@@ -17,6 +17,9 @@ final class ScanListViewModel:ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     
     @Published var scans = UserDefaults.scans.sorted { $0.dateStr > $1.dateStr }
+    @Published var showSheet = false
+    var sheetType = ScanViewSheetTypes.areaName
+    
     var scanToBeSelected: Scan?
     
     init() {
@@ -24,6 +27,8 @@ final class ScanListViewModel:ObservableObject {
             if let self = self,
                let notif = notif.userInfo?["data"] as? NotifWrapper<Any?>,
                let scan = notif.wrappedValue as? Scan {
+                self.scanToBeSelected = scan
+                self.showSheet.toggle()
                 self.scans.insert(scan, at: 0)
                 UserDefaults.scans = self.scans
                 self.uploadZip(scan: scan)
@@ -36,6 +41,12 @@ final class ScanListViewModel:ObservableObject {
             if let notif = notif.userInfo?["data"] as? NotifWrapper<Any?>,
                let deleted = notif.wrappedValue as? Scan {
                 self?.deleteWith(scan: deleted)
+            }
+        }.store(in: &cancellable)
+        
+        NotificationCenter.default.publisher(for: .scanName).sink { [weak self] notif in
+            if let name = notif.userInfo?["data"] as? String {
+                self?.updateScan(name: name)
             }
         }.store(in: &cancellable)
     }
@@ -53,12 +64,14 @@ final class ScanListViewModel:ObservableObject {
     }
     
     func delete(i: IndexSet) {
+        DispatchQueue.global().async {
+            UserDefaults.scans.remove(atOffsets: i)
+        }
         i.forEach {
             deleteFromFirebase(scans[safe:$0])
             deleteFromFileManager(scans[safe:$0])
         }
         scans.remove(atOffsets: i)
-        UserDefaults.scans = scans
     }
     
     func deleteWith(scan: Scan) {

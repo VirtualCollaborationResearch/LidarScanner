@@ -86,6 +86,19 @@ final class ScanARViewController: UIViewController {
             }
         }
     }
+    
+//    private func saveCorrectedCameras() {
+//        let folder = "\(viewModel.scanId)/RawData/"
+//        if  let camera = arView.session.currentFrame?.camera {
+//            arView.session.currentFrame?.anchors.forEach { anchor in
+//                if let name = anchor.name, name.contains("camera-") == true {
+//                    let timeStamp = name.split(separator: "-").last ?? "\(UUID().uuidString)"
+//                    let model = CameraModel(camera: camera,anchor:anchor, timeStamp: Double(timeStamp) ?? 0)
+//                    model.writeToDisk(name: String(timeStamp),folder: folder+"correctedCamera")
+//                }
+//            }
+//        }
+//    }
 }
 
 extension ScanARViewController: ARSessionDelegate {

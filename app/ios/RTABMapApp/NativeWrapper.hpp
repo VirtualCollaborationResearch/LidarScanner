@@ -124,6 +124,25 @@ typedef struct ImageNative
     int totalBytes;
 } ImageNative;
 
+typedef struct MyPose
+{
+    float r11;
+    float r12;
+    float r13;
+    float r21;
+    float r22;
+    float r23;
+    float r31;
+    float r32;
+    float r33;
+    
+    float o14;
+    float o24;
+    float o34;
+} MyPose;
+
+MyPose myPose(const void *object);
+
 ImageNative getPreviewImageNative(const char * databasePath);
 void releasePreviewImageNative(ImageNative image);
 

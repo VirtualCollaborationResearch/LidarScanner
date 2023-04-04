@@ -10,7 +10,7 @@ import Foundation
 extension Notification.Name {
     
     static let pauseSession = Notification.Name("pauseSession")
-    static let toggleSheet = Notification.Name("toggleSheet")
+    static let scanName = Notification.Name("scanName")
     static let snapshotImage = Notification.Name("snapshotImage")
     static let exportResult = Notification.Name("exportResult")
     static let scanToBeSaved = Notification.Name("scanToBeSaved")
