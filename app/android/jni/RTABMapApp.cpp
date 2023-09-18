@@ -3891,11 +3891,6 @@ void RTABMapApp::postOdometryEvent(
 #ifndef DISABLE_LOG
 										UDEBUG("motion=%s", motion.prettyPrint().c_str());
 #endif
-                                        
-                                        std::cout << "\n\nposeDepth\n";
-                                        std::cout << poseDepth;
-                                        std::cout << "\n\nmotion\n";
-                                        std::cout << motion;
 									}
 								}
 							}
@@ -3944,16 +3939,6 @@ void RTABMapApp::postOdometryEvent(
 						}
 					}
                     pose_ = pose;
-                    std::cout << "\n\nstamp\n";
-                    std::cout << stamp;
-                    std::cout << "\n\ndepthStamp\n";
-                    std::cout << depthStamp;
-                    std::cout << "\n\npose:\n";
-                    std::cout << pose;
-                    std::cout << "\n\nposeDepth:\n";
-                    std::cout << pose.rotationMatrix();
-                    std::cout << "\n\npose.translationMatrix:\n";
-                    std::cout << pose.translationMatrix();
                     
                     if(!outputDepth.empty())
                     {

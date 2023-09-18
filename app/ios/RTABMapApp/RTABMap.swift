@@ -352,12 +352,6 @@ class RTABMap {
                 CVPixelBufferUnlockBaseAddress(frame.capturedImage, CVPixelBufferLockFlags.readOnly)
             }
         }
-        print("\n\n-------old-------\n")
-        print(pose)
-        print("\n------old--------\n\n")
-        print("\n\n---------------\n")
-        print(myPose(native_rtabmap))
-        print("\n---------------\n\n")
     }
         
     // Parameters
