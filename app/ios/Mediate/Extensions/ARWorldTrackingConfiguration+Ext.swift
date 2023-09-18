@@ -14,7 +14,7 @@ extension ARConfiguration {
         configuration.environmentTexturing = .automatic
         configuration.isLightEstimationEnabled = true
         configuration.sceneReconstruction = .mesh
-        configuration.frameSemantics = .sceneDepth
+        configuration.frameSemantics = UserDefaults.isSmoothed ? .smoothedSceneDepth : .sceneDepth
         return configuration
     }
 }

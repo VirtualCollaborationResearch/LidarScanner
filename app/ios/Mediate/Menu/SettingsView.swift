@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettigsView:View {
     @State var text = "\(Int(UserDefaults.fps))"
-    
+    @State var isSmoothedDepthEnabled = UserDefaults.isSmoothed
     var body: some View {
         List {
             HStack {
@@ -28,7 +28,15 @@ struct SettigsView:View {
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: 100)
             }
+            
+            HStack {
+                
+                Toggle("Smoothed Depth", isOn: $isSmoothedDepthEnabled)
+            }
         }
         .navigationTitle("Settings")
+        .onChange(of: isSmoothedDepthEnabled) { newValue in
+            UserDefaults.isSmoothed = newValue
+        }
     }
 }

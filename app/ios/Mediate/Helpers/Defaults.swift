@@ -43,4 +43,7 @@ extension UserDefaults {
     
     @Defaults(key: "fps", defaultValue: 4)
     static var fps: Double
+    
+    @Defaults(key: "isSmoothed", defaultValue: true)
+    static var isSmoothed: Bool
 }

@@ -44,7 +44,8 @@ final class ScanViewViewModel:ObservableObject {
         autoreleasepool {
             CameraModel(camera: frame.camera, timeStamp: frame.timestamp).writeToDisk(name: name,folder: folder+"camera")
             UIImage(pixelBuffer: frame.capturedImage)?.saveJpeg(name: name, folder:folder+"rgb")
-            frame.sceneDepth?.depthMap.depth16BitImage?.savePNG(name: name,folder:folder+"depth")
+            let depth = UserDefaults.isSmoothed ? frame.smoothedSceneDepth : frame.sceneDepth
+            depth?.depthMap.depth16BitImage?.savePNG(name: name,folder:folder+"depth")
             frame.sceneDepth?.confidenceMap?.confidenceImage?.savePNG(name: name,folder:folder+"confidence")
         }
     }
