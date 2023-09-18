@@ -69,7 +69,9 @@ RegistrationVis::RegistrationVis(const ParametersMap & parameters, Registration 
 		_PnPReprojError(Parameters::defaultVisPnPReprojError()),
 		_PnPFlags(Parameters::defaultVisPnPFlags()),
 		_PnPRefineIterations(Parameters::defaultVisPnPRefineIterations()),
+		_PnPVarMedianRatio(Parameters::defaultVisPnPVarianceMedianRatio()),
 		_PnPMaxVar(Parameters::defaultVisPnPMaxVariance()),
+		_multiSamplingPolicy(Parameters::defaultVisPnPSamplingPolicy()),
 		_correspondencesApproach(Parameters::defaultVisCorType()),
 		_flowWinSize(Parameters::defaultVisCorFlowWinSize()),
 		_flowIterations(Parameters::defaultVisCorFlowIterations()),
@@ -125,7 +127,9 @@ void RegistrationVis::parseParameters(const ParametersMap & parameters)
 	Parameters::parse(parameters, Parameters::kVisPnPReprojError(), _PnPReprojError);
 	Parameters::parse(parameters, Parameters::kVisPnPFlags(), _PnPFlags);
 	Parameters::parse(parameters, Parameters::kVisPnPRefineIterations(), _PnPRefineIterations);
+	Parameters::parse(parameters, Parameters::kVisPnPVarianceMedianRatio(), _PnPVarMedianRatio);
 	Parameters::parse(parameters, Parameters::kVisPnPMaxVariance(), _PnPMaxVar);
+	Parameters::parse(parameters, Parameters::kVisPnPSamplingPolicy(), _multiSamplingPolicy);
 	Parameters::parse(parameters, Parameters::kVisCorType(), _correspondencesApproach);
 	Parameters::parse(parameters, Parameters::kVisCorFlowWinSize(), _flowWinSize);
 	Parameters::parse(parameters, Parameters::kVisCorFlowIterations(), _flowIterations);
@@ -1578,11 +1582,13 @@ Transform RegistrationVis::computeTransformationImpl(
 									words3A,
 									wordsB,
 									models,
+									_multiSamplingPolicy,
 									_minInliers,
 									_iterations,
 									_PnPReprojError,
 									_PnPFlags,
 									_PnPRefineIterations,
+									_PnPVarMedianRatio,
 									_PnPMaxVar,
 									dir==0?(!guess.isNull()?guess:Transform::getIdentity()):!transforms[0].isNull()?transforms[0].inverse():(!guess.isNull()?guess.inverse():Transform::getIdentity()),
 									words3B,
@@ -1605,6 +1611,7 @@ Transform RegistrationVis::computeTransformationImpl(
 									_PnPReprojError,
 									_PnPFlags,
 									_PnPRefineIterations,
+									_PnPVarMedianRatio,
 									_PnPMaxVar,
 									dir==0?(!guess.isNull()?guess:Transform::getIdentity()):!transforms[0].isNull()?transforms[0].inverse():(!guess.isNull()?guess.inverse():Transform::getIdentity()),
 									words3B,
@@ -2021,29 +2028,31 @@ Transform RegistrationVis::computeTransformationImpl(
 			}
 			for(unsigned int i=0; i<allInliers.size(); ++i)
 			{
-				if(_maxInliersMeanDistance>0.0f)
+				std::multimap<int, int>::const_iterator wordsIter = toSignature.getWords().find(allInliers[i]);
+				if(wordsIter != toSignature.getWords().end() && !toSignature.getWordsKpts().empty())
 				{
-					std::multimap<int, int>::const_iterator wordsIter = fromSignature.getWords().find(allInliers[i]);
-					if(wordsIter != fromSignature.getWords().end() && !fromSignature.getWords3().empty())
-					{
-						const cv::Point3f & pt = fromSignature.getWords3()[wordsIter->second];
-						if(uIsFinite(pt.x))
-						{
-							distances.push_back(util3d::transformPoint(pt, transformInv).x);
-						}
-					}
-				}
-
-				if(!pcaData.empty())
-				{
-					std::multimap<int, int>::const_iterator wordsIter = toSignature.getWords().find(allInliers[i]);
-					UASSERT(wordsIter != fromSignature.getWords().end() && !toSignature.getWordsKpts().empty());
-					float * ptr = pcaData.ptr<float>(i, 0);
 					const cv::KeyPoint & kpt = toSignature.getWordsKpts()[wordsIter->second];
 					int cameraIndex = (int)(kpt.pt.x / cameraModelsTo[0].imageWidth());
 					UASSERT_MSG(cameraIndex < (int)cameraModelsTo.size(), uFormat("cameraIndex=%d (x=%f models=%d camera width = %d)", cameraIndex, kpt.pt.x, (int)cameraModelsTo.size(), cameraModelsTo[0].imageWidth()).c_str());
-					ptr[0] = (kpt.pt.x-cameraIndex*cameraModelsTo[cameraIndex].imageWidth()-cameraModelsTo[cameraIndex].cx()) / cameraModelsTo[cameraIndex].imageWidth();
-					ptr[1] = (kpt.pt.y-cameraModelsTo[cameraIndex].cy()) / cameraModelsTo[cameraIndex].imageHeight();
+
+					if(_maxInliersMeanDistance>0.0f && !toSignature.getWords3().empty())
+					{
+						const cv::Point3f & pt = toSignature.getWords3()[wordsIter->second];
+						if(util3d::isFinite(pt))
+						{
+							UASSERT(cameraModelsTo[cameraIndex].isValidForProjection());
+
+							float depth = util3d::transformPoint(pt, cameraModelsTo[cameraIndex].localTransform().inverse()).z;
+							distances.push_back(depth);
+						}
+					}
+
+					if(!pcaData.empty())
+					{
+						float * ptr = pcaData.ptr<float>(i, 0);
+						ptr[0] = (kpt.pt.x-cameraIndex*cameraModelsTo[cameraIndex].imageWidth()-cameraModelsTo[cameraIndex].cx()) / cameraModelsTo[cameraIndex].imageWidth();
+						ptr[1] = (kpt.pt.y-cameraModelsTo[cameraIndex].cy()) / cameraModelsTo[cameraIndex].imageHeight();
+					}
 				}
 			}
 
