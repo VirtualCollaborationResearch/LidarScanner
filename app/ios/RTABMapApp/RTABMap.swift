@@ -7,10 +7,11 @@
 
 import Foundation
 import ARKit
+import ModelIO
 
 class RTABMap {
     var native_rtabmap: UnsafeMutableRawPointer
-    
+    var modelId:UUID?
     struct Observation {
         weak var observer: RTABMapObserver?
     }
@@ -113,7 +114,7 @@ class RTABMap {
         setupGraphicNative(native_rtabmap, Int32(size.width), Int32(size.height));
     }
     
-    func openDatabase(databasePath:String, databaseInMemory:Bool, optimize:Bool, clearDatabase: Bool) -> Int {
+    @discardableResult func openDatabase(databasePath:String, databaseInMemory:Bool, optimize:Bool, clearDatabase: Bool) -> Int {
         databasePath.utf8CString.withUnsafeBufferPointer { buffer -> Int in
             return Int(openDatabaseNative(native_rtabmap, buffer.baseAddress, databaseInMemory, optimize, clearDatabase))
         }
@@ -178,7 +179,7 @@ class RTABMap {
                                     blockRendering)
     }
     
-    func postExportation(visualize: Bool) -> Bool
+    @discardableResult func postExportation(visualize: Bool) -> Bool
     {
         return postExportationNative(native_rtabmap, visualize)
     }
@@ -204,7 +205,7 @@ class RTABMap {
         return Int(renderNative(native_rtabmap))
     }
     
-    func startCamera() -> Bool {
+    @discardableResult func startCamera() -> Bool {
         return startCameraNative(native_rtabmap)
     }
     
@@ -497,7 +498,7 @@ func getPreviewImage(databasePath: String) -> UIImage?
     return imageOut
 }
 
-protocol RTABMapObserver: class {
+protocol RTABMapObserver: AnyObject {
     func progressUpdated(_ rtabmap: RTABMap, count: Int, max: Int)
     func initEventReceived(_ rtabmap: RTABMap, status: Int, msg: String)
     func statsUpdated(_ rtabmap: RTABMap,
@@ -549,3 +550,128 @@ extension String {
   }
 }
 
+extension RTABMap {
+    func start(id:UUID) {
+        self.modelId = id
+        let tmpDatabase = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("rtabmap.tmp.db")
+        let inMemory = UserDefaults.standard.bool(forKey: "DatabaseInMemory")
+        openDatabase(databasePath: tmpDatabase.path, databaseInMemory: inMemory, optimize: false, clearDatabase: true)
+        setCamera(type: 0)
+        startCamera()
+        setPausedMapping(paused: false)
+    }
+    
+    func stop() {
+        setPausedMapping(paused: true)
+        stopCamera()
+        setLocalizationMode(enabled: false)
+        optimization()
+    }
+    
+    private func optimization() {
+        var loopDetected : Int = -1
+        DispatchQueue.background(background: {
+            loopDetected = self.postProcessing(approach: -1)
+        }, completion:{
+            if(loopDetected >= 0) {
+                self.export(optimizedMaxPolygons: 200000)
+            } else if(loopDetected < 0)  {
+                print("Optimization failed!")
+            }
+        })
+    }
+    
+    private func export(optimizedMaxPolygons: Int) {
+        let defaults = UserDefaults.standard
+        let cloudVoxelSize = defaults.float(forKey: "VoxelSize")
+        let textureSize = defaults.integer(forKey: "TextureSize")
+        let textureCount = defaults.integer(forKey: "MaximumOutputTextures")
+        let normalK = defaults.integer(forKey: "NormalK")
+        let maxTextureDistance = defaults.float(forKey: "MaxTextureDistance")
+        let minTextureClusterSize = defaults.integer(forKey: "MinTextureClusterSize")
+        let optimizedVoxelSize = cloudVoxelSize
+        let optimizedDepth = defaults.integer(forKey: "ReconstructionDepth")
+        let optimizedColorRadius = defaults.float(forKey: "ColorRadius")
+        let optimizedCleanWhitePolygons = defaults.bool(forKey: "CleanMesh")
+        let optimizedMinClusterSize = defaults.integer(forKey: "PolygonFiltering")
+        let blockRendering = false
+        
+        DispatchQueue.background(background: {
+            let _ = self.exportMesh(
+                cloudVoxelSize: cloudVoxelSize,
+                regenerateCloud: false,
+                meshing: true,
+                textureSize: textureSize,
+                textureCount: textureCount,
+                normalK: normalK,
+                optimized: true,
+                optimizedVoxelSize: optimizedVoxelSize,
+                optimizedDepth: optimizedDepth,
+                optimizedMaxPolygons: optimizedMaxPolygons,
+                optimizedColorRadius: optimizedColorRadius,
+                optimizedCleanWhitePolygons: optimizedCleanWhitePolygons,
+                optimizedMinClusterSize: optimizedMinClusterSize,
+                optimizedMaxTextureDistance: maxTextureDistance,
+                optimizedMinTextureClusterSize: minTextureClusterSize,
+                blockRendering: blockRendering)
+            
+        }, completion:{
+            self.setMeshRendering(enabled: true, withTexture: true)
+            self.postExportation(visualize: true)
+            self.setCamera(type: 2)
+            self.writeExportedFiles()
+        })
+    }
+    
+    func writeExportedFiles() {
+        guard let id = modelId, let exportDir = FileManager.default.createFolder(name: id.uuidString) else { return }
+        let scan = Scan(id: id)
+        print("Exporting to directory \(exportDir.path) with name \(scan.dateStr)")
+        if(self.writeExportedMesh(directory: exportDir.path, name: scan.dateStr)) == true {
+            do {
+                let fileURLs = try FileManager.default.contentsOfDirectory(at: exportDir, includingPropertiesForKeys: nil)
+                if(!fileURLs.isEmpty) {
+                    NotificationCenter.default.send(.exportResult,scan)
+                }
+            } catch {
+                print("No files exported to \(exportDir)")
+            }
+        } else {
+            print("rtab writeExportedMesh error")
+        }
+    }
+}
+
+
+extension RTABMapObserver {
+    func progressUpdated(_ rtabmap: RTABMap, count: Int, max: Int) { }
+    func initEventReceived(_ rtabmap: RTABMap, status: Int, msg: String) { }
+    func statsUpdated(_ rtabmap: RTABMap,
+                      nodes: Int,
+                      words: Int,
+                      points: Int,
+                      polygons: Int,
+                      updateTime: Float,
+                      loopClosureId: Int,
+                      highestHypId: Int,
+                      databaseMemoryUsed: Int,
+                      inliers: Int,
+                      matches: Int,
+                      featuresExtracted: Int,
+                      hypothesis: Float,
+                      nodesDrawn: Int,
+                      fps: Float,
+                      rejected: Int,
+                      rehearsalValue: Float,
+                      optimizationMaxError: Float,
+                      optimizationMaxErrorRatio: Float,
+                      distanceTravelled: Float,
+                      fastMovement: Int,
+                      landmarkDetected: Int,
+                      x: Float,
+                      y: Float,
+                      z: Float,
+                      roll: Float,
+                      pitch: Float,
+                      yaw: Float) { }
+}

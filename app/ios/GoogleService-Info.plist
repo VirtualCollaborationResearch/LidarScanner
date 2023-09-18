@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>416966296567-tt77tuqis4lhsktbep2a77g3go7fvb4m.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.416966296567-tt77tuqis4lhsktbep2a77g3go7fvb4m</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD5A8qhxNsz593Yn-asfhnCD7MKnOQ94Kk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>416966296567</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.mediate.lidarscanner</string>
+	<key>PROJECT_ID</key>
+	<string>d-scan-2eed4</string>
+	<key>STORAGE_BUCKET</key>
+	<string>d-scan-2eed4.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:416966296567:ios:880c263a0805cceab224f2</string>
+	<key>DATABASE_URL</key>
+	<string>https://d-scan-2eed4-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

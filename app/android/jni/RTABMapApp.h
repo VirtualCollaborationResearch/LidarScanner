@@ -99,6 +99,7 @@ class RTABMapApp : public UEventsHandler {
   // @param: camera_type, camera type includes first person, third person and
   //         top down
   void SetCameraType(tango_gl::GestureCamera::CameraType camera_type);
+  rtabmap::Transform pose_;
 
   // Touch event passed from android activity. This function only supports two
   // touches.
@@ -206,7 +207,6 @@ class RTABMapApp : public UEventsHandler {
   std::vector<pcl::Vertices> filterOrganizedPolygons(const std::vector<pcl::Vertices> & polygons, int cloudSize) const;
   std::vector<pcl::Vertices> filterPolygons(const std::vector<pcl::Vertices> & polygons, int cloudSize) const;
 
- private:
   int cameraDriver_;
   rtabmap::CameraMobile * camera_;
   rtabmap::RtabmapThread * rtabmapThread_;

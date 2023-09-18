@@ -612,3 +612,24 @@ void addEnvSensorNative(const void *object, int type, float value)
     else
         UERROR("object is null!");
 }
+
+MyPose myPose(const void *object) {
+    MyPose myPose;
+    rtabmap::Transform org = native(object)->pose_;
+    myPose.r11 = org.r11();
+    myPose.r12 = org.r12();
+    myPose.r13 = org.r13();
+    
+    myPose.r21 = org.r21();
+    myPose.r22 = org.r22();
+    myPose.r23 = org.r23();
+    
+    myPose.r31 = org.r31();
+    myPose.r32 = org.r32();
+    myPose.r33 = org.r33();
+
+    myPose.o14 = org.o14();
+    myPose.o24 = org.o24();
+    myPose.o34 = org.o34();
+    return myPose;
+}
