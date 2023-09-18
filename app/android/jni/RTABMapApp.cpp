@@ -3938,7 +3938,6 @@ void RTABMapApp::postOdometryEvent(
 							scan = rtabmap::CameraMobile::scanFromPointCloudData(pointsMat, pointsLen, pose, model, outputRGB);
 						}
 					}
-                    pose_ = pose;
                     
                     if(!outputDepth.empty())
                     {
