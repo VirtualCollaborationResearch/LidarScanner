@@ -380,6 +380,13 @@ PreferencesDialog::PreferencesDialog(QWidget * parent) :
 		_ui->comboBox_cameraStereo->setItemData(kSrcStereoZed - kSrcStereo, 0, Qt::UserRole - 1);
 		_ui->comboBox_odom_sensor->setItemData(2, 0, Qt::UserRole - 1);
 	}
+	else if(CameraStereoZed::sdkVersion() < 4)
+	{
+		_ui->comboBox_stereoZed_resolution->setItemData(2, 0, Qt::UserRole - 1);
+		_ui->comboBox_stereoZed_resolution->setItemData(4, 0, Qt::UserRole - 1);
+		_ui->comboBox_stereoZed_resolution->setItemData(6, 0, Qt::UserRole - 1);
+		_ui->comboBox_stereoZed_quality->setItemData(3, 0, Qt::UserRole - 1);
+	}
     if (!CameraStereoTara::available())
     {
         _ui->comboBox_cameraStereo->setItemData(kSrcStereoTara - kSrcStereo, 0, Qt::UserRole - 1);
@@ -676,6 +683,7 @@ PreferencesDialog::PreferencesDialog(QWidget * parent) :
 	connect(_ui->source_checkBox_ignoreGoals, SIGNAL(stateChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
 	connect(_ui->source_checkBox_ignoreLandmarks, SIGNAL(stateChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
 	connect(_ui->source_checkBox_ignoreFeatures, SIGNAL(stateChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
+	connect(_ui->source_checkBox_ignorePriors, SIGNAL(stateChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
 	connect(_ui->source_spinBox_databaseStartId, SIGNAL(valueChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
 	connect(_ui->source_spinBox_databaseStopId, SIGNAL(valueChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
 	connect(_ui->source_checkBox_useDbStamps, SIGNAL(stateChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
@@ -797,8 +805,14 @@ PreferencesDialog::PreferencesDialog(QWidget * parent) :
 	connect(_ui->comboBox_depthai_resolution, SIGNAL(currentIndexChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
 	connect(_ui->checkBox_depthai_depth, SIGNAL(stateChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
 	connect(_ui->spinBox_depthai_confidence, SIGNAL(valueChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
+	connect(_ui->doubleSpinBox_depthai_alpha_scaling, SIGNAL(valueChanged(double)), this, SLOT(makeObsoleteSourcePanel()));
 	connect(_ui->checkBox_depthai_imu_published, SIGNAL(stateChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
 	connect(_ui->checkBox_depthai_imu_firmware_update, SIGNAL(stateChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
+	connect(_ui->doubleSpinBox_depthai_laser_dot_brightness, SIGNAL(valueChanged(double)), this, SLOT(makeObsoleteSourcePanel()));
+	connect(_ui->doubleSpinBox_depthai_floodlight_brightness, SIGNAL(valueChanged(double)), this, SLOT(makeObsoleteSourcePanel()));
+	connect(_ui->comboBox_depthai_detect_features, SIGNAL(currentIndexChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
+	connect(_ui->lineEdit_depthai_blob_path, SIGNAL(textChanged(const QString &)), this, SLOT(makeObsoleteSourcePanel()));
+	connect(_ui->toolButton_depthai_blob_path, SIGNAL(clicked()), this, SLOT(selectSourceDepthaiBlobPath()));
 
 	connect(_ui->checkbox_rgbd_colorOnly, SIGNAL(stateChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
 	connect(_ui->spinBox_source_imageDecimation, SIGNAL(valueChanged(int)), this, SLOT(makeObsoleteSourcePanel()));
@@ -1138,6 +1152,7 @@ PreferencesDialog::PreferencesDialog(QWidget * parent) :
 	_ui->checkbox_rgbd_createOccupancyGrid->setObjectName(Parameters::kRGBDCreateOccupancyGrid().c_str());
 	_ui->RGBDMarkerDetection->setObjectName(Parameters::kRGBDMarkerDetection().c_str());
 	_ui->spinBox_maxOdomCacheSize->setObjectName(Parameters::kRGBDMaxOdomCacheSize().c_str());
+	_ui->checkbox_localizationSmoothing->setObjectName(Parameters::kRGBDLocalizationSmoothing().c_str());
 
 	// Registration
 	_ui->reg_repeatOnce->setObjectName(Parameters::kRegRepeatOnce().c_str());
@@ -1159,7 +1174,9 @@ PreferencesDialog::PreferencesDialog(QWidget * parent) :
 	_ui->loopClosure_pnpReprojError->setObjectName(Parameters::kVisPnPReprojError().c_str());
 	_ui->loopClosure_pnpFlags->setObjectName(Parameters::kVisPnPFlags().c_str());
 	_ui->loopClosure_pnpRefineIterations->setObjectName(Parameters::kVisPnPRefineIterations().c_str());
+	_ui->loopClosure_pnpVarMedianRatio->setObjectName(Parameters::kVisPnPVarianceMedianRatio().c_str());
 	_ui->loopClosure_pnpMaxVariance->setObjectName(Parameters::kVisPnPMaxVariance().c_str());
+	_ui->loopClosure_pnpSamplingPolicy->setObjectName(Parameters::kVisPnPSamplingPolicy().c_str());
 	_ui->reextract_nn->setObjectName(Parameters::kVisCorNNType().c_str());
 	connect(_ui->reextract_nn, SIGNAL(currentIndexChanged(int)), this, SLOT(updateFeatureMatchingVisibility()));
 	_ui->reextract_nndrRatio->setObjectName(Parameters::kVisCorNNDR().c_str());
@@ -1193,6 +1210,7 @@ PreferencesDialog::PreferencesDialog(QWidget * parent) :
 	_ui->loopClosure_icpRangeMin->setObjectName(Parameters::kIcpRangeMin().c_str());
 	_ui->loopClosure_icpRangeMax->setObjectName(Parameters::kIcpRangeMax().c_str());
 	_ui->loopClosure_icpMaxCorrespondenceDistance->setObjectName(Parameters::kIcpMaxCorrespondenceDistance().c_str());
+	_ui->loopClosure_icpReciprocalCorrespondences->setObjectName(Parameters::kIcpReciprocalCorrespondences().c_str());
 	_ui->loopClosure_icpIterations->setObjectName(Parameters::kIcpIterations().c_str());
 	_ui->loopClosure_icpEpsilon->setObjectName(Parameters::kIcpEpsilon().c_str());
 	_ui->loopClosure_icpRatio->setObjectName(Parameters::kIcpCorrespondenceRatio().c_str());
@@ -1930,6 +1948,7 @@ void PreferencesDialog::resetSettings(QGroupBox * groupBox)
 		_ui->source_checkBox_ignoreGoals->setChecked(true);
 		_ui->source_checkBox_ignoreLandmarks->setChecked(true);
 		_ui->source_checkBox_ignoreFeatures->setChecked(true);
+		_ui->source_checkBox_ignorePriors->setChecked(false);
 		_ui->source_spinBox_databaseStartId->setValue(0);
 		_ui->source_spinBox_databaseStopId->setValue(0);
 		_ui->source_spinBox_database_cameraIndex->setValue(-1);
@@ -2030,7 +2049,7 @@ void PreferencesDialog::resetSettings(QGroupBox * groupBox)
 		_ui->spinBox_stereo_right_device->setValue(-1);
 		_ui->spinBox_stereousbcam_streamWidth->setValue(0);
 		_ui->spinBox_stereousbcam_streamHeight->setValue(0);
-		_ui->comboBox_stereoZed_resolution->setCurrentIndex(2);
+		_ui->comboBox_stereoZed_resolution->setCurrentIndex(CameraStereoZed::sdkVersion()<4?3:6);
 		_ui->comboBox_stereoZed_quality->setCurrentIndex(1);
 		_ui->checkbox_stereoZed_selfCalibration->setChecked(true);
 		_ui->comboBox_stereoZed_sensingMode->setCurrentIndex(0);
@@ -2048,8 +2067,13 @@ void PreferencesDialog::resetSettings(QGroupBox * groupBox)
 		_ui->comboBox_depthai_resolution->setCurrentIndex(1);
 		_ui->checkBox_depthai_depth->setChecked(false);
 		_ui->spinBox_depthai_confidence->setValue(200);
+		_ui->doubleSpinBox_depthai_alpha_scaling->setValue(0.0);
 		_ui->checkBox_depthai_imu_published->setChecked(true);
 		_ui->checkBox_depthai_imu_firmware_update->setChecked(false);
+		_ui->doubleSpinBox_depthai_laser_dot_brightness->setValue(0.0);
+		_ui->doubleSpinBox_depthai_floodlight_brightness->setValue(200.0);
+		_ui->comboBox_depthai_detect_features->setCurrentIndex(0);
+		_ui->lineEdit_depthai_blob_path->clear();
 
 		_ui->checkBox_cameraImages_configForEachFrame->setChecked(false);
 		_ui->checkBox_cameraImages_timestamps->setChecked(false);
@@ -2532,8 +2556,13 @@ void PreferencesDialog::readCameraSettings(const QString & filePath)
 	_ui->comboBox_depthai_resolution->setCurrentIndex(settings.value("resolution", _ui->comboBox_depthai_resolution->currentIndex()).toInt());
 	_ui->checkBox_depthai_depth->setChecked(settings.value("depth", _ui->checkBox_depthai_depth->isChecked()).toBool());
 	_ui->spinBox_depthai_confidence->setValue(settings.value("confidence", _ui->spinBox_depthai_confidence->value()).toInt());
+	_ui->doubleSpinBox_depthai_alpha_scaling->setValue(settings.value("alpha_scaling", _ui->doubleSpinBox_depthai_alpha_scaling->value()).toDouble());
 	_ui->checkBox_depthai_imu_published->setChecked(settings.value("imu_published", _ui->checkBox_depthai_imu_published->isChecked()).toBool());
 	_ui->checkBox_depthai_imu_firmware_update->setChecked(settings.value("imu_firmware_update", _ui->checkBox_depthai_imu_firmware_update->isChecked()).toBool());
+	_ui->doubleSpinBox_depthai_laser_dot_brightness->setValue(settings.value("laser_dot_brightness", _ui->doubleSpinBox_depthai_laser_dot_brightness->value()).toDouble());
+	_ui->doubleSpinBox_depthai_floodlight_brightness->setValue(settings.value("floodlight_brightness", _ui->doubleSpinBox_depthai_floodlight_brightness->value()).toDouble());
+	_ui->comboBox_depthai_detect_features->setCurrentIndex(settings.value("detect_features", _ui->comboBox_depthai_detect_features->currentIndex()).toInt());
+	_ui->lineEdit_depthai_blob_path->setText(settings.value("blob_path", _ui->lineEdit_depthai_blob_path->text()).toString());
 	settings.endGroup(); // DepthAI
 
 	settings.beginGroup("Images");
@@ -2617,6 +2646,7 @@ void PreferencesDialog::readCameraSettings(const QString & filePath)
 	_ui->source_checkBox_ignoreGoals->setChecked(settings.value("ignoreGoals", _ui->source_checkBox_ignoreGoals->isChecked()).toBool());
 	_ui->source_checkBox_ignoreLandmarks->setChecked(settings.value("ignoreLandmarks", _ui->source_checkBox_ignoreLandmarks->isChecked()).toBool());
 	_ui->source_checkBox_ignoreFeatures->setChecked(settings.value("ignoreFeatures", _ui->source_checkBox_ignoreFeatures->isChecked()).toBool());
+	_ui->source_checkBox_ignorePriors->setChecked(settings.value("ignorePriors", _ui->source_checkBox_ignorePriors->isChecked()).toBool());
 	_ui->source_spinBox_databaseStartId->setValue(settings.value("startId", _ui->source_spinBox_databaseStartId->value()).toInt());
 	_ui->source_spinBox_databaseStopId->setValue(settings.value("stopId", _ui->source_spinBox_databaseStopId->value()).toInt());
 	_ui->source_spinBox_database_cameraIndex->setValue(settings.value("cameraIndex", _ui->source_spinBox_database_cameraIndex->value()).toInt());
@@ -3058,8 +3088,13 @@ void PreferencesDialog::writeCameraSettings(const QString & filePath) const
 	settings.setValue("resolution",    _ui->comboBox_depthai_resolution->currentIndex());
 	settings.setValue("depth",         _ui->checkBox_depthai_depth->isChecked());
 	settings.setValue("confidence",    _ui->spinBox_depthai_confidence->value());
+	settings.setValue("alpha_scaling", _ui->doubleSpinBox_depthai_alpha_scaling->value());
 	settings.setValue("imu_published", _ui->checkBox_depthai_imu_published->isChecked());
-	settings.setValue("imu_firmware_update", _ui->checkBox_depthai_imu_firmware_update->isChecked());
+	settings.setValue("imu_firmware_update",   _ui->checkBox_depthai_imu_firmware_update->isChecked());
+	settings.setValue("laser_dot_brightness",  _ui->doubleSpinBox_depthai_laser_dot_brightness->value());
+	settings.setValue("floodlight_brightness", _ui->doubleSpinBox_depthai_floodlight_brightness->value());
+	settings.setValue("detect_features",       _ui->comboBox_depthai_detect_features->currentIndex());
+	settings.setValue("blob_path",             _ui->lineEdit_depthai_blob_path->text());
 	settings.endGroup(); // DepthAI
 
 	settings.beginGroup("Images");
@@ -3141,6 +3176,7 @@ void PreferencesDialog::writeCameraSettings(const QString & filePath) const
 	settings.setValue("ignoreGoals",       _ui->source_checkBox_ignoreGoals->isChecked());
 	settings.setValue("ignoreLandmarks", _ui->source_checkBox_ignoreLandmarks->isChecked());
 	settings.setValue("ignoreFeatures",  _ui->source_checkBox_ignoreFeatures->isChecked());
+	settings.setValue("ignorePriors",  _ui->source_checkBox_ignorePriors->isChecked());
 	settings.setValue("startId",          _ui->source_spinBox_databaseStartId->value());
 	settings.setValue("stopId",          _ui->source_spinBox_databaseStopId->value());
 	settings.setValue("cameraIndex",       _ui->source_spinBox_database_cameraIndex->value());
@@ -3917,12 +3953,16 @@ void PreferencesDialog::selectSourceDriver(Src src, int variant)
 				_ui->spinBox_rs2_width->setValue(1280);
 				_ui->spinBox_rs2_height->setValue(720);
 				_ui->spinBox_rs2_rate->setValue(30);
+				_ui->checkbox_rs2_irMode->setChecked(false);
+				_ui->checkbox_rs2_emitter->setChecked(true);
 			}
-			else
+			else // D400
 			{
 				_ui->spinBox_rs2_width->setValue(848);
 				_ui->spinBox_rs2_height->setValue(480);
 				_ui->spinBox_rs2_rate->setValue(60);
+				_ui->checkbox_rs2_irMode->setChecked(true);
+				_ui->checkbox_rs2_emitter->setChecked(false);
 			}
 		}
 	}
@@ -4384,6 +4424,20 @@ void PreferencesDialog::selectSourceRealsense2JsonPath()
 	if(path.size())
 	{
 		_ui->lineEdit_rs2_jsonFile->setText(path);
+	}
+}
+
+void PreferencesDialog::selectSourceDepthaiBlobPath()
+{
+	QString dir = _ui->lineEdit_depthai_blob_path->text();
+	if(dir.isEmpty())
+	{
+		dir = getWorkingDirectory();
+	}
+	QString path = QFileDialog::getOpenFileName(this, tr("Select file"), dir, tr("MyriadX blob (*.blob)"));
+	if(path.size())
+	{
+		_ui->lineEdit_depthai_blob_path->setText(path);
 	}
 }
 
@@ -6300,8 +6354,22 @@ Camera * PreferencesDialog::createCamera(
 			this->getGeneralInputRate(),
 			this->getSourceLocalTransform());
 		((CameraDepthAI*)camera)->setOutputDepth(_ui->checkBox_depthai_depth->isChecked(), _ui->spinBox_depthai_confidence->value());
+		((CameraDepthAI*)camera)->setAlphaScaling(_ui->doubleSpinBox_depthai_alpha_scaling->value());
 		((CameraDepthAI*)camera)->setIMUFirmwareUpdate(_ui->checkBox_depthai_imu_firmware_update->isChecked());
 		((CameraDepthAI*)camera)->setIMUPublished(_ui->checkBox_depthai_imu_published->isChecked());
+		((CameraDepthAI*)camera)->publishInterIMU(_ui->checkbox_publishInterIMU->isChecked());
+		((CameraDepthAI*)camera)->setLaserDotBrightness(_ui->doubleSpinBox_depthai_laser_dot_brightness->value());
+		((CameraDepthAI*)camera)->setFloodLightBrightness(_ui->doubleSpinBox_depthai_floodlight_brightness->value());
+		((CameraDepthAI*)camera)->setDetectFeatures(_ui->comboBox_depthai_detect_features->currentIndex());
+		((CameraDepthAI*)camera)->setBlobPath(_ui->lineEdit_depthai_blob_path->text().toStdString());
+		if(_ui->comboBox_depthai_detect_features->currentIndex() == 1)
+		{
+			((CameraDepthAI*)camera)->setGFTTDetector(_ui->checkBox_GFTT_useHarrisDetector->isChecked(), _ui->doubleSpinBox_GFTT_minDistance->value(), _ui->reextract_maxFeatures->value());
+		}
+		else if(_ui->comboBox_depthai_detect_features->currentIndex() == 2)
+		{
+			((CameraDepthAI*)camera)->setSuperPointDetector(_ui->doubleSpinBox_sptorch_threshold->value(), _ui->checkBox_sptorch_nms->isChecked(), _ui->spinBox_sptorch_minDistance->value());
+		}
 	}
 	else if(driver == kSrcUsbDevice)
 	{
@@ -6365,7 +6433,10 @@ Camera * PreferencesDialog::createCamera(
 				_ui->source_spinBox_databaseStopId->value(),
 				!_ui->general_checkBox_createIntermediateNodes->isChecked(),
 				_ui->source_checkBox_ignoreLandmarks->isChecked(),
-				_ui->source_checkBox_ignoreFeatures->isChecked());
+				_ui->source_checkBox_ignoreFeatures->isChecked(),
+				0,
+				-1,
+				_ui->source_checkBox_ignorePriors->isChecked());
 	}
 	else
 	{
@@ -6597,35 +6668,28 @@ void PreferencesDialog::testOdometry()
 		return;
 	}
 
+	ParametersMap parameters = this->getAllParameters();
 	IMUThread * imuThread = 0;
 	if((this->getSourceDriver() == kSrcStereoImages ||
 	   this->getSourceDriver() == kSrcRGBDImages ||
 	   this->getSourceDriver() == kSrcImages) &&
 	   !_ui->lineEdit_cameraImages_path_imu->text().isEmpty())
 	{
-		if(this->getOdomStrategy() != Odometry::kTypeOkvis &&
-		   this->getOdomStrategy() != Odometry::kTypeMSCKF &&
-		   this->getOdomStrategy() != Odometry::kTypeVINS &&
-		   this->getOdomStrategy() != Odometry::kTypeOpenVINS)
+		imuThread = new IMUThread(_ui->spinBox_cameraImages_max_imu_rate->value(), this->getIMULocalTransform());
+		if(getIMUFilteringStrategy()>0)
+		{
+			imuThread->enableIMUFiltering(getIMUFilteringStrategy()-1, parameters, getIMUFilteringBaseFrameConversion());
+		}
+		if(!imuThread->init(_ui->lineEdit_cameraImages_path_imu->text().toStdString()))
 		{
 			QMessageBox::warning(this, tr("Source IMU Path"),
-					tr("IMU path is set but odometry chosen doesn't support asynchronous IMU, ignoring IMU..."), QMessageBox::Ok);
-		}
-		else
-		{
-			imuThread = new IMUThread(_ui->spinBox_cameraImages_max_imu_rate->value(), this->getIMULocalTransform());
-			if(!imuThread->init(_ui->lineEdit_cameraImages_path_imu->text().toStdString()))
-			{
-				QMessageBox::warning(this, tr("Source IMU Path"),
-					tr("Initialization of IMU data has failed! Path=%1.").arg(_ui->lineEdit_cameraImages_path_imu->text()), QMessageBox::Ok);
-				delete camera;
-				delete imuThread;
-				return;
-			}
+				tr("Initialization of IMU data has failed! Path=%1.").arg(_ui->lineEdit_cameraImages_path_imu->text()), QMessageBox::Ok);
+			delete camera;
+			delete imuThread;
+			return;
 		}
 	}
 
-	ParametersMap parameters = this->getAllParameters();
 	if(getOdomRegistrationApproach() < 3)
 	{
 		uInsert(parameters, ParametersPair(Parameters::kRegStrategy(), uNumber2Str(getOdomRegistrationApproach())));

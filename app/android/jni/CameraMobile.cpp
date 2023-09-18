@@ -206,37 +206,37 @@ void CameraMobile::spinOnce()
 	{
 		bool ignoreFrame = false;
 		//float rate = 10.0f; // maximum 10 FPS for image data
-		double now = UTimer::now();
-		/*if(rate>0.0f)
-		{
-			if((spinOncePreviousStamp_>=0.0 && now>spinOncePreviousStamp_ && now - spinOncePreviousStamp_ < 1.0f/rate) ||
-				((spinOncePreviousStamp_<=0.0 || now<=spinOncePreviousStamp_) && spinOnceFrameRateTimer_.getElapsedTime() < 1.0f/rate))
-			{
-				ignoreFrame = true;
-			}
-		}*/
+        double now = 0;//*UTimer::now();
+//		if(rate>0.0f)
+//		{
+//			if((spinOncePreviousStamp_>=0.0 && now>spinOncePreviousStamp_ && now - spinOncePreviousStamp_ < 1.0f/rate) ||
+//				((spinOncePreviousStamp_<=0.0 || now<=spinOncePreviousStamp_) && spinOnceFrameRateTimer_.getElapsedTime() < 1.0f/rate))
+//			{
+//				ignoreFrame = true;
+//			}
+//		}
 
 		if(!ignoreFrame)
 		{
-			spinOnceFrameRateTimer_.start();
+			//spinOnceFrameRateTimer_.start();
 			spinOncePreviousStamp_ = now;
 			mainLoop();
 		}
-		else
-		{
-			// just send pose
-			capturePoseOnly();
-		}
+//		else
+//		{
+//			// just send pose
+//			capturePoseOnly();
+//		}
 	}
 }
 
 void CameraMobile::mainLoopBegin()
 {
-	double t = cameraStartedTime_.elapsed();
-	if(t < 5.0)
-	{
-		uSleep((5.0-t)*1000); // just to make sure that the camera is started
-	}
+//	double t = 0.01 //* cameraStartedTime_.elapsed();
+//	if(t < 5.0)
+//	{
+//		uSleep((5.0-t)*1000); // just to make sure that the camera is started
+//	}
 }
 
 void CameraMobile::mainLoop()
@@ -246,14 +246,14 @@ void CameraMobile::mainLoop()
 
 	if(data.isValid() && !info.odomPose.isNull())
 	{
-		if(lastKnownGPS_.stamp() > 0.0 && data.stamp()-lastKnownGPS_.stamp()<1.0)
-		{
-			data.setGPS(lastKnownGPS_);
-		}
-		else if(lastKnownGPS_.stamp()>0.0)
-		{
-			LOGD("GPS too old (current time=%f, gps time = %f)", data.stamp(), lastKnownGPS_.stamp());
-		}
+//		if(lastKnownGPS_.stamp() > 0.0 && data.stamp()-lastKnownGPS_.stamp()<1.0)
+//		{
+//			data.setGPS(lastKnownGPS_);
+//		}
+//		else if(lastKnownGPS_.stamp()>0.0)
+//		{
+//			LOGD("GPS too old (current time=%f, gps time = %f)", data.stamp(), lastKnownGPS_.stamp());
+//		}
 
 		if(lastEnvSensors_.size())
 		{
@@ -363,7 +363,7 @@ void CameraMobile::mainLoop()
 		bool firstFrame = previousPose_.isNull();
 		if(firstFrame)
 		{
-			stampEpochOffset_ = UTimer::now()-data.stamp();
+            stampEpochOffset_ = 0.01; //*stampEpochOffset_ = UTimer::now()-data.stamp();
 		}
 		data.setStamp(stampEpochOffset_ + data.stamp());
 		OdometryInfo info;
@@ -432,23 +432,25 @@ LaserScan CameraMobile::scanFromPointCloudData(
             //get color from rgb image
             cv::Point3f org= pt;
             pt = util3d::transformPoint(pt, opticalRotationInv);
-            int u,v;
-            model.reproject(pt.x, pt.y, pt.z, u, v);
-            unsigned char r=255,g=255,b=255;
-            if(model.inFrame(u, v))
+            if(pt.z > 0)
             {
-                b=rgb.at<cv::Vec3b>(v,u).val[0];
-                g=rgb.at<cv::Vec3b>(v,u).val[1];
-                r=rgb.at<cv::Vec3b>(v,u).val[2];
-                if(kpts)
-                    kpts->push_back(cv::KeyPoint(u,v,kptsSize));
-                if(kpts3D)
-                    kpts3D->push_back(org);
-                
-                *(int*)&ptr[oi*4 + 3] = int(b) | (int(g) << 8) | (int(r) << 16);
-                ++oi;
+                int u,v;
+                model.reproject(pt.x, pt.y, pt.z, u, v);
+                unsigned char r=255,g=255,b=255;
+                if(model.inFrame(u, v))
+                {
+                    b=rgb.at<cv::Vec3b>(v,u).val[0];
+                    g=rgb.at<cv::Vec3b>(v,u).val[1];
+                    r=rgb.at<cv::Vec3b>(v,u).val[2];
+                    if(kpts)
+                        kpts->push_back(cv::KeyPoint(u,v,kptsSize));
+                    if(kpts3D)
+                        kpts3D->push_back(org);
+                    
+                    *(int*)&ptr[oi*4 + 3] = int(b) | (int(g) << 8) | (int(r) << 16);
+                    ++oi;
+                }
             }
-
             //confidence
             //*(int*)&ptr[i*4 + 3] = (int(pointCloudData[i*4 + 3] * 255.0f) << 8) | (int(255) << 16);
 

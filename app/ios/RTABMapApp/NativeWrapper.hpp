@@ -72,7 +72,7 @@ void postOdometryEventNative(const void *object,
                        float x, float y, float z, float qx, float qy, float qz, float qw,
                        float fx, float fy, float cx, float cy,
                        double stamp,
-                       const void * yPlane,  const void * uPlane,  const void * vPlane, int yPlaneLen, int rgbWidth, int rgbHeight, int rgbFormat,
+                       const void * baseAdress, int bytesPerRow, int rgbWidth, int rgbHeight, int rgbFormat,
                        const void * depth, int depthLen, int depthWidth, int depthHeight, int depthFormat,
                        const void * conf, int confLen, int confWidth, int confHeight, int confFormat,
                        const void * points, int pointsLen, int pointsChannels,
@@ -97,7 +97,6 @@ void setGraphOptimizationNative(const void *object, bool enabled);
 void setNodesFilteringNative(const void *object, bool enabled);
 void setGraphVisibleNative(const void *object, bool visible);
 void setGridVisibleNative(const void *object, bool visible);
-void setRawScanSavedNative(const void *object, bool enabled);
 void setFullResolutionNative(const void *object, bool enabled);
 void setSmoothingNative(const void *object, bool enabled);
 void setAppendModeNative(const void *object, bool enabled);

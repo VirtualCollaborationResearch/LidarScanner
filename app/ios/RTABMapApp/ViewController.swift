@@ -8,6 +8,34 @@
 import GLKit
 import ARKit
 import StoreKit
+import Combine
+struct RTabData {
+    let confidence:CVPixelBuffer?
+    let depth:CVPixelBuffer?
+    let points:[vector_float3]?
+    let timestamp:TimeInterval
+    var camera:ARCamera
+    let orientation: UIInterfaceOrientation
+    let lightEstimate:ARLightEstimate?
+    let imageURl:URL
+    
+    var capturedImage:CVPixelBuffer? {
+        if let data = try? Data.init(contentsOf: imageURl) {
+            let image = UIImage(data: data)
+            if let buffer = try? image?.cgImage?.convert() {
+                return buffer
+           } else {
+               return nil
+           }
+        }else {
+            return nil
+        }
+    }
+    
+    func removeCapturedImage() {
+        try? FileManager.default.removeItem(at: imageURl)
+    }
+}
 
 extension Array {
     func size() -> Int {
@@ -16,8 +44,9 @@ extension Array {
 }
 
 class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIPickerViewDataSource, UIPickerViewDelegate, CLLocationManagerDelegate {
-    
-    private let session = ARSession()
+    //private var session: ARSession = .init()
+    private var session: ARSession { scanView.session } // Comment out
+    private let scanView = ScanARView()
     private var locationManager: CLLocationManager?
     private var mLastKnownLocation: CLLocation?
     private var mLastLightEstimate: CGFloat?
@@ -42,6 +71,10 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
     private var mLoopThr = 0.11
     
     private var mReviewRequested = false
+    
+    private var cancellable = Set<AnyCancellable>()
+    private var rTabDataDict = [String:RTabData]()
+    private var arFrameReciever = PassthroughSubject<ARFrame,Never>()
     
     // UI states
     private enum State {
@@ -173,6 +206,18 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
         }
     }
     
+    func addScanView() {
+        if !(view.subviews.first is ScanARView) {
+            view.insertSubview(scanView, at: 0)
+            NSLayoutConstraint.activate([
+                scanView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                scanView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                scanView.topAnchor.constraint(equalTo: view.topAnchor),
+                scanView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            ])
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -233,6 +278,8 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.updateState(state: self.mState)
         }
+        
+        setupListeners()
     }
     
     func progressUpdated(_ rtabmap: RTABMap, count: Int, max: Int) {
@@ -498,6 +545,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
         switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized: // The user has previously granted access to the camera.
                 print("Start Camera")
+                addScanView() //Comment out
                 rtabmap!.startCamera()
                 let configuration = ARWorldTrackingConfiguration()
                 var message = ""
@@ -968,8 +1016,46 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
     override var prefersStatusBarHidden: Bool {
         return !mHudVisible
     }
+    
+    var isRunning = false
+    // Comment out
+    {
+        didSet {
+            if isRunning {
+                scanView.startScanning()
+            } else {
+                view.subviews.forEach {
+                    if $0 is ScanARView { $0.removeFromSuperview() }
+                }
+            }
+        }
+    }
+    //
+    func setupListeners() {
+        arFrameReciever
+         //   .receive(on: DispatchQueue.global())
+            .throttle(for: .seconds(0.5), scheduler: DispatchQueue.global(), latest: true)
+            .sink { [weak self] frame in
+                let imageName = UUID().uuidString
+                let image = UIImage(pixelBuffer: frame.capturedImage)
+                
+                let folderURL = FileManager.default.createFolder(with: "RT-Images")
+                
+                
+                let imageUrl = folderURL.appendingPathComponent(imageName+".jpeg")
+                autoreleasepool {
+                    if let imageData = image?.jpegData(compressionQuality: 0.8),
+                    let _ = try? imageData.write(to: imageUrl) {
+                        print("** image saved")
+                        let data = RTabData(confidence: frame.sceneDepth?.confidenceMap, depth: frame.sceneDepth?.depthMap, points: frame.rawFeaturePoints?.points, timestamp: frame.timestamp , camera: frame.camera, orientation: .portrait, lightEstimate: frame.lightEstimate, imageURl: imageUrl)
+                            self?.rTabDataDict[imageName] = data
+                        self?.session.add(anchor: .init(name: imageName, transform: frame.camera.transform))
+                    }
+                }
 
-    //This is called when a new frame has been updated.
+            }.store(in: &cancellable)
+    }
+    
     func session(_ session: ARSession, didUpdate frame: ARFrame)
     {
         var status = ""
@@ -1002,14 +1088,14 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
 
         if accept
         {
-            if let rotation = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
-            {
-                rtabmap?.postOdometryEvent(frame: frame, orientation: rotation, viewport: self.view.frame.size)
+            if self.isRunning {
+                //rtabmap?.postOdometryEvent(frame: frame, orientation: rotation, viewport: self.view.frame.size)
+                arFrameReciever.send(frame)
             }
         }
         else
         {
-            rtabmap?.notifyLost();
+            rtabmap?.notifyLost()
         }
         
         if !status.isEmpty {
@@ -1318,7 +1404,6 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
         // update preference
         rtabmap!.setOnlineBlending(enabled: defaults.bool(forKey: "Blending"));
         rtabmap!.setNodesFiltering(enabled: defaults.bool(forKey: "NodesFiltering"));
-        rtabmap!.setRawScanSaved(enabled: defaults.bool(forKey: "SaveRawScan"));
         rtabmap!.setFullResolution(enabled: defaults.bool(forKey: "HDMode"));
         rtabmap!.setSmoothing(enabled: defaults.bool(forKey: "Smoothing"));
         rtabmap!.setAppendMode(enabled: defaults.bool(forKey: "AppendMode"));
@@ -1808,7 +1893,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
             
             var loopDetected : Int = -1
             DispatchQueue.background(background: {
-                loopDetected = self.rtabmap!.postProcessing(approach: approach);
+                loopDetected = 0;
             }, completion:{
                 // main thread
                 if self.progressView != nil
@@ -1852,9 +1937,28 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
     {
         session.pause()
         locationManager?.stopUpdatingLocation()
+        self.isRunning = false
+
+        session.currentFrame?.anchors.forEach { [weak self] anchor in
+            if let self = self,
+               let name = anchor.name,
+               let data = self.rTabDataDict[name] {
+                autoreleasepool {
+                    self.rtabmap?.postOdometryEvent(frame: data, pose: anchor.transform, orientation: data.orientation, viewport: self.view.frame.size)
+                }
+                usleep(200000) // Wait a while to send the next image to RtabMap. Should be equal to image capturing period. Should be >= 200000
+                print("** data sending",name)
+            }
+        }
+        
+        
+
         rtabmap?.setPausedMapping(paused: true)
         rtabmap?.stopCamera()
         setGLCamera(type: 2)
+        
+
+        
         if(mState == .STATE_VISUALIZING_CAMERA)
         {
             self.rtabmap?.setLocalizationMode(enabled: false)
@@ -2243,12 +2347,13 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
         self.present(alertController, animated: true, completion: nil)
     }
 
-    //MARK: Actions   
+    //MARK: Actions
     @IBAction func stopAction(_ sender: UIButton) {
         stopMapping(ignoreSaving: false)
     }
 
     @IBAction func recordAction(_ sender: UIButton) {
+        self.isRunning = true
         rtabmap?.setPausedMapping(paused: false);
         updateState(state: .STATE_MAPPING)
     }

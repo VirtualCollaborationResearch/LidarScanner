@@ -595,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				F4D7CE8A29A65C640063EBDD /* Mediate */,
+				F4A4B915299404FB0027C2A5 /* ScanARView.swift */,
 				4E20B24F266AB95600316EE6 /* Images.xcassets */,
 				4EFD0BB0259D503200575D88 /* NativeWrapper */,
 				4EFD0B62259D501E00575D88 /* tango-gl */,
@@ -1364,7 +1365,7 @@
 					"\"$(SRCROOT)/RTABMapApp/Libraries/include\"",
 					"\"$(SRCROOT)/RTABMapApp/Libraries/include/eigen3\"",
 					"\"$(SRCROOT)/RTABMapApp/Libraries/include/pcl-1.11\"",
-					"\"$(SRCROOT)/RTABMapApp/Libraries/include/rtabmap-0.20\"",
+					"\"$(SRCROOT)/RTABMapApp/Libraries/include/rtabmap-0.21\"",
 					"\"$(SRCROOT)/../android/jni/tango-gl/include\"",
 					"\"$(SRCROOT)/../android/jni/third-party/include\"",
 					"\"$(SRCROOT)/RTABMapApp/Libraries/lib/vtk.framework/Headers\"",
@@ -1424,7 +1425,7 @@
 					"\"$(SRCROOT)/RTABMapApp/Libraries/include\"",
 					"\"$(SRCROOT)/RTABMapApp/Libraries/include/eigen3\"",
 					"\"$(SRCROOT)/RTABMapApp/Libraries/include/pcl-1.11\"",
-					"\"$(SRCROOT)/RTABMapApp/Libraries/include/rtabmap-0.20\"",
+					"\"$(SRCROOT)/RTABMapApp/Libraries/include/rtabmap-0.21\"",
 					"\"$(SRCROOT)/../android/jni/tango-gl/include\"",
 					"\"$(SRCROOT)/../android/jni/third-party/include\"",
 					"\"$(SRCROOT)/RTABMapApp/Libraries/lib/vtk.framework/Headers\"",

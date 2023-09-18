@@ -301,7 +301,7 @@ void postOdometryEventNative(const void *object,
         float x, float y, float z, float qx, float qy, float qz, float qw,
         float fx, float fy, float cx, float cy,
         double stamp,
-        const void * yPlane,  const void * uPlane,  const void * vPlane, int yPlaneLen, int rgbWidth, int rgbHeight, int rgbFormat,
+        const void * baseAdress, int bytesPerRow, int rgbWidth, int rgbHeight, int rgbFormat,
         const void * depth, int depthLen, int depthWidth, int depthHeight, int depthFormat,
         const void * conf, int confLen, int confWidth, int confHeight, int confFormat,
         const void * points, int pointsLen, int pointsChannels,
@@ -313,10 +313,10 @@ void postOdometryEventNative(const void *object,
     {
         native(object)->postOdometryEvent(
                 rtabmap::Transform(x,y,z,qx,qy,qz,qw),
-                fx,fy,cx,cy, 0,0,0,0,
+                fx,fy,cx,cy,fx,fy,cx,cy, //*fx,fy,cx,cy, 0,0,0,0,
                 rtabmap::Transform(), rtabmap::Transform(),
-                stamp, 0,
-                yPlane, uPlane, vPlane, yPlaneLen, rgbWidth, rgbHeight, rgbFormat,
+                stamp, stamp,//* stamp, 0
+                baseAdress, bytesPerRow, rgbWidth, rgbHeight, rgbFormat,
                 depth, depthLen, depthWidth, depthHeight, depthFormat,
                 conf, confLen, confWidth, confHeight, confFormat,
                 (const float *)points, pointsLen, pointsChannels,
@@ -486,13 +486,6 @@ void setGridVisibleNative(const void *object, bool visible)
 {
     if(object)
         native(object)->setGridVisible(visible);
-    else
-        UERROR("object is null!");
-}
-void setRawScanSavedNative(const void *object, bool enabled)
-{
-    if(object)
-        native(object)->setRawScanSaved(enabled);
     else
         UERROR("object is null!");
 }
